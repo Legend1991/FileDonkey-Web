@@ -80,9 +80,9 @@
       padding: 12px 12px 12px 12px;
       border-width: 0;
       height: 58px;
+      width: 105px;
       background-color: rgba(20, 16, 11, 0.9);
       color: white;
-      /* margin-left: -86px; */
       font-family: Roboto, sans-serif;
       font-size: 18px;
     }
@@ -100,7 +100,8 @@
 </head>
 
 <body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
-  <main style="flex: 1; background: linear-gradient(to top left, transparent calc(max(25vw, 30vh) + 100px), #fefbe9, #FEF7F9 90%);">
+  <main
+    style="flex: 1; background: linear-gradient(to top left, transparent calc(max(25vw, 30vh) + 100px), #fefbe9, #FEF7F9 90%);">
     <div style="display: flex; align-items: start; justify-content: center; padding-top: 5rem;">
       <img src="/FileDonkey_Icon.png" alt="Lemon Hazard logo" style="width: 220px; height: 220px;" />
       <div
@@ -140,7 +141,8 @@
         <nobr>Be the first to know when FileDonkey launches:</nobr>
       </div>
       <!-- <form action="/subscribe" method="POST"> -->
-      <div style="display: flex; flex-direction: row; position: relative; align-items: center; padding: 2rem 0rem 0rem 0rem;">
+      <div
+        style="display: flex; flex-direction: row; position: relative; align-items: center; padding: 2rem 0rem 0rem 0rem;">
         <input type="email" id="email" placeholder="Type your email" name="fname"></input>
         <div style="position: absolute; right: 4px;">
           <button id="submit" type="submit">Notify Me</button>
@@ -159,7 +161,28 @@
 <script>
   const emailInput = document.querySelector("#email");
   const submitBtn = document.querySelector("#submit");
+  console.dir(submitBtn);
 
-  submitBtn.addEventListener("click", () => console.log('Notify Me:', emailInput.value.trim()));
+  submitBtn.addEventListener("click", async () => {
+    try {
+      const email = emailInput.value.trim();
+      console.log('Notify Me:', email);
+      if (!email.length) throw new Error('Email is empty');
+      const res = await fetch("https://filedonkey-api.leg3nd1991.workers.dev/newsletter", {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({ email })
+      });
+      console.log(res);
+      const resJSON = await res.json();
+      if (resJSON.status !== 'OK') throw new Error('Server response is not OK');
+      submitBtn.innerText = "Done ✔";
+      submitBtn.style.color = "rgba(20, 16, 11, 0.9)";
+      submitBtn.style.backgroundColor = "rgb(254, 247, 249)";
+    } catch (error) {
+      console.error('Submit email error:', error.message);
+    }
+  });
 </script>
+
 </html>
