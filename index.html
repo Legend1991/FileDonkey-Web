@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" id="wixDesktopViewport">
   <link rel="icon" sizes="64x64" href="/FileDonkey_Icon.png" type="image/png">
   <link rel="shortcut icon" href="/FileDonkey_Icon.png" type="image/png">
-  <title>FileDonkey App</title>
+  <title>FileDonkey - Important files instantly accessible wherever you need them</title>
   <meta name="description"
     content="Creates a virtual disk that mirrors files from all your devices on the same network.">
   <meta name="keywords"
@@ -48,8 +48,9 @@
         url('Roboto-Condensed.ttf') format('truetype');
     }
 
-    :root {
-      --wave-size-ratio: 15.421686747;
+    html {
+      min-width: 100%;
+      min-height: 100%;
     }
 
     ul {
@@ -96,53 +97,280 @@
       cursor: pointer;
       background-color: rgba(20, 16, 11, 1);
     }
+
+    .appSection {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      padding: 5rem 5rem 0rem 5rem;
+    }
+
+    .appIcon {
+      width: 220px;
+      height: 220px;
+    }
+
+    .appInfo {
+      display: flex;
+      flex-direction: column;
+      padding: 0.7rem 0rem 0rem 1.7rem;
+      align-items: start;
+      justify-content: flex-start;
+    }
+
+    .appName {
+      color: rgba(20, 16, 11, 0.9);
+      display: flex;
+      flex-direction: row;
+      padding: 0rem 1rem 1rem 0rem;
+      text-align: left;
+      align-items: center;
+      font-size: 24px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 2rem;
+      font-weight: 900;
+    }
+
+    .socialButtonsTop {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .socialButtonsUnder {
+      visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .appDesc {
+      color: rgba(20, 16, 11, 0.8);
+      padding: 0rem 0rem 0rem 0rem;
+      text-align: left;
+      max-width: 30rem;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 2rem;
+      font-weight: 500;
+    }
+
+    .newsLetterSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12rem 1rem 12rem 1rem;
+    }
+
+    .newsLetterLabel {
+      color: rgba(20, 16, 11, 0.9);
+      display: flex;
+      flex-direction: row;
+      padding: 0rem 5rem 1rem 5rem;
+      text-align: left;
+      align-items: center;
+      font-size: 32px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 2rem;
+      font-weight: 900;
+    }
+
+    .newsLetterForm {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      align-items: center;
+      padding: 2rem 0rem 0rem 0rem;
+    }
+
+    @media (max-width: 900px) {
+      .appSection {
+        padding: 4rem 4rem 0rem 4rem;
+      }
+
+      .appIcon {
+        width: 180px;
+        height: 180px;
+      }
+
+      .newsLetterLabel {
+        font-size: 28px;
+        line-height: 1.75rem;
+        padding: 0rem 4rem 1rem 4rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .appSection {
+        padding: 3rem 3rem 0rem 3rem;
+      }
+
+      .appIcon {
+        width: 160px;
+        height: 160px;
+      }
+
+      .newsLetterSection {
+        padding: 10rem 1rem 10rem 1rem;
+      }
+
+      .newsLetterLabel {
+        font-size: 24px;
+        line-height: 1.4rem;
+        padding: 0rem 3rem 1rem 3rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .appSection {
+        padding: 2rem 2rem 0rem 2rem;
+      }
+
+      .appIcon {
+        width: 130px;
+        height: 130px;
+      }
+
+      .appInfo {
+        padding: 0rem 0rem 0rem 1rem;
+      }
+
+      .appName {
+        padding: 0rem 0rem 1rem 0rem;
+        font-size: 21px;
+        line-height: 1.2rem;
+      }
+
+      .appDesc {
+        font-size: 17px;
+        line-height: 1.3rem;
+      }
+
+      .newsLetterSection {
+        padding: 8rem 1rem 8rem 1rem;
+      }
+
+      .newsLetterLabel {
+        font-size: 20px;
+        line-height: 1.2rem;
+        padding: 0rem 2rem 1rem 2rem;
+      }
+
+      .newsLetterForm {
+        padding: 1.5rem 0rem 0rem 0rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .appSection {
+        padding: 1.5rem 1.5rem 0rem 1.5rem;
+      }
+
+      .appIcon {
+        width: 100px;
+        height: 100px;
+      }
+
+      .appInfo {
+        padding: 0rem 0rem 0rem 0.75rem;
+      }
+
+      .appName {
+        padding: 0rem 0rem 0.75rem 0rem;
+        font-size: 19px;
+        line-height: 1.2rem;
+      }
+
+      .socialButtonsTop {
+        visibility: hidden;
+      }
+
+      .socialButtonsUnder {
+        visibility: visible;
+      }
+
+      .appDesc {
+        font-size: 16px;
+        line-height: 1.3rem;
+      }
+
+      .newsLetterSection {
+        padding: 6rem 1rem 6rem 1rem;
+      }
+
+      .newsLetterLabel {
+        font-size: 19px;
+        line-height: 1.2rem;
+        padding: 0rem 2rem 1rem 2rem;
+      }
+
+      .newsLetterForm {
+        padding: 1rem 0rem 0rem 0rem;
+      }
+    }
   </style>
 </head>
 
 <body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
   <main
     style="flex: 1; background: linear-gradient(to top left, transparent calc(max(25vw, 30vh) + 100px), #fefbe9, #FEF7F9 90%);">
-    <div style="display: flex; align-items: start; justify-content: center; padding-top: 5rem;">
-      <img src="/FileDonkey_Icon.png" alt="Lemon Hazard logo" style="width: 220px; height: 220px;" />
-      <div
-        style="display: flex; flex-direction: column; padding: 0.7rem 0rem 0rem 1.7rem; align-items: start; justify-content: flex-start;">
-        <div
-          style="color: rgba(20, 16, 11, 0.9); display: flex; flex-direction: row; padding: 0rem 1rem 1rem 0rem; text-align: left; align-items: center; font-size: 24px; font-family: Roboto-Medium, sans-serif; line-height: 2rem; font-weight: 900;">
+    <div class="appSection">
+      <div>
+      <img src="/FileDonkey_Icon.png" class="appIcon" alt="Lemon Hazard logo" />
+      <div class="socialButtonsUnder">
+        <div style="padding: 0.75rem 0rem 0.75rem 0rem;">
+          <a href="https://www.producthunt.com/products/filedonkey?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-filedonkey"
+            target="_blank">
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1049285&theme=light&size=small"
+              alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Product Hunt"
+              style="width: 86px; height: 32px;" width="86" height="32" />
+          </a>
+        </div>
+        <div style="padding: 0rem 0rem 0rem 0rem;">
+          <a href="https://x.com/filedonkeyapp" target="_blank">
+            <img src="/follow.svg"
+              alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Twitter"
+              style="width: 86px; height: 32px;" width="86" height="32" />
+          </a>
+        </div>
+      </div>
+      </div>
+      <div class="appInfo">
+        <div class="appName">
           <nobr>FileDonkey</nobr>
-          <div style="padding: 0rem 0.7rem 0rem 1.5rem;">
-            <a href="https://www.producthunt.com/products/filedonkey?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-filedonkey"
-              target="_blank">
-              <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1049285&theme=light&size=small"
-                alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Product Hunt"
-                style="width: 86px; height: 32px;" width="86" height="32" />
-            </a>
-          </div>
-          <div style="padding: 0rem 0rem 0rem 0rem;">
-            <a href="https://x.com/filedonkeyapp" target="_blank">
-              <img src="/follow.svg"
-                alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Twitter"
-                style="width: 86px; height: 32px;" width="86" height="32" />
-            </a>
+          <div class="socialButtonsTop">
+            <div style="padding: 0rem 0.7rem 0rem 1.5rem;">
+              <a href="https://www.producthunt.com/products/filedonkey?utm_source=badge-follow&utm_medium=badge&utm_souce=badge-filedonkey"
+                target="_blank">
+                <img
+                  src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1049285&theme=light&size=small"
+                  alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Product Hunt"
+                  style="width: 86px; height: 32px;" width="86" height="32" />
+              </a>
+            </div>
+            <div style="padding: 0rem 0rem 0rem 0rem;">
+              <a href="https://x.com/filedonkeyapp" target="_blank">
+                <img src="/follow.svg"
+                  alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Twitter"
+                  style="width: 86px; height: 32px;" width="86" height="32" />
+              </a>
+            </div>
           </div>
         </div>
-        <div
-          style="color: rgba(20, 16, 11, 0.8); padding: 0rem 1rem 0rem 0rem; text-align: left; max-width: 30rem; font-size: 18px; font-family: Roboto, sans-serif; line-height: 2rem; font-weight: 500;">
+        <div class="appDesc">
           Transforms how you access files across devices. This lightweight utility creates a virtual disk that
-          seamlessly
-          mirrors the file systems of all your connected devices on the same local network.
+          seamlessly mirrors the file systems of all your connected devices on the same local network.
         </div>
       </div>
     </div>
-    <div
-      style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12rem 1rem 12rem 1rem;">
-      <div
-        style="color: rgba(20, 16, 11, 0.9); display: flex; flex-direction: row; padding: 0rem 1rem 1rem 0rem; text-align: left; align-items: center; font-size: 32px; font-family: Roboto-Medium, sans-serif; line-height: 2rem; font-weight: 900;">
+    <div class="newsLetterSection">
+      <div class="newsLetterLabel">
         <nobr>Be the first to know when FileDonkey launches:</nobr>
       </div>
       <!-- <form action="/subscribe" method="POST"> -->
-      <div
-        style="display: flex; flex-direction: row; position: relative; align-items: center; padding: 2rem 0rem 0rem 0rem;">
+      <div class="newsLetterForm">
         <input type="email" id="email" placeholder="Type your email" name="fname"></input>
         <div style="position: absolute; right: 4px;">
           <button id="submit" type="submit">Notify Me</button>
