@@ -140,8 +140,7 @@
     }
 
     .socialButtonsUnder {
-      visibility: hidden;
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -185,6 +184,7 @@
       position: relative;
       align-items: center;
       padding: 2rem 0rem 0rem 0rem;
+      max-width: 400px;
     }
 
     @media (max-width: 900px) {
@@ -267,7 +267,7 @@
 
     @media (max-width: 500px) {
       .appSection {
-        padding: 1.5rem 1.5rem 0rem 1.5rem;
+        padding: 1rem 1rem 0rem 1rem;
       }
 
       .appIcon {
@@ -286,11 +286,11 @@
       }
 
       .socialButtonsTop {
-        visibility: hidden;
+        display: none;
       }
 
       .socialButtonsUnder {
-        visibility: visible;
+        display: flex;
       }
 
       .appDesc {
@@ -303,13 +303,18 @@
       }
 
       .newsLetterLabel {
-        font-size: 19px;
+        font-size: 17px;
         line-height: 1.2rem;
         padding: 0rem 2rem 1rem 2rem;
       }
 
       .newsLetterForm {
-        padding: 1rem 0rem 0rem 0rem;
+        padding: 0rem 0rem 0rem 0rem;
+        width: 100%;
+      }
+
+      input[type="email"] {
+        width: 100%;
       }
     }
   </style>
@@ -363,8 +368,9 @@
           </div>
         </div>
         <div class="appDesc">
-          Transforms how you access files across devices. This lightweight utility creates a virtual disk that
-          seamlessly mirrors the file systems of all your connected devices on the same local network.
+          Transforms how you access files across devices. This lightweight utility 
+          creates a virtual disk that seamlessly mirrors the file systems of all 
+          your connected devices on the same local network.
         </div>
       </div>
     </div>
