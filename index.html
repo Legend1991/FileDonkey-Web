@@ -68,6 +68,42 @@
       line-height: 1.5rem;
     }
 
+    .repeating-key-features-emoji {
+      list-style: none;
+      padding: 1rem 0 1rem 0;
+      margin: 0 0 0rem;
+
+      li {
+        padding-left: 1.85rem;
+        text-indent: -1.85rem;
+        padding-top: 0.5rem;
+      }
+
+      li:nth-child(6n + 1)::before {
+        content: "📱 ";
+      }
+
+      li:nth-child(6n + 2)::before {
+        content: "⚡ ";
+      }
+
+      li:nth-child(6n + 3)::before {
+        content: "🔌 ";
+      }
+
+      li:nth-child(6n + 4)::before {
+        content: "🔒 ";
+      }
+
+      li:nth-child(6n + 5)::before {
+        content: "🔄 ";
+      }
+
+      li:nth-child(6n)::before {
+        content: "🖱️ ";
+      }
+    }
+
     input[type="email"] {
       border-radius: 16px;
       border-color: rgba(20, 16, 11, 0.5);
@@ -222,6 +258,13 @@
         height: 180px;
       }
 
+      .keyFeaturesTitle {
+        font-size: 22px;
+        font-family: Roboto-Medium, sans-serif;
+        line-height: 1.7rem;
+        font-weight: 900;
+      }
+
       .newsLetterLabel {
         font-size: 28px;
         line-height: 1.75rem;
@@ -237,6 +280,13 @@
       .appIcon {
         width: 160px;
         height: 160px;
+      }
+
+      .keyFeaturesTitle {
+        font-size: 18px;
+        font-family: Roboto-Medium, sans-serif;
+        line-height: 1.7rem;
+        font-weight: 900;
       }
 
       .newsLetterSection {
@@ -273,6 +323,18 @@
       .appDesc {
         font-size: 17px;
         line-height: 1.3rem;
+      }
+
+      .repeating-key-features-emoji {
+        padding: 0.75rem 0 0.75rem 0;
+        font-size: 17px;
+        line-height: 1.3rem;
+
+        li {
+          padding-left: 1.7rem;
+          text-indent: -1.7rem;
+          padding-top: 0.3rem;
+        }
       }
 
       .newsLetterSection {
@@ -321,6 +383,17 @@
       .appDesc {
         font-size: 16px;
         line-height: 1.3rem;
+      }
+
+      .repeating-key-features-emoji {
+        font-size: 16px;
+        line-height: 1.3rem;
+
+        li {
+          padding-left: 1.6rem;
+          text-indent: -1.6rem;
+          padding-top: 0.3rem;
+        }
       }
 
       .newsLetterSection {
@@ -415,30 +488,30 @@
     <div class="keyFeaturesSection">
       <div class="keyFeaturesContent">
         <div style="display: flex; align-items: center;">
-          <span>✔️&nbsp;</span><span class="keyFeaturesTitle">Key Features:</span>
+          <span class="keyFeaturesCheckMark">✔️&nbsp;</span><span class="keyFeaturesTitle">Key Features:</span>
         </div>
-        <ul style="list-style: none;">
-          <li>📱 Instant file access between Android, iPhone, MacBook, Windows, and Linux</li>
-          <li>⚡ Zero configuration setup - just install and use</li>
-          <li>🔌 No more tangled wires or complicated network configurations</li>
-          <li>🔒 No cloud storage required - everything stays on your local network</li>
-          <li>🔄 Real-time file synchronization without manual transfers</li>
-          <li>🖱️ Drag-and-drop simplicity with native file explorer integration</li>
+        <ul class="repeating-key-features-emoji">
+          <li>Instant file access between Android, iPhone, MacBook, Windows, and Linux</li>
+          <li>Zero configuration setup - just install and use</li>
+          <li>No more tangled wires or complicated network configurations</li>
+          <li>No cloud storage required - everything stays on your local network</li>
+          <li>Real-time file synchronization without manual transfers</li>
+          <li>Drag-and-drop simplicity with native file explorer integration</li>
         </ul>
         <div style="display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem 0rem 1rem;">
           <span class="appDesc" style="margin-bottom: 1rem;">
-            Native integration with 
+            Native integration with
             <span style="font-weight: 900; font-family: Roboto-Medium, sans-serif;">Finder</span>
-             in 
+            in
             <span style="font-weight: 900; font-family: Roboto-Medium, sans-serif;">macOS</span>
           </span>
           <img src="/Finder_WindowsPC_Locations.png" alt="FileDonkey logo" width="353px" />
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; padding: 4rem 1rem 4rem 1rem;">
           <span class="appDesc" style="margin-bottom: 1rem;">
-            Native integration with 
+            Native integration with
             <span style="font-weight: 900; font-family: Roboto-Medium, sans-serif;">File Explorer</span>
-             in 
+            in
             <span style="font-weight: 900; font-family: Roboto-Medium, sans-serif;">Windows</span>
           </span>
           <img src="/FileExplorer_AndroidPhone_Locations.png" alt="FileDonkey logo" width="353px" />
