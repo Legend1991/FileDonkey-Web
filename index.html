@@ -227,7 +227,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 8rem 1rem 8rem 1rem;
+      padding: 6rem 1rem 4rem 1rem;
     }
 
     .newsLetterLabel {
@@ -243,12 +243,43 @@
       font-weight: 900;
     }
 
+    .newsLetterCount {
+      color: rgba(20, 16, 11, 0.9);
+      display: flex;
+      flex-direction: row;
+      padding: 0rem 5rem 0rem 5rem;
+      text-align: left;
+      align-items: center;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 2rem;
+      font-weight: 400;
+    }
+
+    @property --waitlistcount {
+      syntax: "<integer>";
+      initial-value: 20;
+      inherits: false;
+    }
+
+    #waitlistCount {
+      transition: --waitlistcount 1s;
+      counter-set: waitlistcount var(--waitlistcount);
+      font-size: 20px;
+      font-weight: 900;
+      font-family: Roboto-Medium, sans-serif;
+    }
+
+    #waitlistCount::after {
+      content: counter(waitlistcount);
+    }
+
     .newsLetterForm {
       display: flex;
       flex-direction: row;
       position: relative;
       align-items: center;
-      padding: 2rem 0rem 0rem 0rem;
+      padding: 2rem 0rem 2rem 0rem;
       max-width: 400px;
     }
 
@@ -274,6 +305,10 @@
         line-height: 1.75rem;
         padding: 0rem 4rem 1rem 4rem;
       }
+
+      .newsLetterCount {
+        padding: 0rem 4rem 0rem 4rem;
+      }
     }
 
     @media (max-width: 760px) {
@@ -294,13 +329,21 @@
       }
 
       .newsLetterSection {
-        padding: 7rem 1rem 7rem 1rem;
+        padding: 6rem 1rem 4rem 1rem;
       }
 
       .newsLetterLabel {
         font-size: 24px;
         line-height: 1.4rem;
         padding: 0rem 3rem 1rem 3rem;
+      }
+
+      .newsLetterCount {
+        padding: 0rem 3rem 0rem 3rem;
+      }
+
+      #waitlistCount {
+        font-size: 18px;
       }
     }
 
@@ -342,7 +385,7 @@
       }
 
       .newsLetterSection {
-        padding: 6rem 1rem 6rem 1rem;
+        padding: 5rem 1rem 3rem 1rem;
       }
 
       .newsLetterLabel {
@@ -351,8 +394,12 @@
         padding: 0rem 2rem 1rem 2rem;
       }
 
+      .newsLetterCount {
+        padding: 0rem 2rem 0rem 2rem;
+      }
+
       .newsLetterForm {
-        padding: 1.5rem 0rem 0rem 0rem;
+        padding: 1.5rem 0rem 1.5rem 0rem;
       }
     }
 
@@ -401,13 +448,17 @@
       }
 
       .newsLetterSection {
-        padding: 5rem 1rem 5rem 1rem;
+        padding: 4rem 1rem 2.5rem 1rem;
       }
 
       .newsLetterLabel {
         font-size: 17px;
         line-height: 1.2rem;
         padding: 0rem 2rem 1rem 2rem;
+      }
+
+      .newsLetterCount {
+        padding: 1rem 2rem 0rem 2rem;
       }
 
       .newsLetterForm {
@@ -478,7 +529,7 @@
     </div>
     <div class="newsLetterSection">
       <div class="newsLetterLabel">
-        <nobr>Be the first to know when FileDonkey launches:</nobr>
+        <nobr>Get notified when FileDonkey launches:</nobr>
       </div>
       <!-- <form action="/subscribe" method="POST"> -->
       <div class="newsLetterForm">
@@ -486,6 +537,11 @@
         <div style="position: absolute; right: 4px;">
           <button id="submit" type="submit">Notify Me</button>
         </div>
+      </div>
+      <div class="newsLetterCount">
+        <nobr><span id="waitlistCount"></span> people
+          already on the
+          waitlist</nobr>
       </div>
       <!-- </form> -->
     </div>
@@ -535,9 +591,17 @@
   </footer>
 </body>
 <script>
+  const waitlistCountEl = document.querySelector("#waitlistCount");
   const emailInput = document.querySelector("#email");
   const submitBtn = document.querySelector("#submit");
   console.dir(submitBtn);
+
+  setTimeout(async () => {
+    const res = await fetch("https://filedonkey-api.leg3nd1991.workers.dev/waitlistcount");
+    const resJSON = await res.json();
+    if (resJSON.status !== 'OK') return;
+    waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
+  });
 
   submitBtn.addEventListener("click", async () => {
     try {
@@ -552,6 +616,8 @@
         body: JSON.stringify({ email })
       });
       console.log(res);
+      const waitlistCount = Number(waitlistCountEl.style.getPropertyValue("--waitlistcount"));
+      waitlistCountEl.style.setProperty("--waitlistcount", waitlistCount + 1);
       // const resJSON = await res.json();
       // if (resJSON.status !== 'OK') throw new Error('Server response is not OK');
       submitBtn.innerText = "Done ✔";
