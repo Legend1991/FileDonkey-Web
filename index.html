@@ -596,7 +596,7 @@
   console.dir(submitBtn);
 
   setTimeout(async () => {
-    const res = await fetch("https://filedonkey-api.leg3nd1991.workers.dev/waitlistcount");
+    const res = await fetch("https://api.filedonkey.app/waitlistcount");
     const resJSON = await res.json();
     if (resJSON.status !== 'OK') return;
     waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
@@ -609,7 +609,7 @@
       if (emailFormat.test(email) === false) throw new Error('Invalid email');
       console.log('Notify Me:', email);
       if (!email.length) throw new Error('Email is empty');
-      const res = await fetch("https://filedonkey-api.leg3nd1991.workers.dev/newsletter", {
+      const res = await fetch("https://api.filedonkey.app/newsletter", {
         method: 'POST',
         mode: 'no-cors',
         body: JSON.stringify({ email })
