@@ -1,0 +1,16 @@
+<svg width="86" height="32" overflow="visible" viewBox="0 0 86 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.5" y="0.5" width="85" height="31" rx="3.5" fill="#FFFFFF"/>
+  <g transform="scale(0.7, 0.7) translate(3, 3)">
+    <polygon points="13 8 8 13 8 31 14 31 14 36 19 31 23 31 32 22 32 8" fill="#8851fa">
+    </polygon>
+    <polygon points="26 25 30 21 30 10 14 10 14 25 18 25 18 29 22 25" fill="white">
+    </polygon>
+    <g>
+      <path d="M20,14 L22,14 L22,20 L20,20 L20,14 Z M27,14 L27,20 L25,20 L25,14 L27,14 Z" fill="#8851fa">
+      </path>
+    </g>
+  </g>
+
+  <text x="30" y="21" font-family="Helvetica-Bold, Helvetica" font-size="14" line-height="14" font-weight="bold" letter-spacing="0.5px" fill="#5c16c5">Follow</text>
+  <rect x="0.5" y="0.5" width="85" height="31" rx="3.5" stroke="#5c16c5"/>
+</svg>
