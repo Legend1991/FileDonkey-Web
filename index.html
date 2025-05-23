@@ -57,6 +57,10 @@
       overflow-x: hidden;
     }
 
+    a {
+      text-decoration: none;
+    }
+
     ul {
       list-style: none;
       margin-left: 0;
@@ -142,7 +146,7 @@
       display: flex;
       align-items: start;
       justify-content: center;
-      padding: 5rem 5rem 0rem 5rem;
+      padding: 3rem 5rem 0rem 5rem;
     }
 
     .appIcon {
@@ -406,7 +410,7 @@
 
     @media (max-width: 500px) {
       .appSection {
-        padding: 1rem 1rem 0rem 1rem;
+        padding: 1.5rem 1rem 0rem 1rem;
       }
 
       .appIcon {
@@ -475,10 +479,35 @@
         width: 100%;
       }
     }
+
+    @media (max-width: 440px) {
+      .lemonHazardTitle {
+        width: min-content;
+      }
+    }
   </style>
 </head>
 
 <body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
+  <header style="background-color: rgba(18, 18, 18, 0.9); width: 100%; min-height: 4rem; display: flex; justify-content: center; align-items: center;">
+    <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
+      <img src="/FileDonkey_Icon.png" alt="FileDonkey - Important files instantly accessible wherever you need them" style="width: 3rem; height: 3rem;" />
+      <span style="width: 1rem;"></span>
+      <span style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+        FileDonkey
+      </span>
+    </div>
+    <div style="padding: 0 1rem; width: 100%; max-width: 45rem;">
+      <a href="https://lemonhazard.com" target="_blank" style="display: flex; align-items: center; justify-content: end;">
+        <img src="/LemonHazard_Icon.png" alt="Lemon Hazard logo" style="width: 3rem; height: 3rem;" />
+        <span style="width: 1rem;"></span>
+        <span class="lemonHazardTitle" style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+          <span style="color: #FBD50B;">LEMON</span>
+          <span style="color: rgb(245, 245, 244);">HAZARD</span>
+        </span>
+      </a>
+    </div>
+  </header>
   <main
     style="flex: 1; background: linear-gradient(to top left, transparent calc(max(25vw, 30vh) + 100px), #fefbe9, #FEF7F9 90%);">
     <div class="appSection">
