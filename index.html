@@ -635,6 +635,13 @@
     waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
   });
 
+  emailInput.addEventListener('keydown', (event) => {
+    if(event.key !== "Enter") return;
+    emailInput.blur();
+    submitBtn.click();
+    event.preventDefault();
+  });
+
   submitBtn.addEventListener("click", async () => {
     try {
       const email = emailInput.value.trim();
