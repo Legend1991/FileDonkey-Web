@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" sizes="64x64" href="../FileDonkey_Icon.png" type="image/png">
+    <link rel="shortcut icon" href="../FileDonkey_Icon.png" type="image/png">
+    <title>FileDonkey - Commercial License</title>
+    <meta name="description" content="Commercial licensing for FileDonkey - unified filesystem across all your devices.">
+    
+    <style>
+        @font-face {
+            font-family: Roboto;
+            src: url('Roboto-Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: Roboto-Bold;
+            src: url('Roboto-Bold.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: Roboto-Medium;
+            src: url('Roboto-Medium.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: Roboto-SemiBold;
+            src: url('Roboto-SemiBold.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: Roboto-Condensed;
+            src: url('Roboto-Condensed.ttf') format('truetype');
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            margin-left: 0;
+            padding-left: 1em;
+            text-indent: -1em;
+        }
+
+        ul > li {
+            line-height: 1.5rem;
+        }
+
+        .contentSection {
+            color: rgba(20, 16, 11, 0.8);
+            padding: 0rem 1rem 2rem 1rem;
+            text-align: left;
+            max-width: 45rem;
+            font-size: 18px;
+            font-family: Roboto, sans-serif;
+            line-height: 1.7rem;
+            font-weight: 500;
+        }
+
+        .sectionTitle {
+            color: rgba(20, 16, 11, 0.9);
+            font-size: 24px;
+            font-family: Roboto-Medium, sans-serif;
+            line-height: 2rem;
+            font-weight: 900;
+            padding: 2rem 0rem 1rem 0rem;
+        }
+
+        .pageTitle {
+            color: rgba(20, 16, 11, 0.9);
+            font-size: 32px;
+            font-family: Roboto-Medium, sans-serif;
+            line-height: 2.5rem;
+            font-weight: 900;
+            padding: 3rem 1rem 1rem 1rem;
+            text-align: center;
+        }
+
+        .ctaButton {
+            border-radius: 12px;
+            padding: 16px 32px;
+            border-width: 0;
+            background-color: rgba(20, 16, 11, 0.9);
+            color: white;
+            font-family: Roboto, sans-serif;
+            font-size: 18px;
+            display: inline-block;
+            text-decoration: none;
+            margin: 1rem 0;
+        }
+
+        .ctaButton:hover {
+            cursor: pointer;
+            background-color: rgba(20, 16, 11, 0.8);
+        }
+
+        .ctaButton:active {
+            background-color: rgba(20, 16, 11, 1);
+        }
+
+        .contactBox {
+            background-color: rgba(254, 251, 233, 0.5);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            border: 0.5px solid rgba(20, 16, 11, 0.1);
+        }
+
+        .warningBox {
+            background-color: rgba(251, 213, 11, 0.1);
+            border-left: 4px solid #FBD50B;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .checkList {
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+        }
+
+        .checkList li {
+            padding-left: 1.7rem;
+            text-indent: -1.7rem;
+            padding-top: 0.5rem;
+        }
+
+        .checkList li::before {
+            content: "✓ ";
+            color: rgba(20, 16, 11, 0.9);
+            font-weight: 900;
+        }
+
+        .crossList {
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+        }
+
+        .crossList li {
+            padding-left: 1.7rem;
+            text-indent: -1.7rem;
+            padding-top: 0.5rem;
+        }
+
+        .crossList li::before {
+            content: "✗ ";
+            color: rgba(20, 16, 11, 0.9);
+            font-weight: 900;
+        }
+
+        .comparisonTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparisonTable th,
+        .comparisonTable td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(20, 16, 11, 0.1);
+        }
+
+        .comparisonTable th {
+            background-color: rgba(254, 251, 233, 0.5);
+            font-family: Roboto-Medium, sans-serif;
+            font-weight: 900;
+        }
+
+        @media (max-width: 760px) {
+            .pageTitle {
+                font-size: 24px;
+                line-height: 1.75rem;
+                padding: 2rem 1rem 1rem 1rem;
+            }
+
+            .sectionTitle {
+                font-size: 20px;
+                line-height: 1.7rem;
+            }
+
+            .contentSection {
+                font-size: 17px;
+                line-height: 1.5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .pageTitle {
+                font-size: 20px;
+                line-height: 1.4rem;
+            }
+
+            .sectionTitle {
+                font-size: 18px;
+                line-height: 1.5rem;
+            }
+
+            .contentSection {
+                font-size: 16px;
+                line-height: 1.3rem;
+            }
+
+            .contactBox,
+            .warningBox {
+                padding: 1rem;
+            }
+
+            .ctaButton {
+                font-size: 16px;
+                padding: 14px 28px;
+            }
+        }
+    </style>
+</head>
+
+<body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
+    <header style="background-color: rgba(18, 18, 18, 0.9); width: 100%; min-height: 4rem; display: flex; justify-content: center; align-items: center;">
+        <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
+            <img src="../FileDonkey_Icon.png" alt="FileDonkey" style="width: 3rem; height: 3rem;" />
+            <span style="width: 1rem;"></span>
+            <span style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+                FileDonkey
+            </span>
+        </div>
+        <div style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
+            <a href="https://lemonhazard.com" target="_blank" style="display: flex; align-items: center;">
+                <img src="../LemonHazard_Icon.png" alt="Lemon Hazard logo" style="width: 3rem; height: 3rem;" />
+                <span style="width: 1rem;"></span>
+                <span class="lemonHazardTitle" style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+                    <span style="color: #FBD50B;">LEMON</span>
+                    <span style="color: rgb(245, 245, 244);">HAZARD</span>
+                </span>
+            </a>
+        </div>
+    </header>
+
+    <main style="flex: 1; background: linear-gradient(to top left, transparent calc(max(25vw, 30vh) + 100px), #fefbe9, #FEF7F9 90%); display: flex; flex-direction: column; align-items: center;">
+        
+        <div class="pageTitle">
+            💼 FileDonkey Commercial License
+        </div>
+
+        <div class="contentSection" style="text-align: center; padding-bottom: 1rem;">
+            Professional licensing for business use
+        </div>
+
+        <!-- Do You Need a Commercial License -->
+        <div class="contentSection">
+            <div class="sectionTitle">Do You Need a Commercial License?</div>
+            
+            <div style="padding: 1rem 0;">
+                <strong>You NEED a commercial license if:</strong>
+                <ul class="crossList">
+                    <li>You work at a for-profit company or business</li>
+                    <li>You're using FileDonkey in commercial products or services</li>
+                    <li>You're generating revenue with FileDonkey</li>
+                    <li>You're using it for internal business operations</li>
+                    <li>You're a freelancer using it for client projects</li>
+                </ul>
+            </div>
+
+            <div style="padding: 1rem 0;">
+                <strong>You DON'T need a commercial license if:</strong>
+                <ul class="checkList">
+                    <li>Personal hobby projects at home</li>
+                    <li>Educational or research purposes</li>
+                    <li>Registered non-profit organizations</li>
+                    <li>Student projects</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <div class="contentSection">
+            <div class="sectionTitle">💰 Pricing</div>
+            
+            <div class="contactBox">
+                <div style="font-size: 28px; font-family: Roboto-Medium, sans-serif; font-weight: 900; color: rgba(20, 16, 11, 0.9); padding-bottom: 1rem;">
+                    Contact for Quote
+                </div>
+                <div style="padding-bottom: 1rem;">
+                    Flexible pricing tailored to your needs
+                </div>
+                <a href="mailto:support@filedonkey.app?subject=FileDonkey Commercial License Inquiry" class="ctaButton">
+                    📧 Request Quote
+                </a>
+            </div>
+
+            <div>
+                <strong>Pricing based on:</strong>
+                <ul>
+                    <li>Number of devices</li>
+                    <li>Company size and use case</li>
+                    <li>Volume discounts available for teams</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- What's Included -->
+        <div class="contentSection">
+            <div class="sectionTitle">What's Included</div>
+            
+            <ul class="checkList">
+                <li>Use in commercial products</li>
+                <li>Modify the code for your needs</li>
+                <li>Deploy on licensed number of devices</li>
+                <li>No attribution required in end products</li>
+            </ul>
+
+            <div style="padding-top: 1rem;">
+                <strong>What's NOT included:</strong>
+            </div>
+            <ul class="crossList">
+                <li>Guaranteed support or updates</li>
+                <li>Source code redistribution rights</li>
+                <li>Sublicensing to third parties</li>
+            </ul>
+
+            <div style="padding-top: 1rem;">
+                <strong>What's a "device"?</strong> Any physical or virtual machine, server, container, or computing instance running FileDonkey.
+            </div>
+        </div>
+
+        <!-- License Terms -->
+        <div class="contentSection">
+            <div class="sectionTitle">📋 License Terms Summary</div>
+            
+            <table class="comparisonTable">
+                <tr>
+                    <th>Permitted Uses</th>
+                    <th>Restrictions</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul class="checkList">
+                            <li>Use in commercial software</li>
+                            <li>Modify source code</li>
+                            <li>Deploy on licensed devices</li>
+                            <li>Incorporate into products</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="crossList">
+                            <li>Redistribute source code</li>
+                            <li>Sublicense to others</li>
+                            <li>Exceed device count</li>
+                            <li>Remove copyright notices</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Important Notice -->
+        <div class="contentSection">
+            <div class="warningBox">
+                <div style="font-size: 20px; font-family: Roboto-Medium, sans-serif; font-weight: 900; padding-bottom: 0.5rem;">
+                    ⚠️ Important Legal Notice
+                </div>
+                <div style="padding-bottom: 0.5rem;">
+                    <strong>Sole Proprietorship:</strong> FileDonkey is operated by a sole proprietor, not a registered corporation.
+                </div>
+                <div style="padding-bottom: 0.5rem;">
+                    <strong>No Warranties:</strong> Software provided "AS IS" without warranties. No guaranteed support or updates.
+                </div>
+                <div>
+                    <strong>Liability Limitation:</strong> Maximum liability limited to the lesser of fees paid in last 12 months or $1,000 USD.
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contentSection">
+            <div class="sectionTitle">🎯 Ready to Get Started?</div>
+            
+            <div class="contactBox">
+                <div style="font-size: 20px; font-family: Roboto-Medium, sans-serif; padding-bottom: 1rem;">
+                    Contact us to discuss your licensing needs
+                </div>
+                <a href="mailto:support@filedonkey.app?subject=FileDonkey Commercial License Inquiry" class="ctaButton">
+                    📧 Email Us
+                </a>
+                <div style="padding-top: 1.5rem; font-size: 16px;">
+                    <strong>Email:</strong> support@filedonkey.app<br>
+                    <strong>Response time:</strong> Typically 1 business day
+                </div>
+            </div>
+
+            <div style="padding-top: 2rem;">
+                <strong>What to include in your inquiry:</strong>
+                <ul>
+                    <li>Your company name</li>
+                    <li>Number of devices</li>
+                    <li>Brief description of your use case</li>
+                    <li>Any specific requirements or questions</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="contentSection" style="padding-bottom: 4rem;">
+            <div class="sectionTitle">❓ Frequently Asked Questions</div>
+            
+            <div style="padding: 0.5rem 0;">
+                <strong>How quickly can I get a license?</strong><br>
+                Typically within 1 business day after initial contact.
+            </div>
+
+            <div style="padding: 0.5rem 0;">
+                <strong>What payment methods do you accept?</strong><br>
+                PayPal, Wise, and international bank transfers.
+            </div>
+
+            <div style="padding: 0.5rem 0;">
+                <strong>Can I modify the code?</strong><br>
+                Yes! The commercial license allows you to modify FileDonkey for your own use.
+            </div>
+
+            <div style="padding: 0.5rem 0;">
+                <strong>Do you offer volume discounts?</strong><br>
+                Yes, volume discounts available for larger teams. Contact us for details.
+            </div>
+
+            <div style="padding: 0.5rem 0;">
+                <strong>Do you provide support?</strong><br>
+                No guaranteed support included, but bug reports are appreciated and may be addressed in future updates.
+            </div>
+
+            <div style="padding: 0.5rem 0;">
+                <strong>Can I redistribute FileDonkey?</strong><br>
+                No. Neither the free nor commercial license permits redistribution of source code to third parties.
+            </div>
+        </div>
+
+    </main>
+
+    <footer style="background-color: rgba(18, 18, 18, 1); min-height: 6rem; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 1rem;">
+        <div style="padding-bottom: 1rem;">
+            <a href="https://github.com/filedonkey/filedonkey" target="_blank" style="color: #FBD50B; padding: 0 1rem;">GitHub</a>
+            <a href="https://filedonkey.app" style="color: #FBD50B; padding: 0 1rem;">Home</a>
+            <a href="mailto:support@filedonkey.app" style="color: #FBD50B; padding: 0 1rem;">Contact</a>
+        </div>
+        <span style="color: rgba(245, 245, 244, 0.9); font-family: Roboto, sans-serif; font-size: 0.9rem;">
+            Copyright © 2025 FileDonkey. All rights reserved.
+        </span>
+    </footer>
+</body>
+</html>
