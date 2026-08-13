@@ -74,7 +74,7 @@
 
     .repeating-key-features-emoji {
       list-style: none;
-      padding: 1rem 0 1rem 0;
+      padding: 1rem 0 4rem 0;
       margin: 0 0 0rem;
 
       li {
@@ -109,61 +109,62 @@
     }
 
     input[type="email"] {
-      border-radius: 16px;
-      border-color: rgba(20, 16, 11, 0.5);
-      border-width: 0.5px;
-      border-style: solid;
       padding: 16px 100px 16px 24px;
       font-size: 18px;
       font-family: Roboto, sans-serif;
       height: 64px;
       width: 500px;
+      color: #C7CBD1;
+      padding: 6px 13px;
+      border: 1px solid rgb(61, 64, 70);
+      border-radius: 9px;
+      background: #26282C;
     }
 
     button {
-      border-radius: 12px;
+      border-radius: 6px;
       padding: 12px 12px 12px 12px;
       border-width: 0;
-      height: 58px;
+      height: 56px;
       width: 105px;
-      background-color: rgba(20, 16, 11, 0.9);
-      color: white;
+      background-color: #C7CBD1;
+      color: #0C0D0F;
       font-family: Roboto, sans-serif;
       font-size: 18px;
     }
 
     button:hover {
       cursor: pointer;
-      background-color: rgba(20, 16, 11, 0.8);
+      background-color: #E8E9EC;
     }
 
     button:active {
       cursor: pointer;
-      background-color: rgba(20, 16, 11, 1);
+      background-color: #A9AEB6;
     }
 
     .appSection {
       display: flex;
       align-items: start;
       justify-content: center;
-      padding: 3rem 5rem 0rem 5rem;
+      padding: 4rem 5rem 0rem 5rem;
     }
 
     .appIcon {
-      width: 220px;
-      height: 220px;
+      width: 128px;
+      height: 128px;
     }
 
     .appInfo {
       display: flex;
       flex-direction: column;
-      padding: 0.7rem 0rem 0rem 1.7rem;
+      padding: 0rem 0rem 0rem 1.7rem;
       align-items: start;
       justify-content: flex-start;
     }
 
     .appName {
-      color: rgba(20, 16, 11, 0.9);
+      color: #E8E9EC;
       display: flex;
       flex-direction: row;
       padding: 0rem 1rem 1rem 0rem;
@@ -188,7 +189,7 @@
     }
 
     .appDesc {
-      color: rgba(20, 16, 11, 0.8);
+      color: #A9AEB6;
       padding: 0rem 0rem 0rem 0rem;
       text-align: left;
       max-width: 30rem;
@@ -205,7 +206,7 @@
     }
 
     .keyFeaturesContent {
-      color: rgba(20, 16, 11, 0.8);
+      color: #A9AEB6;
       padding: 0rem 1rem 6rem 1rem;
       text-align: left;
       max-width: 45rem;
@@ -225,6 +226,7 @@
       font-family: Roboto-Medium, sans-serif;
       line-height: 1.7rem;
       font-weight: 900;
+      color: #E8E9EC;
     }
 
     .newsLetterSection {
@@ -232,11 +234,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 6rem 1rem 4rem 1rem;
+      padding: 4rem 1rem 4rem 1rem;
     }
 
     .newsLetterLabel {
-      color: rgba(20, 16, 11, 0.9);
+      color: #E8E9EC;
       display: flex;
       flex-direction: row;
       padding: 0rem 5rem 1rem 5rem;
@@ -249,7 +251,7 @@
     }
 
     .newsLetterCount {
-      color: rgba(20, 16, 11, 0.9);
+      color: #E8E9EC;
       display: flex;
       flex-direction: row;
       padding: 0rem 5rem 0rem 5rem;
@@ -288,14 +290,27 @@
       max-width: 500px;
     }
 
+    .videoDemoContainer {
+      background: #1e1f22;
+      border: 1px solid #34363b;
+      border-radius: 10px;
+      box-shadow: rgb(0 0 0 / 60%) 0px 6px 18px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      /* height: 387px; */
+      max-width: 750;
+      margin: 0em 1rem 0rem 1rem;
+    }
+
+    .videoDemo {
+      margin-top: -18px;
+      margin-bottom: -18px;
+    }
+
     @media (max-width: 900px) {
       .appSection {
         padding: 4rem 4rem 0rem 4rem;
-      }
-
-      .appIcon {
-        width: 180px;
-        height: 180px;
       }
 
       .keyFeaturesTitle {
@@ -319,11 +334,6 @@
     @media (max-width: 760px) {
       .appSection {
         padding: 3rem 3rem 0rem 3rem;
-      }
-
-      .appIcon {
-        width: 160px;
-        height: 160px;
       }
 
       .keyFeaturesTitle {
@@ -350,6 +360,11 @@
       #waitlistCount {
         font-size: 18px;
       }
+
+      .videoDemo {
+        margin-top: -16px;
+        margin-bottom: -16px;
+      }
     }
 
     @media (max-width: 600px) {
@@ -358,8 +373,8 @@
       }
 
       .appIcon {
-        width: 130px;
-        height: 130px;
+        width: 96px;
+        height: 96px;
       }
 
       .appInfo {
@@ -378,7 +393,7 @@
       }
 
       .repeating-key-features-emoji {
-        padding: 0.75rem 0 0.75rem 0;
+        padding: 0.75rem 0 3rem 0;
         font-size: 17px;
         line-height: 1.3rem;
 
@@ -390,7 +405,7 @@
       }
 
       .newsLetterSection {
-        padding: 5rem 1rem 3rem 1rem;
+        padding: 4rem 1rem 3rem 1rem;
       }
 
       .newsLetterLabel {
@@ -406,6 +421,11 @@
       .newsLetterForm {
         padding: 1.5rem 0rem 1.5rem 0rem;
       }
+
+      .videoDemo {
+        margin-top: -14px;
+        margin-bottom: -14px;
+      }
     }
 
     @media (max-width: 500px) {
@@ -414,8 +434,8 @@
       }
 
       .appIcon {
-        width: 100px;
-        height: 100px;
+        width: 86px;
+        height: 86px;
       }
 
       .appInfo {
@@ -434,6 +454,7 @@
 
       .socialButtonsUnder {
         display: flex;
+        padding-top: 1rem;
       }
 
       .appDesc {
@@ -444,6 +465,7 @@
       .repeating-key-features-emoji {
         font-size: 16px;
         line-height: 1.3rem;
+        padding-bottom: 3rem;
 
         li {
           padding-left: 1.6rem;
@@ -478,6 +500,11 @@
       input[type="email"] {
         width: 100%;
       }
+
+      .videoDemo {
+        margin-top: -12px;
+        margin-bottom: -12px;
+      }
     }
 
     @media (max-width: 440px) {
@@ -489,40 +516,33 @@
 </head>
 
 <body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
-  <header style="background-color: rgba(18, 18, 18, 0.9); width: 100%; min-height: 4rem; display: flex; justify-content: center; align-items: center;">
+  <header style="background-color: #191A1D; border-bottom: 1px solid #2B2D31; width: 100%; display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 4rem; width: 60rem;">
     <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
-      <img src="/FileDonkey_Icon.png" alt="FileDonkey - Important files instantly accessible wherever you need them" style="width: 3rem; height: 3rem;" />
+      <img src="/FileDonkey_Icon.png" alt="FileDonkey - Important files instantly accessible wherever you need them" style="width: 2.3rem; height: 2.3rem;" />
       <span style="width: 1rem;"></span>
-      <span style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+      <span style="color: #E8E9EC; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
         FileDonkey
       </span>
     </div>
     <div style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
       <a href="https://lemonhazard.com" target="_blank" style="display: flex; align-items: center;">
-        <img src="/LemonHazard_Icon.png" alt="Lemon Hazard logo" style="width: 3rem; height: 3rem;" />
+        <img src="/LemonHazard_Icon.png" alt="Lemon Hazard logo" style="width: 2.2rem; height: 2.2rem;" />
         <span style="width: 1rem;"></span>
         <span class="lemonHazardTitle" style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
           <span style="color: #FBD50B;">LEMON</span>
-          <span style="color: rgb(245, 245, 244);">HAZARD</span>
+          <span style="color: #E8E9EC;">HAZARD</span>
         </span>
       </a>
     </div>
+    </div>
   </header>
   <main
-    style="flex: 1; background: linear-gradient(to top left, transparent calc(max(25vw, 30vh) + 100px), #fefbe9, #FEF7F9 90%);">
+    style="flex: 1; background-color: #1E1F22;">
     <div class="appSection">
       <div>
         <img src="/FileDonkey_Icon.png" class="appIcon" alt="FileDonkey logo" />
         <div class="socialButtonsUnder">
-          <div style="padding: 0.75rem 0rem 0.75rem 0rem;">
-            <a href="https://www.twitch.tv/l_hazard"
-              target="_blank">
-              <img
-                src="/twitch-follow.svg"
-                alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Twitch"
-                style="width: 86px; height: 32px;" width="86" height="32" />
-            </a>
-          </div>
           <div style="padding: 0rem 0rem 0rem 0rem;">
             <a href="https://x.com/filedonkeyapp" target="_blank">
               <img src="/x-follow.svg"
@@ -536,16 +556,7 @@
         <div class="appName">
           <nobr>FileDonkey</nobr>
           <div class="socialButtonsTop">
-            <div style="padding: 0rem 0.7rem 0rem 1.5rem;">
-              <a href="https://www.twitch.tv/l_hazard"
-                target="_blank">
-                <img
-                  src="/twitch-follow.svg"
-                  alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Twitch"
-                  style="width: 86px; height: 32px;" width="86" height="32" />
-              </a>
-            </div>
-            <div style="padding: 0rem 0rem 0rem 0rem;">
+            <div style="padding: 0rem 0rem 0rem 1.5rem;">
               <a href="https://x.com/filedonkeyapp" target="_blank">
                 <img src="/x-follow.svg"
                   alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Twitter"
@@ -577,10 +588,19 @@
       </div>
       <!-- </form> -->
     </div>
+    <div style="padding: 0rem 1rem 4rem 0rem; display: flex; align-items: center; justify-content: center; width: 100%;">
+      <div class="videoDemoContainer">
+      <video class="videoDemo" autoplay="true" loop="" muted="" width="100%" poster="Assets/Search.png">
+			  <source src="FileDonkey demo.mp4" type="video/mp4">
+			  Your browser does not support the video tag.
+		</video>
+    </div>
+    </div>
+  </div>
     <div class="keyFeaturesSection">
       <div class="keyFeaturesContent">
         <div style="display: flex; align-items: center; justify-content: center;">
-          <span class="keyFeaturesCheckMark">✔️&nbsp;</span><span class="keyFeaturesTitle">Key Features:</span>
+          <span class="keyFeaturesTitle">Key Features</span>
         </div>
         <ul class="repeating-key-features-emoji">
           <li>Instant file access between Android, iPhone, Mac, Windows, and Linux devices</li>
@@ -590,35 +610,20 @@
           <li>Real-time file synchronization without manual transfers</li>
           <li>Drag-and-drop simplicity with native file explorer integration</li>
         </ul>
-        <div style="display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem 0rem 1rem;">
-          <span class="appDesc" style="margin-bottom: 1rem;">
-            Native integration with
-            <span style="font-weight: 900; font-family: Roboto-Medium, sans-serif;">Finder</span>
-            in
-            <span style="font-weight: 900; font-family: Roboto-Medium, sans-serif;">macOS</span>
-          </span>
-          <img src="/Finder_WindowsPC_Locations.png" alt="FileDonkey logo"
-            style="filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5)); border-radius: 16px;" width="353px" />
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <span class="keyFeaturesTitle">Stop emailing files to yourself or juggling USB drives</span>
         </div>
-        <div style="display: flex; flex-direction: column; align-items: center; padding: 4rem 1rem 4rem 1rem;">
-          <span class="appDesc" style="margin-bottom: 1rem;">
-            Native integration with
-            <span style="font-weight: 900; font-family: Roboto-Medium, sans-serif;">File Explorer</span>
-            in
-            <span style="font-weight: 900; font-family: Roboto-Medium, sans-serif;">Windows</span>
-          </span>
-          <img src="/FileExplorer_AndroidPhone_Locations.png" alt="FileDonkey logo"
-            style="filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5)); border-radius: 16px;" width="353px" />
+        <div style="display: flex; align-items: center; justify-content: center; padding: 1rem 0 0 1.85rem">
+          FileDonkey creates a unified filesystem across all your
+          devices, making your important files instantly accessible wherever you need them.
         </div>
-        Stop emailing files to yourself or juggling USB drives. FileDonkey creates a unified filesystem across all your
-        devices, making your important files instantly accessible wherever you need them.
       </div>
     </div>
   </main>
   <footer
-    style="background-color: rgba(18, 18, 18, 1); min-height: 6rem; display: flex; justify-content: center; align-items: center;">
-    <span style="color: rgba(245, 245, 244, 0.9); font-family: Roboto, sans-serif; font-size: 0.9rem;">
-      Copyright © 2025 FileDonkey. All rights reserved.
+    style="background-color: #191A1D; border-top: 1px solid #2B2D31; min-height: 6rem; display: flex; justify-content: center; align-items: center;">
+    <span style="color: #E8E9EC; font-family: Roboto, sans-serif; font-size: 0.9rem;">
+      Copyright © 2026 FileDonkey. All rights reserved.
     </span>
   </footer>
 </body>
@@ -628,12 +633,12 @@
   const submitBtn = document.querySelector("#submit");
   console.dir(submitBtn);
 
-  setTimeout(async () => {
-    const res = await fetch("https://api.filedonkey.app/waitlistcount");
-    const resJSON = await res.json();
-    if (resJSON.status !== 'OK') return;
-    waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
-  });
+  // setTimeout(async () => {
+  //   const res = await fetch("https://api.filedonkey.app/waitlistcount");
+  //   const resJSON = await res.json();
+  //   if (resJSON.status !== 'OK') return;
+  //   waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
+  // });
 
   emailInput.addEventListener('keydown', (event) => {
     if(event.key !== "Enter") return;
