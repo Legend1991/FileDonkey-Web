@@ -633,12 +633,12 @@
   const submitBtn = document.querySelector("#submit");
   console.dir(submitBtn);
 
-  // setTimeout(async () => {
-  //   const res = await fetch("https://api.filedonkey.app/waitlistcount");
-  //   const resJSON = await res.json();
-  //   if (resJSON.status !== 'OK') return;
-  //   waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
-  // });
+  setTimeout(async () => {
+    const res = await fetch("https://api.filedonkey.app/waitlistcount");
+    const resJSON = await res.json();
+    if (resJSON.status !== 'OK') return;
+    waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
+  });
 
   emailInput.addEventListener('keydown', (event) => {
     if(event.key !== "Enter") return;
