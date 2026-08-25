@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -187,6 +188,10 @@
     }
 
     input[type="email"] {
+      /* Under the doctype this page now carries, height is the content box, so the padding and
+         border below would be added on top and the field would stand 13px taller than drawn.
+         Quirks mode used to size form controls as border-box; this says so explicitly. */
+      box-sizing: border-box;
       padding: 16px 100px 16px 24px;
       font-size: 18px;
       font-family: Roboto, sans-serif;
@@ -1002,6 +1007,8 @@
     <div class="footerInner">
       <div class="footerLinks">
         <a href="/license-commercial">Licensing</a>
+        <span class="footerSep">·</span>
+        <a href="/privacy">Privacy</a>
         <span class="footerSep">·</span>
         <a href="mailto:support@filedonkey.app">Contact</a>
       </div>

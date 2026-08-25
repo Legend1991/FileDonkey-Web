@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" sizes="64x64" href="/FileDonkey_Icon.png" type="image/png">
+  <link rel="shortcut icon" href="/FileDonkey_Icon.png" type="image/png">
+  <title>FileDonkey - Privacy Policy</title>
+  <meta name="description"
+    content="How FileDonkey handles personal data: what the application keeps on your own devices, what the mailing list and bug reports collect, and the rights you have over it.">
+  <meta name="robots" content="index, follow">
+
+  <style>
+    /* Absolute font paths, not relative. This page lives one directory down, so url('Roboto-Regular.ttf')
+       would resolve to /privacy/Roboto-Regular.ttf and silently fall back to a system face. */
+    @font-face {
+      font-family: Roboto;
+      src: url('/Roboto-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: Roboto-Medium;
+      src: url('/Roboto-Medium.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: Roboto-Condensed;
+      src: url('/Roboto-Condensed.ttf') format('truetype');
+    }
+
+    html,
+    body {
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .contentSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 1rem 4rem 1rem;
+    }
+
+    .contentColumn {
+      color: #A9AEB6;
+      text-align: left;
+      max-width: 45rem;
+      width: 100%;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.7rem;
+      font-weight: 500;
+    }
+
+    .docTitle {
+      color: #E8E9EC;
+      font-size: 30px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 2.4rem;
+      font-weight: 900;
+      padding: 4rem 0rem 0rem 0rem;
+    }
+
+    .docMeta {
+      color: #6E737B;
+      font-size: 15px;
+      line-height: 1.5rem;
+      padding: 0.75rem 0rem 0rem 0rem;
+    }
+
+    .docIntro {
+      padding: 1.75rem 0rem 0rem 0rem;
+    }
+
+    .sectionTitle {
+      display: block;
+      font-size: 22px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 1.9rem;
+      font-weight: 900;
+      color: #E8E9EC;
+      padding: 3rem 0rem 0rem 0rem;
+    }
+
+    .subTitle {
+      display: block;
+      font-size: 18px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 1.7rem;
+      color: #E8E9EC;
+      padding: 1.75rem 0rem 0rem 0rem;
+    }
+
+    p {
+      margin: 0;
+      padding: 1rem 0rem 0rem 0rem;
+    }
+
+    /* The legal lists. Marker in the gutter, every line of an item flush with the one above it -
+       the same shape the feature list on the home page uses, by the same flex reasoning. */
+    .docList {
+      list-style: none;
+      padding: 0.5rem 0rem 0rem 0rem;
+      margin: 0;
+    }
+
+    .docList li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7em;
+      padding-top: 0.6rem;
+      line-height: 1.6rem;
+    }
+
+    .docList li::before {
+      content: "—";
+      flex: 0 0 auto;
+      color: #6E737B;
+    }
+
+    .leadIn {
+      color: #E8E9EC;
+      font-family: Roboto-Medium, sans-serif;
+      font-weight: 500;
+    }
+
+    /* Marks the values that are still to be supplied, so an unfinished one is obvious on the page
+       rather than shipping as though it were the finished text. */
+    .todo {
+      color: #E8B04B;
+      font-family: Roboto-Medium, sans-serif;
+    }
+
+    .callout {
+      border: 1px solid #3D4046;
+      border-left: 3px solid #C7CBD1;
+      border-radius: 6px;
+      background: #26282C;
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0rem 0rem 0rem;
+    }
+
+    .callout p:first-child {
+      padding-top: 0;
+    }
+
+    .contentColumn a {
+      color: #E8E9EC;
+      text-decoration: underline;
+    }
+
+    .contentColumn a:hover {
+      color: #FFFFFF;
+    }
+
+    .footerInner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 1.75rem 1rem;
+      color: #A9AEB6;
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+    }
+
+    .footerLinks {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+
+    .footerLinks a {
+      color: #E8E9EC;
+    }
+
+    .footerLinks a:hover {
+      color: #E8E9EC;
+      text-decoration: underline;
+    }
+
+    .footerSep {
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      color: #A9AEB6;
+    }
+
+    @media (max-width: 760px) {
+      .docTitle {
+        font-size: 26px;
+        line-height: 2.1rem;
+        padding-top: 3rem;
+      }
+
+      .sectionTitle {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contentColumn {
+        font-size: 17px;
+        line-height: 1.6rem;
+      }
+
+      .docTitle {
+        font-size: 23px;
+        line-height: 1.9rem;
+      }
+
+      .sectionTitle {
+        font-size: 19px;
+        padding-top: 2.5rem;
+      }
+
+      .callout {
+        padding: 1rem 1.15rem;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .lemonHazardTitle {
+        width: min-content;
+      }
+    }
+  </style>
+</head>
+
+<body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
+  <header
+    style="background-color: #191A1D; border-bottom: 1px solid #2B2D31; width: 100%; display: flex; justify-content: center; flex-shrink: 0;">
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 4rem; width: 60rem;">
+      <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
+        <a href="/" style="display: flex; align-items: center;">
+          <img src="/FileDonkey_Icon.png" alt="FileDonkey" style="width: 2.3rem; height: 2.3rem;" />
+          <span style="width: 1rem;"></span>
+          <span style="color: #E8E9EC; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+            FileDonkey
+          </span>
+        </a>
+      </div>
+      <div
+        style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
+        <div style="padding: 0rem 0rem 0rem 1.5rem;">
+          <a href="https://x.com/filedonkeyapp" target="_blank">
+            <img src="/x-follow.svg" alt="FileDonkey on Twitter" style="width: 86px; height: 32px;" width="86"
+              height="32" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex: 1; background-color: #1E1F22;">
+    <div class="contentSection">
+      <div class="contentColumn">
+
+        <span class="docTitle">Privacy Policy</span>
+        <div class="docMeta">
+          Effective 26 August 2026 &nbsp;·&nbsp; Version 1.0
+        </div>
+
+        <div class="docIntro">
+          This Policy explains how Ihor Horemykin, a sole proprietor trading as FileDonkey ("FileDonkey",
+          "we", "us"), collects and processes personal data in connection with the FileDonkey application
+          (the "Application") and the website at filedonkey.app (the "Site"). It is written to satisfy the
+          information duties in Articles 13 and 14 of the General Data Protection Regulation (EU) 2016/679
+          ("GDPR") and the equivalent provisions of the UK GDPR.
+        </div>
+
+        <div class="callout">
+          <p>
+            <strong class="leadIn">The short version.</strong> FileDonkey has no user accounts and no cloud
+            storage. Your files are never transmitted to us and never pass through our servers. We hold
+            personal data in only two circumstances: when you subscribe to our mailing list, and when you
+            choose to send a bug report from inside the Application. Both are optional, and both are
+            initiated by you. We operate no analytics, set no cookies, and sell nothing to anyone.
+          </p>
+        </div>
+
+        <span class="sectionTitle">1. Controller and contact details</span>
+        <p>
+          The controller responsible for the processing described in this Policy is:
+        </p>
+        <ul class="docList">
+          <li><span><strong class="leadIn">Ihor Horemykin</strong>, sole proprietor, trading as FileDonkey.
+              FileDonkey is a trade name and not a separate legal entity.</span></li>
+          <li><span><strong class="leadIn">Postal address:</strong> <span class="todo">[registered trading
+                address to be inserted]</span></span></li>
+          <li><span><strong class="leadIn">Email:</strong>
+              <a href="mailto:support@filedonkey.app">support@filedonkey.app</a></span></li>
+        </ul>
+        <p>
+          We have not appointed a Data Protection Officer, as we are not required to do so under Article 37
+          GDPR. Enquiries relating to this Policy should be addressed to the email address above.
+        </p>
+
+        <span class="sectionTitle">2. Scope</span>
+        <p>
+          This Policy applies to the Site and to the Application. It does not apply to third-party websites
+          that we link to, which are governed by their own privacy policies.
+        </p>
+
+        <span class="sectionTitle">3. Data the Application does not collect</span>
+        <p>
+          Because it materially affects the assessment a reader will make of the rest of this Policy, we
+          state the following expressly. The Application creates a virtual disk that reads files from
+          another device over your own local network. In ordinary operation:
+        </p>
+        <ul class="docList">
+          <li><span>the contents, names and directory structures of your files are transmitted only between
+              your own devices, and are not sent to us or to any third party;</span></li>
+          <li><span>no copy of your files is made on any server operated by or for us;</span></li>
+          <li><span>the Application requires no account, no registration and no email address in order to
+              function; and</span></li>
+          <li><span>the Application does not incorporate analytics, telemetry, advertising identifiers or
+              usage-tracking of any kind.</span></li>
+        </ul>
+        <p>
+          The Application transmits data to us only in the single circumstance described in section 5.
+        </p>
+
+        <span class="sectionTitle">4. Mailing list</span>
+
+        <span class="subTitle">4.1 Data collected</span>
+        <p>
+          Where you submit the subscription form on the Site, we collect the <strong class="leadIn">email
+            address</strong> you enter. No other field is requested. Our server additionally receives the
+          <strong class="leadIn">IP address</strong> and <strong class="leadIn">browser user-agent
+            string</strong> from which the request originates, as is inherent in the operation of any
+          internet service.
+        </p>
+
+        <span class="subTitle">4.2 Purpose and legal basis</span>
+        <p>
+          We process this data to send you occasional messages about the development, release and
+          availability of FileDonkey. The legal basis is your <strong class="leadIn">consent</strong> under
+          Article 6(1)(a) GDPR, given by your submission of the form. You may withdraw that consent at any
+          time, without giving reasons and without detriment, by using the unsubscribe mechanism in any
+          message or by writing to <a href="mailto:support@filedonkey.app">support@filedonkey.app</a>.
+          Withdrawal does not affect the lawfulness of processing carried out before withdrawal.
+        </p>
+        <p>
+          We do not use your email address for advertising unrelated products, and we do not disclose,
+          rent, sell or otherwise make it available to third parties for their own marketing purposes.
+        </p>
+
+        <span class="sectionTitle">5. Feedback and bug reports</span>
+
+        <span class="subTitle">5.1 When this applies</span>
+        <p>
+          The Application contains a feedback dialog which transmits a report to us. Nothing is transmitted
+          unless you open that dialog and confirm the send. If you never use it, the Application sends us
+          no data at all.
+        </p>
+
+        <span class="subTitle">5.2 Data contained in a report</span>
+        <p>
+          A report consists of the following. Every field except the first is optional, and the dialog
+          states as much:
+        </p>
+        <ul class="docList">
+          <li><span><strong class="leadIn">A device identifier.</strong> A value supplied by your operating
+              system which is stable for the device. Its sole purpose is to allow two reports from the same
+              device to be recognised as related. It does not identify you by name, but because it is
+              persistent and unique to a device it is treated in this Policy as personal data.</span></li>
+          <li><span><strong class="leadIn">Your email address,</strong> if you enter one. It is used only to
+              reply to you about the report. Leaving it blank submits the report anonymously, and the dialog
+              says so.</span></li>
+          <li><span><strong class="leadIn">Your description</strong> of the problem or suggestion, if you
+              write one. This is free text and its contents are determined entirely by you.</span></li>
+          <li><span><strong class="leadIn">A diagnostic log,</strong> if and only if you leave the
+              corresponding option enabled. Section 5.3 describes what it contains.</span></li>
+        </ul>
+        <p>
+          Our server additionally receives the IP address from which the report is sent, and an application
+          user-agent string identifying the FileDonkey version, release stage, operating system name and CPU
+          architecture.
+        </p>
+
+        <span class="subTitle">5.3 Contents of the diagnostic log</span>
+        <p>
+          Where you elect to attach a log, the attachment comprises the current and immediately preceding
+          run of the Application. Each begins with a header recording the FileDonkey version, the operating
+          system name and CPU architecture, the kernel type and version, the Qt framework version, the
+          <strong class="leadIn">network name (hostname) of your computer</strong>, and the
+          <strong class="leadIn">file path at which the log is stored</strong>, which on most systems
+          contains your operating-system user name. The remainder consists of diagnostic messages recorded
+          during operation.
+        </p>
+
+        <div class="callout">
+          <p>
+            <strong class="leadIn">Detailed logging.</strong> The Application offers an optional "detailed
+            logging" setting, which is <strong class="leadIn">disabled by default</strong>. While it is
+            enabled, the log additionally records the paths of files accessed through FileDonkey. If you
+            enable that setting and then attach a log to a report, the names and folder paths of the files
+            concerned will be transmitted to us, though never their contents. We recommend that you review
+            an attached log before sending it, and that you leave detailed logging disabled unless you have
+            been asked to enable it in order to diagnose a specific fault.
+          </p>
+        </div>
+
+        <span class="subTitle">5.4 Purpose and legal basis</span>
+        <p>
+          We process reports in order to identify, reproduce and correct faults, to evaluate suggestions,
+          and where you have supplied an address, to correspond with you about your report. The legal basis
+          is our <strong class="leadIn">legitimate interest</strong> under Article 6(1)(f) GDPR in
+          maintaining and improving the security and correct functioning of software we supply. We consider
+          that interest is not overridden by your interests or fundamental rights, having regard to the
+          voluntary nature of every report, the ability to submit one anonymously, the fact that the
+          diagnostic log is opt-out at the point of sending, and the limited categories of data involved.
+          You may object to this processing on grounds relating to your particular situation under Article
+          21 GDPR.
+        </p>
+
+        <span class="sectionTitle">6. Purchases and preorders</span>
+        <p>
+          Where we offer paid licences or preorders, payment is handled by an external payment provider.
+          That provider acts as an independent controller in respect of the card or payment-account data you
+          give it, and processes that data under its own privacy policy. We do not receive or store full
+          payment card numbers. We receive only the information necessary to issue and administer your
+          licence, such as your name, email address and the fact and amount of the transaction, processed on
+          the basis of Article 6(1)(b) GDPR, performance of a contract, and Article 6(1)(c) GDPR in respect
+          of the retention of accounting records.
+        </p>
+        <p>
+          <span class="todo">[The payment provider is to be named here before any payment is accepted, and
+            this section reviewed against that provider's terms.]</span>
+        </p>
+
+        <span class="sectionTitle">7. Cookies and analytics</span>
+        <p>
+          The Site sets <strong class="leadIn">no cookies</strong>, uses no local or session storage for
+          tracking purposes, and embeds <strong class="leadIn">no third-party analytics, advertising or
+            social-tracking scripts</strong>. Fonts and images are served from our own origin rather than a
+          third-party content delivery network, so loading a page of the Site does not disclose your visit
+          to any other party. Because no non-essential terminal storage is used, no consent banner is
+          required under Article 5(3) of Directive 2002/58/EC.
+        </p>
+
+        <span class="sectionTitle">8. Recipients and processors</span>
+        <p>
+          We do not sell personal data and do not disclose it for the independent purposes of others. Data
+          described in this Policy is disclosed only to:
+        </p>
+        <ul class="docList">
+          <li><span><strong class="leadIn">Cloudflare, Inc.,</strong> which provides the infrastructure and
+              database on which our service endpoints and stored reports are operated, acting as our
+              processor under Article 28 GDPR;</span></li>
+          <li><span><strong class="leadIn">our payment provider,</strong> in the circumstances described in
+              section 6; and</span></li>
+          <li><span><strong class="leadIn">public authorities,</strong> where disclosure is required by law,
+              or is necessary to establish, exercise or defend legal claims.</span></li>
+        </ul>
+        <p>
+          <span class="todo">[Any additional hosting or email-delivery provider is to be named here.]</span>
+        </p>
+
+        <span class="sectionTitle">9. International transfers</span>
+        <p>
+          Our processors may process data outside the European Economic Area, including in the United
+          States. Where that occurs, the transfer is made on the basis of the European Commission's Standard
+          Contractual Clauses adopted under Article 46(2)(c) GDPR, or another lawful transfer mechanism
+          applicable to the recipient. A copy of the relevant safeguards may be requested at the address in
+          section 1.
+        </p>
+
+        <span class="sectionTitle">10. Retention</span>
+        <p>
+          We retain personal data no longer than is necessary for the purpose for which it was collected:
+        </p>
+        <ul class="docList">
+          <li><span><strong class="leadIn">Mailing list:</strong> until you unsubscribe or otherwise ask us
+              to erase your address, after which it is deleted without undue delay.</span></li>
+          <li><span><strong class="leadIn">Feedback and bug reports:</strong> for so long as the underlying
+              issue remains open and for a reasonable period thereafter to detect recurrence, and in any
+              event no longer than <span class="todo">[retention period to be confirmed, e.g. 24
+                months]</span>.</span></li>
+          <li><span><strong class="leadIn">Transaction and accounting records:</strong> for the period
+              required by applicable tax and commercial law.</span></li>
+        </ul>
+
+        <span class="sectionTitle">11. Your rights</span>
+        <p>
+          Subject to the conditions and exceptions in applicable law, you have the right to request access
+          to your personal data (Article 15 GDPR), its rectification (Article 16), its erasure (Article 17),
+          restriction of its processing (Article 18) and its portability (Article 20); to object to
+          processing carried out on the basis of legitimate interests (Article 21); and to withdraw consent
+          at any time where processing is based on consent (Article 7(3)).
+        </p>
+        <p>
+          To exercise any of these rights, write to
+          <a href="mailto:support@filedonkey.app">support@filedonkey.app</a>. We will respond within one
+          month of receipt, which may be extended by two further months where necessary having regard to the
+          complexity and number of requests, in which case we will inform you of the extension and the
+          reasons for it. We may ask for information reasonably necessary to confirm your identity.
+        </p>
+        <p>
+          You also have the right to lodge a complaint with a supervisory authority, in particular in the
+          Member State of your habitual residence, place of work or the place of the alleged infringement
+          (Article 77 GDPR). In the United Kingdom, the supervisory authority is the Information
+          Commissioner's Office.
+        </p>
+
+        <span class="sectionTitle">12. Automated decision-making</span>
+        <p>
+          We do not carry out automated decision-making, including profiling, producing legal effects
+          concerning you or similarly significantly affecting you within the meaning of Article 22 GDPR.
+        </p>
+
+        <span class="sectionTitle">13. Children</span>
+        <p>
+          The Site and the Application are not directed at children, and we do not knowingly collect
+          personal data from a child. Where we become aware that we have collected personal data from a
+          child without appropriate consent, we will erase it without undue delay.
+        </p>
+
+        <span class="sectionTitle">14. Security</span>
+        <p>
+          We apply technical and organisational measures appropriate to the risk, in accordance with Article
+          32 GDPR. Data in transit between the Application, the Site and our endpoints is protected by TLS.
+          Access to stored reports and subscriber addresses is restricted to those who require it for the
+          purposes set out in this Policy. No method of transmission or storage is entirely secure, and we
+          cannot guarantee absolute security.
+        </p>
+
+        <div class="callout">
+          <p>
+            <strong class="leadIn">A note on your local network.</strong> Communication between your own
+            devices takes place on your local network and does not pass through our servers. The security of
+            that network, including who is able to join it, is under your control rather than ours. Each
+            device shares only the folder you nominate. We recommend that FileDonkey be used on networks you
+            trust.
+          </p>
+        </div>
+
+        <span class="sectionTitle">15. Changes to this Policy</span>
+        <p>
+          We may amend this Policy from time to time. The version and effective date at the head of this
+          page will be updated accordingly. Where a change materially affects how we process personal data
+          already collected, we will take reasonable steps to notify you in advance, including by email
+          where we hold an address for you and the change concerns that processing.
+        </p>
+
+        <span class="sectionTitle">16. Contact</span>
+        <p>
+          Questions about this Policy, or about how your personal data is handled, may be sent to
+          <a href="mailto:support@filedonkey.app">support@filedonkey.app</a>.
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer
+    style="background-color: #191A1D; border-top: 1px solid #2B2D31; min-height: 6rem; flex-shrink: 0; display: flex; justify-content: center; align-items: center;">
+    <div class="footerInner">
+      <div class="footerLinks">
+        <a href="/">Home</a>
+        <span class="footerSep">·</span>
+        <a href="/license-commercial">Licensing</a>
+        <span class="footerSep">·</span>
+        <a href="/privacy">Privacy</a>
+        <span class="footerSep">·</span>
+        <a href="mailto:support@filedonkey.app">Contact</a>
+      </div>
+      <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+
+</html>
