@@ -86,6 +86,71 @@
       line-height: 1.5rem;
     }
 
+    .newsLetterSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0rem 1rem 6rem 1rem;
+    }
+
+    .newsLetterLabel {
+      color: #E8E9EC;
+      display: flex;
+      flex-direction: row;
+      padding: 0rem 5rem 0rem 5rem;
+      text-align: left;
+      align-items: center;
+      font-size: 18px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 2rem;
+      font-weight: 400;
+    }
+
+    .newsLetterLabel > nobr > a {
+      color: #E8E9EC;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .newsLetterForm {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      align-items: center;
+      padding: 1.75rem 0rem 1.75rem 0rem;
+      max-width: 500px;
+    }
+
+    .newsLetterCount {
+      color: #E8E9EC;
+      display: flex;
+      flex-direction: row;
+      padding: 0rem 5rem 0rem 5rem;
+      text-align: left;
+      align-items: center;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 2rem;
+      font-weight: 400;
+    }
+
+    @property --waitlistcount {
+      syntax: "<integer>";
+      initial-value: 577;
+      inherits: false;
+    }
+
+    #waitlistCount {
+      transition: --waitlistcount 1s;
+      counter-set: waitlistcount var(--waitlistcount);
+      font-family: Roboto-Medium, sans-serif;
+    }
+
+    #waitlistCount::after {
+      content: counter(waitlistcount);
+    }
+
     .keyFeaturesList {
       list-style: none;
       padding: 1.25rem 0 0rem 0;
@@ -878,6 +943,20 @@
         </div>
       </div>
     </div>
+    <div class="newsLetterSection">
+      <div class="newsLetterLabel">
+        <nobr><a href="mailto:support@filedonkey.app">Contact us</a> or join our mailing list for updates</nobr>
+      </div>
+      <div class="newsLetterForm">
+        <input type="email" id="email" placeholder="Type your email" name="fname"></input>
+        <div style="position: absolute; right: 4px;">
+          <button id="submit" type="submit">Subscribe</button>
+        </div>
+      </div>
+      <div class="newsLetterCount">
+        <nobr><span id="waitlistCount"></span> early adopters already on the waitlist</nobr>
+      </div>
+    </div>
   </main>
   <footer
     style="background-color: #191A1D; border-top: 1px solid #2B2D31; min-height: 6rem; display: flex; justify-content: center; align-items: center;">
@@ -886,5 +965,50 @@
     </span>
   </footer>
 </body>
+<script>
+  const waitlistCountEl = document.querySelector("#waitlistCount");
+  const emailInput = document.querySelector("#email");
+  const submitBtn = document.querySelector("#submit");
+  console.dir(submitBtn);
+
+  setTimeout(async () => {
+    const res = await fetch("https://api.filedonkey.app/waitlistcount");
+    const resJSON = await res.json();
+    if (resJSON.status !== 'OK') return;
+    waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
+  });
+
+  emailInput.addEventListener('keydown', (event) => {
+    if(event.key !== "Enter") return;
+    emailInput.blur();
+    submitBtn.click();
+    event.preventDefault();
+  });
+
+  submitBtn.addEventListener("click", async () => {
+    try {
+      const email = emailInput.value.trim();
+      const emailFormat = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      if (emailFormat.test(email) === false) throw new Error('Invalid email');
+      console.log('Notify Me:', email);
+      if (!email.length) throw new Error('Email is empty');
+      const res = await fetch("https://api.filedonkey.app/newsletter", {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({ email })
+      });
+      console.log(res);
+      const waitlistCount = Number(waitlistCountEl.style.getPropertyValue("--waitlistcount"));
+      waitlistCountEl.style.setProperty("--waitlistcount", waitlistCount + 1);
+      // const resJSON = await res.json();
+      // if (resJSON.status !== 'OK') throw new Error('Server response is not OK');
+      submitBtn.innerText = "Done ✔";
+      submitBtn.style.color = "rgba(20, 16, 11, 0.9)";
+      submitBtn.style.backgroundColor = "rgb(254, 247, 249)";
+    } catch (error) {
+      console.error('Submit email error:', error.message);
+    }
+  });
+</script>
 
 </html>
