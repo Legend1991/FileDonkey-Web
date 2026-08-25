@@ -135,20 +135,20 @@
       font-weight: 400;
     }
 
-    @property --waitlistcount {
+    @property --sublistcount {
       syntax: "<integer>";
       initial-value: 577;
       inherits: false;
     }
 
-    #waitlistCount {
-      transition: --waitlistcount 1s;
-      counter-set: waitlistcount var(--waitlistcount);
+    #sublistCount {
+      transition: --sublistcount 1s;
+      counter-set: sublistcount var(--sublistcount);
       font-family: Roboto-Medium, sans-serif;
     }
 
-    #waitlistCount::after {
-      content: counter(waitlistcount);
+    #sublistCount::after {
+      content: counter(sublistcount);
     }
 
     .keyFeaturesList {
@@ -954,7 +954,7 @@
         </div>
       </div>
       <div class="newsLetterCount">
-        <nobr><span id="waitlistCount"></span> early adopters already on the waitlist</nobr>
+        <nobr><span id="sublistCount"></span> people already following along</nobr>
       </div>
     </div>
   </main>
@@ -966,16 +966,16 @@
   </footer>
 </body>
 <script>
-  const waitlistCountEl = document.querySelector("#waitlistCount");
+  const sublistCountEl = document.querySelector("#sublistCount");
   const emailInput = document.querySelector("#email");
   const submitBtn = document.querySelector("#submit");
   console.dir(submitBtn);
 
   setTimeout(async () => {
-    const res = await fetch("https://api.filedonkey.app/waitlistcount");
+    const res = await fetch("https://api.filedonkey.app/sublistcount");
     const resJSON = await res.json();
     if (resJSON.status !== 'OK') return;
-    waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
+    sublistCountEl.style.setProperty("--sublistcount", resJSON.result.count);
   });
 
   emailInput.addEventListener('keydown', (event) => {
@@ -998,8 +998,8 @@
         body: JSON.stringify({ email })
       });
       console.log(res);
-      const waitlistCount = Number(waitlistCountEl.style.getPropertyValue("--waitlistcount"));
-      waitlistCountEl.style.setProperty("--waitlistcount", waitlistCount + 1);
+      const sublistCount = Number(sublistCountEl.style.getPropertyValue("--sublistcount"));
+      sublistCountEl.style.setProperty("--sublistcount", sublistCount + 1);
       // const resJSON = await res.json();
       // if (resJSON.status !== 'OK') throw new Error('Server response is not OK');
       submitBtn.innerText = "Done ✔";
