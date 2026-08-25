@@ -527,6 +527,45 @@
       font-weight: 500;
     }
 
+    /* The footer needs a rule of its own rather than the inline styles the rest of the page uses,
+       because links want a :hover and an inline style cannot express one. */
+    .footerInner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 1.75rem 1rem;
+      color: #A9AEB6;
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+    }
+
+    .footerLinks {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+
+    .footerLinks a {
+      color: #E8E9EC;
+    }
+
+    .footerLinks a:hover {
+      color: #E8E9EC;
+      text-decoration: underline;
+    }
+
+    .footerSep {
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      color: #A9AEB6;
+    }
+
     @media (max-width: 900px) {
       .appSection {
         padding: 4rem 4rem 0rem 4rem;
@@ -959,10 +998,15 @@
     </div>
   </main>
   <footer
-    style="background-color: #191A1D; border-top: 1px solid #2B2D31; min-height: 6rem; display: flex; justify-content: center; align-items: center;">
-    <span style="color: #E8E9EC; font-family: Roboto, sans-serif; font-size: 0.9rem;">
-      Copyright © 2026 FileDonkey. All rights reserved.
-    </span>
+    style="background-color: #191A1D; border-top: 1px solid #2B2D31; min-height: 6rem; flex-shrink: 0; display: flex; justify-content: center; align-items: center;">
+    <div class="footerInner">
+      <div class="footerLinks">
+        <a href="/license-commercial">Licensing</a>
+        <span class="footerSep">·</span>
+        <a href="mailto:support@filedonkey.app">Contact</a>
+      </div>
+      <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
+    </div>
   </footer>
 </body>
 <script>
