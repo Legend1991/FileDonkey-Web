@@ -7,15 +7,29 @@
   <link rel="shortcut icon" href="/FileDonkey_Icon.png" type="image/png">
   <title>FileDonkey - Important files instantly accessible wherever you need them</title>
   <meta name="description"
-    content="Creates a virtual disk that mirrors files from all your devices on the same network.">
+    content="Open the files on your other computer straight from Finder or File Explorer. No cloud, no uploads, nothing to copy — just your own local network. Free beta for Mac, Windows and Linux.">
   <meta name="keywords"
-    content="lemon hazard, game studio, indie game developer, bubble strike, planetary wars, android puzzle game, mobile puzzle games, space rts game, multiplayer strategy game, bubble shooter, casual mobile games, indie games, space strategy, real-time strategy, mobile games">
+    content="local network file access, network drive, virtual disk, LAN file sharing, no cloud file sharing, cross-platform file access, mac windows linux file sharing, private file access, file explorer integration, finder integration">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FileDonkey App">
+  <!-- Open Graph is what Discord, Slack, LinkedIn, Facebook and iMessage read; without it a shared
+       link renders as a bare URL with no image or title. Twitter is the only one that reads the
+       twitter:* tags below. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FileDonkey">
+  <meta property="og:url" content="https://filedonkey.app/">
+  <meta property="og:title" content="FileDonkey - Important files instantly accessible wherever you need them">
+  <meta property="og:description"
+    content="Open the files on your other computer straight from Finder or File Explorer. No cloud, no uploads, nothing to copy — just your own local network.">
+  <meta property="og:image" content="https://filedonkey.app/FileDonkey_Icon.png">
+
+  <!-- summary rather than summary_large_image: the only preview image that exists is the square
+       app icon, and the large card crops it to a letterbox. Move both back to summary_large_image
+       once there is a 1200x630 image to point at. -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="FileDonkey - Important files instantly accessible wherever you need them">
   <meta name="twitter:description"
-    content="Creates a virtual disk that mirrors files from all your devices on the same network.">
-  <meta name="twitter:image" content="https://lemonhazard.com/FileDonkey_Icon.png">
+    content="Open the files on your other computer straight from Finder or File Explorer. No cloud, no uploads, nothing to copy — just your own local network.">
+  <meta name="twitter:image" content="https://filedonkey.app/FileDonkey_Icon.png">
 
   <style>
     @font-face {
@@ -72,40 +86,38 @@
       line-height: 1.5rem;
     }
 
-    .repeating-key-features-emoji {
+    .keyFeaturesList {
       list-style: none;
       padding: 1rem 0 4rem 0;
       margin: 0 0 0rem;
 
+      /* A flex row rather than the hanging indent this list used to use. That put the first line
+         after the icon plus a literal space, and wrapped lines at padding-left - two different
+         numbers, so the second line never lined up with the first. As a flex row the text is one
+         block beside the icon, every line of it starts at the same place, and the space between
+         the two is the gap below rather than the width of a space glyph. */
       li {
-        padding-left: 1.85rem;
-        text-indent: -1.85rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.7em;
         padding-top: 0.5rem;
+        padding-left: 0;
+        text-indent: 0;
       }
 
-      li:nth-child(6n + 1)::before {
-        content: "📱 ";
-      }
+    }
 
-      li:nth-child(6n + 2)::before {
-        content: "⚡ ";
-      }
-
-      li:nth-child(6n + 3)::before {
-        content: "🔌 ";
-      }
-
-      li:nth-child(6n + 4)::before {
-        content: "🔒 ";
-      }
-
-      li:nth-child(6n + 5)::before {
-        content: "🔄 ";
-      }
-
-      li:nth-child(6n)::before {
-        content: "🖱️ ";
-      }
+    /* Each icon sits in the markup beside the line it belongs to, rather than being attached to a
+       list position in CSS the way the emoji were - reordering the list no longer reshuffles the
+       icons. Sized in em so they track the list's font-size through the breakpoints below. The
+       files carry their own #A9AEB6 fill, which is the colour of the text beside them. */
+    .featureIcon {
+      flex: 0 0 auto;
+      width: 1.15em;
+      height: 1.15em;
+      /* Half the difference between the line box and the icon, so it centres on the first line
+         instead of hanging from its top. */
+      margin-top: 0.1em;
     }
 
     input[type="email"] {
@@ -242,8 +254,8 @@
     }
 
     .appIcon {
-      width: 128px;
-      height: 128px;
+      width: 96px;
+      height: 96px;
     }
 
     .appInfo {
@@ -279,11 +291,23 @@
       align-items: center;
     }
 
+    /* The hook, carrying the weight the product name used to carry alone. */
+    .appTagline {
+      color: #E8E9EC;
+      padding: 0rem 0rem 0.85rem 0rem;
+      text-align: left;
+      max-width: 32rem;
+      font-size: 21px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 1.9rem;
+      font-weight: 900;
+    }
+
     .appDesc {
       color: #A9AEB6;
       padding: 0rem 0rem 0rem 0rem;
       text-align: left;
-      max-width: 30rem;
+      max-width: 32rem;
       font-size: 18px;
       font-family: Roboto, sans-serif;
       line-height: 1.7rem;
@@ -294,11 +318,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0rem 1rem 6rem 1rem;
     }
 
     .keyFeaturesContent {
       color: #A9AEB6;
-      padding: 0rem 1rem 6rem 1rem;
       text-align: left;
       max-width: 45rem;
       font-size: 18px;
@@ -329,13 +353,32 @@
       display: flex;
       align-items: center;
       /* height: 387px; */
-      max-width: 750;
+      /* The unit matters: written as "750" this only worked because the page has no doctype and
+         so runs in quirks mode, where a unitless number is read as pixels. Under a doctype the
+         declaration is invalid, and the clip springs out to its intrinsic 1920px. */
+      max-width: 750px;
       margin: 0em 1rem 0rem 1rem;
     }
 
     .videoDemo {
+      /* Was a width="100%" attribute, which is not a value the attribute accepts - it takes an
+         integer count of pixels - so the clip was being sized only by flex shrinking. */
+      width: 100%;
       margin-top: -18px;
       margin-bottom: -18px;
+    }
+
+    /* Says what the clip is showing. Without it the demo is a pretty animation rather than a
+       claim the reader can check. */
+    .videoCaption {
+      color: #A9AEB6;
+      padding: 1.25rem 1rem 0rem 1rem;
+      text-align: center;
+      max-width: 44rem;
+      font-size: 15px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.5rem;
+      font-weight: 500;
     }
 
     @media (max-width: 900px) {
@@ -389,19 +432,29 @@
         line-height: 1.2rem;
       }
 
+      .appTagline {
+        padding: 0rem 0rem 0.7rem 0rem;
+        font-size: 19px;
+        line-height: 1.6rem;
+      }
+
       .appDesc {
         font-size: 17px;
         line-height: 1.3rem;
       }
 
-      .repeating-key-features-emoji {
+      .videoCaption {
+        font-size: 14px;
+        line-height: 1.4rem;
+        padding-top: 1rem;
+      }
+
+      .keyFeaturesList {
         padding: 0.75rem 0 3rem 0;
         font-size: 17px;
         line-height: 1.3rem;
 
         li {
-          padding-left: 1.7rem;
-          text-indent: -1.7rem;
           padding-top: 0.3rem;
         }
       }
@@ -432,6 +485,12 @@
         line-height: 1.2rem;
       }
 
+      .appTagline {
+        padding: 0rem 0rem 0.6rem 0rem;
+        font-size: 17px;
+        line-height: 1.45rem;
+      }
+
       .socialButtonsTop {
         display: none;
       }
@@ -446,14 +505,12 @@
         line-height: 1.3rem;
       }
 
-      .repeating-key-features-emoji {
+      .keyFeaturesList {
         font-size: 16px;
         line-height: 1.3rem;
         padding-bottom: 3rem;
 
         li {
-          padding-left: 1.6rem;
-          text-indent: -1.6rem;
           padding-top: 0.3rem;
         }
       }
@@ -494,15 +551,13 @@
       </div>
       <div
         style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
-        <a href="https://lemonhazard.com" target="_blank" style="display: flex; align-items: center;">
-          <img src="/LemonHazard_Icon.png" alt="Lemon Hazard logo" style="width: 2.2rem; height: 2.2rem;" />
-          <span style="width: 1rem;"></span>
-          <span class="lemonHazardTitle"
-            style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
-            <span style="color: #FBD50B;">LEMON</span>
-            <span style="color: #E8E9EC;">HAZARD</span>
-          </span>
-        </a>
+        <div style="padding: 0rem 0rem 0rem 1.5rem;">
+              <a href="https://x.com/filedonkeyapp" target="_blank">
+                <img src="/x-follow.svg"
+                  alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Twitter"
+                  style="width: 86px; height: 32px;" width="86" height="32" />
+              </a>
+            </div>
       </div>
     </div>
   </header>
@@ -521,22 +576,13 @@
         </div>
       </div>
       <div class="appInfo">
-        <div class="appName">
-          <nobr>FileDonkey</nobr>
-          <div class="socialButtonsTop">
-            <div style="padding: 0rem 0rem 0rem 1.5rem;">
-              <a href="https://x.com/filedonkeyapp" target="_blank">
-                <img src="/x-follow.svg"
-                  alt="FileDonkey - Important&#0032;files&#0032;instantly&#0032;accessible&#0032;wherever&#0032;you&#0032;need&#0032;them | Twitter"
-                  style="width: 86px; height: 32px;" width="86" height="32" />
-              </a>
-            </div>
-          </div>
+        <div class="appTagline">
+          Stop emailing files to yourself or juggling USB drives
         </div>
         <div class="appDesc">
-          Easy access to files across all your devices. This lightweight utility
-          creates a virtual disk that seamlessly mirrors the file systems of all
-          your connected devices on the same local network.
+          Your files stay on the machine they already live on. FileDonkey puts that
+          machine in Finder or File Explorer as a disk you can open, browse and edit —
+          over your own local network, with nothing to upload and nothing to copy.
         </div>
       </div>
     </div>
@@ -590,35 +636,49 @@
         </div>
       </div>
     </div>
+    <!-- No width:100% here. A block-level div already fills its parent, and with content-box
+         sizing the 1rem padding would be added outside that 100% - pushing this section's centre
+         1rem right of every other section's. -->
     <div
-      style="padding: 0rem 1rem 4rem 0rem; display: flex; align-items: center; justify-content: center; width: 100%;">
+      style="padding: 0rem 1rem 4rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
       <div class="videoDemoContainer">
-        <video class="videoDemo" autoplay="true" loop="" muted="" width="100%" poster="Assets/Search.png">
+        <!-- playsinline keeps iOS Safari from hijacking the clip into fullscreen, which is also
+             what lets it autoplay there at all. -->
+        <video class="videoDemo" autoplay="true" loop="" muted="" playsinline="">
           <source src="FileDonkey demo.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
-    </div>
+      <div class="videoCaption">
+        Nothing configured. Nothing copied. The devices find each other on their own, and their
+        files open as though they had been on this machine all along.
+      </div>
     </div>
     <div class="keyFeaturesSection">
       <div class="keyFeaturesContent">
         <div style="display: flex; align-items: center; justify-content: center;">
           <span class="keyFeaturesTitle">Key Features</span>
         </div>
-        <ul class="repeating-key-features-emoji">
-          <li>Instant file access between Mac, Windows, and Linux devices (with Android and iPhone support planned)</li>
-          <li>Zero configuration setup — just install and use</li>
-          <li>No more tangled wires or complicated network configurations</li>
-          <li>No cloud storage required — everything goes through your local network and stays on your devices</li>
-          <li>Real-time file synchronization without manual transfers</li>
-          <li>Drag-and-drop simplicity with native file explorer integration</li>
+        <ul class="keyFeaturesList">
+          <li><img class="featureIcon" src="lock.svg" alt="" />No cloud account, no subscription and no uploads — your
+            files never leave your local network</li>
+          <li><img class="featureIcon" src="sync.svg" alt="" /> Nothing to copy and nothing to sync — open a file
+            straight from the other device and you have the current version</li>
+          <li><img class="featureIcon" src="mouse.svg" alt="" /> Works inside Finder, File Explorer and your Linux file
+            manager — drag, drop, open and save exactly as usual</li>
+          <li><img class="featureIcon" src="folder.svg" alt="" /> You choose the one folder each device shares;
+            everything outside it stays invisible</li>
+          <li><img class="featureIcon" src="flash.svg" alt="" /> Zero configuration — install it, and devices on the
+            same network find each other on their own</li>
+          <li><img class="featureIcon" src="phone.svg" alt="" /> Mac, Windows and Linux today, with Android and iPhone
+            support planned</li>
         </ul>
         <div style="display: flex; align-items: center; justify-content: center;">
-          <span class="keyFeaturesTitle">Stop emailing files to yourself or juggling USB drives</span>
+          <span class="keyFeaturesTitle">Important files, instantly accessible wherever you need them</span>
         </div>
         <div style="display: flex; align-items: center; justify-content: center; padding: 1rem 0 0 1.85rem">
-          FileDonkey creates a unified filesystem across all your
-          devices, making your important files instantly accessible wherever you need them.
+          FileDonkey turns the machines you already own into one filesystem, so the file
+          you need is simply there when you need it.
         </div>
       </div>
     </div>
