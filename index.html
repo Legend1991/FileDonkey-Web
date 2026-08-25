@@ -121,26 +121,71 @@
       background: #26282C;
     }
 
-    button {
+    button,
+    .button {
       border-radius: 6px;
       padding: 12px 12px 12px 12px;
       border-width: 0;
-      height: 56px;
-      width: 105px;
       background-color: #C7CBD1;
       color: #0C0D0F;
-      font-family: Roboto, sans-serif;
       font-size: 18px;
+      font-family: Roboto-Medium, sans-serif;
     }
 
-    button:hover {
+    .button {
+      position: relative;
+      margin: 0rem 3rem;
+      height: 32px;
+      width: 200px;
+      text-align: center;
+      align-content: center;
+    }
+
+    .button-secondary {
+      background-color: #26282c;
+      color: #C7CBD1;
+      border: 1px solid #3d4046;
+    }
+
+    #crown {
+      font-size: 30px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      line-height: 1;
+      transform: translate(48%, -75%) rotate(30deg);
+    }
+
+    button {
+      height: 56px;
+      width: 105px;
+    }
+
+    button:hover,
+    .button:hover {
       cursor: pointer;
       background-color: #E8E9EC;
     }
 
-    button:active {
+    button:active,
+    .button:active {
       cursor: pointer;
       background-color: #A9AEB6;
+    }
+
+    .button-secondary:hover {
+      background-color: #2F3238;
+    }
+
+    .button-secondary:active {
+      background-color: #212226;
+    }
+
+    .downloadSection {
+      /* background-color: red; */
+      display: flex;
+      justify-content: center;
+      padding: 6rem 1rem 8rem 1rem;
     }
 
     .appSection {
@@ -229,67 +274,6 @@
       color: #E8E9EC;
     }
 
-    .newsLetterSection {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 1rem 4rem 1rem;
-    }
-
-    .newsLetterLabel {
-      color: #E8E9EC;
-      display: flex;
-      flex-direction: row;
-      padding: 0rem 5rem 1rem 5rem;
-      text-align: left;
-      align-items: center;
-      font-size: 32px;
-      font-family: Roboto-Medium, sans-serif;
-      line-height: 2rem;
-      font-weight: 900;
-    }
-
-    .newsLetterCount {
-      color: #E8E9EC;
-      display: flex;
-      flex-direction: row;
-      padding: 0rem 5rem 0rem 5rem;
-      text-align: left;
-      align-items: center;
-      font-size: 18px;
-      font-family: Roboto, sans-serif;
-      line-height: 2rem;
-      font-weight: 400;
-    }
-
-    @property --waitlistcount {
-      syntax: "<integer>";
-      initial-value: 577;
-      inherits: false;
-    }
-
-    #waitlistCount {
-      transition: --waitlistcount 1s;
-      counter-set: waitlistcount var(--waitlistcount);
-      font-size: 20px;
-      font-weight: 900;
-      font-family: Roboto-Medium, sans-serif;
-    }
-
-    #waitlistCount::after {
-      content: counter(waitlistcount);
-    }
-
-    .newsLetterForm {
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      align-items: center;
-      padding: 2rem 0rem 2rem 0rem;
-      max-width: 500px;
-    }
-
     .videoDemoContainer {
       background: #1e1f22;
       border: 1px solid #34363b;
@@ -319,16 +303,6 @@
         line-height: 1.7rem;
         font-weight: 900;
       }
-
-      .newsLetterLabel {
-        font-size: 28px;
-        line-height: 1.75rem;
-        padding: 0rem 4rem 1rem 4rem;
-      }
-
-      .newsLetterCount {
-        padding: 0rem 4rem 0rem 4rem;
-      }
     }
 
     @media (max-width: 760px) {
@@ -341,24 +315,6 @@
         font-family: Roboto-Medium, sans-serif;
         line-height: 1.7rem;
         font-weight: 900;
-      }
-
-      .newsLetterSection {
-        padding: 6rem 1rem 4rem 1rem;
-      }
-
-      .newsLetterLabel {
-        font-size: 24px;
-        line-height: 1.4rem;
-        padding: 0rem 3rem 1rem 3rem;
-      }
-
-      .newsLetterCount {
-        padding: 0rem 3rem 0rem 3rem;
-      }
-
-      #waitlistCount {
-        font-size: 18px;
       }
 
       .videoDemo {
@@ -402,24 +358,6 @@
           text-indent: -1.7rem;
           padding-top: 0.3rem;
         }
-      }
-
-      .newsLetterSection {
-        padding: 4rem 1rem 3rem 1rem;
-      }
-
-      .newsLetterLabel {
-        font-size: 20px;
-        line-height: 1.2rem;
-        padding: 0rem 2rem 1rem 2rem;
-      }
-
-      .newsLetterCount {
-        padding: 0rem 2rem 0rem 2rem;
-      }
-
-      .newsLetterForm {
-        padding: 1.5rem 0rem 1.5rem 0rem;
       }
 
       .videoDemo {
@@ -474,27 +412,8 @@
         }
       }
 
-      .newsLetterSection {
-        padding: 4rem 1rem 2.5rem 1rem;
-      }
-
       input[type="email"] {
         font-size: 16px;
-      }
-
-      .newsLetterLabel {
-        font-size: 17px;
-        line-height: 1.2rem;
-        padding: 0rem 2rem 1rem 2rem;
-      }
-
-      .newsLetterCount {
-        padding: 1rem 2rem 0rem 2rem;
-      }
-
-      .newsLetterForm {
-        padding: 0rem 0rem 0rem 0rem;
-        width: 100%;
       }
 
       input[type="email"] {
@@ -516,29 +435,32 @@
 </head>
 
 <body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
-  <header style="background-color: #191A1D; border-bottom: 1px solid #2B2D31; width: 100%; display: flex; justify-content: center;">
+  <header
+    style="background-color: #191A1D; border-bottom: 1px solid #2B2D31; width: 100%; display: flex; justify-content: center;">
     <div style="display: flex; justify-content: center; align-items: center; min-height: 4rem; width: 60rem;">
-    <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
-      <img src="/FileDonkey_Icon.png" alt="FileDonkey - Important files instantly accessible wherever you need them" style="width: 2.3rem; height: 2.3rem;" />
-      <span style="width: 1rem;"></span>
-      <span style="color: #E8E9EC; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
-        FileDonkey
-      </span>
-    </div>
-    <div style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
-      <a href="https://lemonhazard.com" target="_blank" style="display: flex; align-items: center;">
-        <img src="/LemonHazard_Icon.png" alt="Lemon Hazard logo" style="width: 2.2rem; height: 2.2rem;" />
+      <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
+        <img src="/FileDonkey_Icon.png" alt="FileDonkey - Important files instantly accessible wherever you need them"
+          style="width: 2.3rem; height: 2.3rem;" />
         <span style="width: 1rem;"></span>
-        <span class="lemonHazardTitle" style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
-          <span style="color: #FBD50B;">LEMON</span>
-          <span style="color: #E8E9EC;">HAZARD</span>
+        <span style="color: #E8E9EC; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+          FileDonkey
         </span>
-      </a>
-    </div>
+      </div>
+      <div
+        style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
+        <a href="https://lemonhazard.com" target="_blank" style="display: flex; align-items: center;">
+          <img src="/LemonHazard_Icon.png" alt="Lemon Hazard logo" style="width: 2.2rem; height: 2.2rem;" />
+          <span style="width: 1rem;"></span>
+          <span class="lemonHazardTitle"
+            style="color: white; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+            <span style="color: #FBD50B;">LEMON</span>
+            <span style="color: #E8E9EC;">HAZARD</span>
+          </span>
+        </a>
+      </div>
     </div>
   </header>
-  <main
-    style="flex: 1; background-color: #1E1F22;">
+  <main style="flex: 1; background-color: #1E1F22;">
     <div class="appSection">
       <div>
         <img src="/FileDonkey_Icon.png" class="appIcon" alt="FileDonkey logo" />
@@ -572,31 +494,138 @@
         </div>
       </div>
     </div>
-    <div class="newsLetterSection">
-      <div class="newsLetterLabel">
-        <nobr>Be the first to know when FileDonkey launches:</nobr>
-      </div>
-      <!-- <form action="/subscribe" method="POST"> -->
-      <div class="newsLetterForm">
-        <input type="email" id="email" placeholder="Type your email" name="fname"></input>
-        <div style="position: absolute; right: 4px;">
-          <button id="submit" type="submit">Notify Me</button>
+    <div class="downloadSection">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <a class="button button-secondary" href="/download">Download Free Beta</a>
+        <div style="margin: 1rem 3rem; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">v0.5.0</span>
+          <div style="background-color: #A9AEB6; width: 1px; height: 80%; margin: 0px 6px 0px 12px;"></div>
+          <svg style="margin: 0px 5px 3px 5px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" viewBox="0 0 64 64"
+            style="enable-background:new 0 0 64 64;" xml:space="preserve">
+            <path fill="#A9AEB6" d="M56.4,21.8c-4.3,2.6-6.9,7.2-6.9,12.2c0,5.6,3.4,10.7,8.6,12.9c-1,3.2-2.5,6.3-4.4,9.1c-2.7,3.9-5.6,7.9-10,7.9
+	s-5.5-2.5-10.5-2.5c-4.9,0-6.6,2.6-10.6,2.6s-6.8-3.7-10-8.1C8.4,49.6,6.1,42.2,6,34.7c0-12.4,8.1-19,16.1-19
+	c4.2,0,7.8,2.8,10.4,2.8c2.5,0,6.5-2.9,11.3-2.9C48.7,15.3,53.5,17.7,56.4,21.8z M41.4,10.2c2.1-2.5,3.3-5.6,3.4-8.9
+	c0-0.4,0-0.9-0.1-1.3c-3.6,0.4-7,2.1-9.4,4.9c-2.1,2.4-3.4,5.5-3.5,8.7c0,0.4,0,0.8,0.1,1.2c0.3,0.1,0.6,0.1,0.9,0.1
+	C36.1,14.5,39.3,12.8,41.4,10.2z" />
+          </svg>
+          <svg style="margin: 1px 5px 0px 5px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="14px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;"
+            xml:space="preserve">
+            <g fill="#A9AEB6" transform="translate(271.22 -22.579)">
+              <rect x="-271.2" y="22.6" width="30.3" height="30.3" />
+              <rect x="-237.6" y="22.6" width="30.3" height="30.3" />
+              <rect x="-271.2" y="56.2" width="30.3" height="30.3" />
+              <rect x="-237.6" y="56.2" width="30.3" height="30.3" />
+            </g>
+          </svg>
+          <svg style="margin: 2px 5px 0px 5px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="17px" viewBox="0 0 64 64"
+            style="enable-background:new 0 0 64 64;" xml:space="preserve">
+            <path fill="#A9AEB6" d="M50.3,60.3c1.7-2.1,4.5-2.8,6.4-3.9c0.9-0.6,1.7-1.3,1.7-2.3c0.1-1-0.5-2.2-1.9-3.7c-0.5-0.5-0.7-1.5-0.9-2.5
+	c-0.2-1-0.5-2.1-1.3-2.8c-0.2-0.1-0.3-0.3-0.5-0.4c-0.2-0.1-0.3-0.2-0.5-0.2c1.1-3.4,0.7-6.8-0.5-9.9c-1.4-3.8-3.9-7.1-5.8-9.3
+	c-2.1-2.7-4.2-5.2-4.2-9C42.9,10.7,43.4,0,33.3,0c-0.4,0-0.8,0-1.3,0.1C20.7,1,23.7,12.9,23.6,16.9c-0.2,2.9-0.8,5.2-2.8,8.1
+	c-2.4,2.8-5.7,7.4-7.3,12.1c-0.7,2.2-1.1,4.5-0.8,6.7c-0.1,0.1-0.2,0.2-0.3,0.3c-0.7,0.7-1.2,1.6-1.8,2.2c-0.5,0.5-1.3,0.7-2.1,1
+	c-0.8,0.3-1.8,0.7-2.3,1.8C6,49.5,6,50,6,50.6c0,0.5,0.1,1,0.1,1.5c0.2,1,0.3,2,0.1,2.6c-0.7,1.8-0.7,3.1-0.3,4
+	c0.5,0.9,1.4,1.3,2.5,1.5c2.2,0.5,5.1,0.3,7.4,1.6c2.5,1.3,5,1.8,7,1.3c1.5-0.3,2.6-1.2,3.2-2.5c1.6,0,3.3-0.7,6-0.8
+	c1.9-0.1,4.2,0.7,6.9,0.5c0.1,0.3,0.2,0.6,0.3,0.8c1,2.1,3,3,5,2.9c2.1-0.2,4.3-1.4,6-3.5 M33,14.2c-0.5-0.3-1.2-0.4-1.6-0.6
+	c0.1-0.2,0.1-0.4,0.1-0.6c0-0.8,0.1-1.4,0.4-2.1c0.3-0.7,0.6-1.1,1.1-1.5s1-0.6,1.6-0.6s1.1,0.2,1.6,0.5c0.5,0.4,0.9,0.8,1.2,1.5
+	c0.3,0.6,0.4,1.3,0.4,2c0,0,0,0,0,0.1c0,0.8-0.1,1.4-0.4,2.1c-0.2,0.4-0.4,0.7-0.6,1c-0.1,0-0.2-0.1-0.2-0.1
+	c-0.3-0.1-0.5-0.2-0.8-0.3c-0.2-0.1-0.4-0.1-0.6-0.2 M26.6,15.4c-0.2,0.1-0.3,0.2-0.5,0.4c-0.1,0.1-0.2,0.2-0.4,0.3
+	c-0.3-0.3-0.5-0.6-0.7-1.1c-0.2-0.6-0.4-1.1-0.4-1.7c0-0.8,0.1-1.4,0.3-1.9c0.2-0.6,0.4-1,0.8-1.3c0.3-0.3,0.7-0.5,1.1-0.5h0.1
+	c0.4,0,0.7,0.1,1.1,0.4c0.4,0.3,0.7,0.7,0.9,1.2c0.2,0.6,0.4,1.1,0.4,1.7c0,0.3,0,0.5,0,0.8c-0.1,0-0.1,0-0.2,0.1
+	c-0.4,0.1-0.7,0.3-1.1,0.5 M25.7,17.4c0.6-0.4,0.8-0.6,1.1-0.8c0.3-0.2,0.5-0.4,0.6-0.5c0.4-0.4,1.1-0.9,2.1-1.3
+	c0.4-0.1,0.7-0.2,1.1-0.2c0.9,0,1.3,0,2.6,0.8c0.8,0.5,1.2,0.6,2.6,1.2c0.7,0.3,1.2,0.5,1.5,0.8c0.3,0.3,0.5,0.6,0.3,1
+	c-0.3,0.9-1.4,1.3-2.8,1.8c-0.7,0.2-1.3,0.6-2.1,1.1c-0.7,0.4-1.1,0.7-2.2,0.6c-0.5,0-0.8,0-1.1-0.2c-0.3-0.1-0.7-0.4-1-0.6
+	c-0.5-0.4-1-0.7-1.6-1.1c-1.1-0.6-1.8-1-1.9-1.6C24.8,18,25.1,17.8,25.7,17.4z M22.5,61.9c-1.7,0.4-3.7-0.2-6-1.4
+	c-2.6-1.4-5.6-1.3-7.5-1.7c-1-0.2-1.4-0.2-1.7-0.8c-0.3-0.6-0.3-1.2,0.3-2.9c0.3-1,0.2-2.2,0-3.2c-0.1-1-0.4-1.4-0.1-2
+	C8,49.1,8.3,48.8,9,48.5c0.8-0.3,2.2-0.4,2.9-1.1c0.7-0.7,1-1.4,1.6-2.1c0.5-0.5,0.5-1,1.3-1c0.1,0,0.6,0,0.7,0
+	c1,0.1,1.3,0.5,2.1,1.6l2.2,4.4c0.6,1.4,2.1,2.9,3.3,4.5c1.3,1.4,1.9,2.7,1.8,3.9C24.6,60.7,24.2,61.5,22.5,61.9z M19.7,45.8
+	C19.5,45.4,19,44.6,19,44c0,0,0-1.7,0-1.8c0.1-2.6,0.7-5.2,1.7-7.7c1.5-3.4,4.7-9.4,4.9-14.1c0.1,0.1,0.6,0.4,0.8,0.5
+	c0.6,0.3,1,0.8,1.6,1.3c0.6,0.5,1.3,0.8,2.3,0.9c0.1,0,0.2,0,0.3,0c1.1,0,2-0.4,2.7-0.8c0.8-0.4,1.4-0.9,2-1.1
+	c1.2-0.4,2.2-1.1,2.8-1.9c1,3.8,3.2,9.3,4.6,12c0.8,1.4,2.3,4.4,2.9,8.1c0.1,0.6,0.1,1,0.1,1.1c0,0.6-0.2,0.8-0.7,1.3
+	c-0.1,0.1-0.8,0.7-1.1,0.8c-0.2,0.1-0.4,0.2-0.6,0.3c-1.1,0.6-1.8,1.8-2.1,3.2c-0.4,1.4-0.4,3.1-0.5,5c-0.1,1-0.5,2.3-0.9,3.6
+	c-4.1,2.7-9.7,4-14.4,0.8c-0.3-0.5-0.7-1-1.1-1.5c-0.2-0.3-0.5-0.6-0.7-0.9 M55.2,55.4c-1.7,1-4.1,1.7-6,4c-1.7,2-3.1,3-4.8,3.1
+	c-1.8,0.1-2.9-0.4-3.8-2.2c-0.6-1.1,0-2.4,0.4-4.2c0.5-1.8,1.2-3.6,1.3-5.1c0.1-1.9,0.2-3.6,0.5-4.8c0.3-1.3,0.5-1.5,1.3-2.1
+	c0,0,0.9-0.5,1.1-0.6c0.3-0.2,1.2-1.2,2.7-0.8c1.6,0.4,1.1,2.2,2.4,3.1c0.2,0,0.8-0.1,1-0.1c0.8,0,1.1,0,1.9,0.7
+	c0.6,0.5,0.9,1.5,1.1,2.5c0.2,1-0.1,2.5,0.9,2.8c1.5,0.6,1.7,1.8,1.7,2.4C56.8,54.7,56,54.9,55.2,55.4z" />
+          </svg>
+        </div>
+        <div style="margin: 0rem 1.5rem; text-align: center; width: 260px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">Free beta stays available until v1.x.x. Buy a license when you are ready.</span>
         </div>
       </div>
-      <div class="newsLetterCount">
-        <nobr><span id="waitlistCount"></span> early adopters already on the waitlist</nobr>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+      <a class="button" href="/preorder">Preorder Full v1 Release<div id="crown">👑</div></a>
+      <div style="margin: 1rem 3rem; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">v1.x.x</span>
+          <div style="background-color: #A9AEB6; width: 1px; height: 80%; margin: 0px 6px 0px 12px;"></div>
+          <svg style="margin: 0px 5px 3px 5px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18px" viewBox="0 0 64 64"
+            style="enable-background:new 0 0 64 64;" xml:space="preserve">
+            <path fill="#A9AEB6" d="M56.4,21.8c-4.3,2.6-6.9,7.2-6.9,12.2c0,5.6,3.4,10.7,8.6,12.9c-1,3.2-2.5,6.3-4.4,9.1c-2.7,3.9-5.6,7.9-10,7.9
+	s-5.5-2.5-10.5-2.5c-4.9,0-6.6,2.6-10.6,2.6s-6.8-3.7-10-8.1C8.4,49.6,6.1,42.2,6,34.7c0-12.4,8.1-19,16.1-19
+	c4.2,0,7.8,2.8,10.4,2.8c2.5,0,6.5-2.9,11.3-2.9C48.7,15.3,53.5,17.7,56.4,21.8z M41.4,10.2c2.1-2.5,3.3-5.6,3.4-8.9
+	c0-0.4,0-0.9-0.1-1.3c-3.6,0.4-7,2.1-9.4,4.9c-2.1,2.4-3.4,5.5-3.5,8.7c0,0.4,0,0.8,0.1,1.2c0.3,0.1,0.6,0.1,0.9,0.1
+	C36.1,14.5,39.3,12.8,41.4,10.2z" />
+          </svg>
+          <svg style="margin: 1px 5px 0px 5px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" width="14px" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;"
+            xml:space="preserve">
+            <g fill="#A9AEB6" transform="translate(271.22 -22.579)">
+              <rect x="-271.2" y="22.6" width="30.3" height="30.3" />
+              <rect x="-237.6" y="22.6" width="30.3" height="30.3" />
+              <rect x="-271.2" y="56.2" width="30.3" height="30.3" />
+              <rect x="-237.6" y="56.2" width="30.3" height="30.3" />
+            </g>
+          </svg>
+          <svg style="margin: 2px 5px 0px 5px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="17px" viewBox="0 0 64 64"
+            style="enable-background:new 0 0 64 64;" xml:space="preserve">
+            <path fill="#A9AEB6" d="M50.3,60.3c1.7-2.1,4.5-2.8,6.4-3.9c0.9-0.6,1.7-1.3,1.7-2.3c0.1-1-0.5-2.2-1.9-3.7c-0.5-0.5-0.7-1.5-0.9-2.5
+	c-0.2-1-0.5-2.1-1.3-2.8c-0.2-0.1-0.3-0.3-0.5-0.4c-0.2-0.1-0.3-0.2-0.5-0.2c1.1-3.4,0.7-6.8-0.5-9.9c-1.4-3.8-3.9-7.1-5.8-9.3
+	c-2.1-2.7-4.2-5.2-4.2-9C42.9,10.7,43.4,0,33.3,0c-0.4,0-0.8,0-1.3,0.1C20.7,1,23.7,12.9,23.6,16.9c-0.2,2.9-0.8,5.2-2.8,8.1
+	c-2.4,2.8-5.7,7.4-7.3,12.1c-0.7,2.2-1.1,4.5-0.8,6.7c-0.1,0.1-0.2,0.2-0.3,0.3c-0.7,0.7-1.2,1.6-1.8,2.2c-0.5,0.5-1.3,0.7-2.1,1
+	c-0.8,0.3-1.8,0.7-2.3,1.8C6,49.5,6,50,6,50.6c0,0.5,0.1,1,0.1,1.5c0.2,1,0.3,2,0.1,2.6c-0.7,1.8-0.7,3.1-0.3,4
+	c0.5,0.9,1.4,1.3,2.5,1.5c2.2,0.5,5.1,0.3,7.4,1.6c2.5,1.3,5,1.8,7,1.3c1.5-0.3,2.6-1.2,3.2-2.5c1.6,0,3.3-0.7,6-0.8
+	c1.9-0.1,4.2,0.7,6.9,0.5c0.1,0.3,0.2,0.6,0.3,0.8c1,2.1,3,3,5,2.9c2.1-0.2,4.3-1.4,6-3.5 M33,14.2c-0.5-0.3-1.2-0.4-1.6-0.6
+	c0.1-0.2,0.1-0.4,0.1-0.6c0-0.8,0.1-1.4,0.4-2.1c0.3-0.7,0.6-1.1,1.1-1.5s1-0.6,1.6-0.6s1.1,0.2,1.6,0.5c0.5,0.4,0.9,0.8,1.2,1.5
+	c0.3,0.6,0.4,1.3,0.4,2c0,0,0,0,0,0.1c0,0.8-0.1,1.4-0.4,2.1c-0.2,0.4-0.4,0.7-0.6,1c-0.1,0-0.2-0.1-0.2-0.1
+	c-0.3-0.1-0.5-0.2-0.8-0.3c-0.2-0.1-0.4-0.1-0.6-0.2 M26.6,15.4c-0.2,0.1-0.3,0.2-0.5,0.4c-0.1,0.1-0.2,0.2-0.4,0.3
+	c-0.3-0.3-0.5-0.6-0.7-1.1c-0.2-0.6-0.4-1.1-0.4-1.7c0-0.8,0.1-1.4,0.3-1.9c0.2-0.6,0.4-1,0.8-1.3c0.3-0.3,0.7-0.5,1.1-0.5h0.1
+	c0.4,0,0.7,0.1,1.1,0.4c0.4,0.3,0.7,0.7,0.9,1.2c0.2,0.6,0.4,1.1,0.4,1.7c0,0.3,0,0.5,0,0.8c-0.1,0-0.1,0-0.2,0.1
+	c-0.4,0.1-0.7,0.3-1.1,0.5 M25.7,17.4c0.6-0.4,0.8-0.6,1.1-0.8c0.3-0.2,0.5-0.4,0.6-0.5c0.4-0.4,1.1-0.9,2.1-1.3
+	c0.4-0.1,0.7-0.2,1.1-0.2c0.9,0,1.3,0,2.6,0.8c0.8,0.5,1.2,0.6,2.6,1.2c0.7,0.3,1.2,0.5,1.5,0.8c0.3,0.3,0.5,0.6,0.3,1
+	c-0.3,0.9-1.4,1.3-2.8,1.8c-0.7,0.2-1.3,0.6-2.1,1.1c-0.7,0.4-1.1,0.7-2.2,0.6c-0.5,0-0.8,0-1.1-0.2c-0.3-0.1-0.7-0.4-1-0.6
+	c-0.5-0.4-1-0.7-1.6-1.1c-1.1-0.6-1.8-1-1.9-1.6C24.8,18,25.1,17.8,25.7,17.4z M22.5,61.9c-1.7,0.4-3.7-0.2-6-1.4
+	c-2.6-1.4-5.6-1.3-7.5-1.7c-1-0.2-1.4-0.2-1.7-0.8c-0.3-0.6-0.3-1.2,0.3-2.9c0.3-1,0.2-2.2,0-3.2c-0.1-1-0.4-1.4-0.1-2
+	C8,49.1,8.3,48.8,9,48.5c0.8-0.3,2.2-0.4,2.9-1.1c0.7-0.7,1-1.4,1.6-2.1c0.5-0.5,0.5-1,1.3-1c0.1,0,0.6,0,0.7,0
+	c1,0.1,1.3,0.5,2.1,1.6l2.2,4.4c0.6,1.4,2.1,2.9,3.3,4.5c1.3,1.4,1.9,2.7,1.8,3.9C24.6,60.7,24.2,61.5,22.5,61.9z M19.7,45.8
+	C19.5,45.4,19,44.6,19,44c0,0,0-1.7,0-1.8c0.1-2.6,0.7-5.2,1.7-7.7c1.5-3.4,4.7-9.4,4.9-14.1c0.1,0.1,0.6,0.4,0.8,0.5
+	c0.6,0.3,1,0.8,1.6,1.3c0.6,0.5,1.3,0.8,2.3,0.9c0.1,0,0.2,0,0.3,0c1.1,0,2-0.4,2.7-0.8c0.8-0.4,1.4-0.9,2-1.1
+	c1.2-0.4,2.2-1.1,2.8-1.9c1,3.8,3.2,9.3,4.6,12c0.8,1.4,2.3,4.4,2.9,8.1c0.1,0.6,0.1,1,0.1,1.1c0,0.6-0.2,0.8-0.7,1.3
+	c-0.1,0.1-0.8,0.7-1.1,0.8c-0.2,0.1-0.4,0.2-0.6,0.3c-1.1,0.6-1.8,1.8-2.1,3.2c-0.4,1.4-0.4,3.1-0.5,5c-0.1,1-0.5,2.3-0.9,3.6
+	c-4.1,2.7-9.7,4-14.4,0.8c-0.3-0.5-0.7-1-1.1-1.5c-0.2-0.3-0.5-0.6-0.7-0.9 M55.2,55.4c-1.7,1-4.1,1.7-6,4c-1.7,2-3.1,3-4.8,3.1
+	c-1.8,0.1-2.9-0.4-3.8-2.2c-0.6-1.1,0-2.4,0.4-4.2c0.5-1.8,1.2-3.6,1.3-5.1c0.1-1.9,0.2-3.6,0.5-4.8c0.3-1.3,0.5-1.5,1.3-2.1
+	c0,0,0.9-0.5,1.1-0.6c0.3-0.2,1.2-1.2,2.7-0.8c1.6,0.4,1.1,2.2,2.4,3.1c0.2,0,0.8-0.1,1-0.1c0.8,0,1.1,0,1.9,0.7
+	c0.6,0.5,0.9,1.5,1.1,2.5c0.2,1-0.1,2.5,0.9,2.8c1.5,0.6,1.7,1.8,1.7,2.4C56.8,54.7,56,54.9,55.2,55.4z" />
+          </svg>
+        </div>
+        <div style="margin: 0rem 1.5rem; text-align: center; width: 260px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">Optional for beta testing, offered as a way to support the project early.</span>
+        </div>
       </div>
-      <!-- </form> -->
     </div>
-    <div style="padding: 0rem 1rem 4rem 0rem; display: flex; align-items: center; justify-content: center; width: 100%;">
+    <div
+      style="padding: 0rem 1rem 4rem 0rem; display: flex; align-items: center; justify-content: center; width: 100%;">
       <div class="videoDemoContainer">
-      <video class="videoDemo" autoplay="true" loop="" muted="" width="100%" poster="Assets/Search.png">
-			  <source src="FileDonkey demo.mp4" type="video/mp4">
-			  Your browser does not support the video tag.
-		</video>
+        <video class="videoDemo" autoplay="true" loop="" muted="" width="100%" poster="Assets/Search.png">
+          <source src="FileDonkey demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
     </div>
-  </div>
     <div class="keyFeaturesSection">
       <div class="keyFeaturesContent">
         <div style="display: flex; align-items: center; justify-content: center;">
@@ -627,50 +656,4 @@
     </span>
   </footer>
 </body>
-<script>
-  const waitlistCountEl = document.querySelector("#waitlistCount");
-  const emailInput = document.querySelector("#email");
-  const submitBtn = document.querySelector("#submit");
-  console.dir(submitBtn);
-
-  setTimeout(async () => {
-    const res = await fetch("https://api.filedonkey.app/waitlistcount");
-    const resJSON = await res.json();
-    if (resJSON.status !== 'OK') return;
-    waitlistCountEl.style.setProperty("--waitlistcount", resJSON.result.count);
-  });
-
-  emailInput.addEventListener('keydown', (event) => {
-    if(event.key !== "Enter") return;
-    emailInput.blur();
-    submitBtn.click();
-    event.preventDefault();
-  });
-
-  submitBtn.addEventListener("click", async () => {
-    try {
-      const email = emailInput.value.trim();
-      const emailFormat = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-      if (emailFormat.test(email) === false) throw new Error('Invalid email');
-      console.log('Notify Me:', email);
-      if (!email.length) throw new Error('Email is empty');
-      const res = await fetch("https://api.filedonkey.app/newsletter", {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({ email })
-      });
-      console.log(res);
-      const waitlistCount = Number(waitlistCountEl.style.getPropertyValue("--waitlistcount"));
-      waitlistCountEl.style.setProperty("--waitlistcount", waitlistCount + 1);
-      // const resJSON = await res.json();
-      // if (resJSON.status !== 'OK') throw new Error('Server response is not OK');
-      submitBtn.innerText = "Done ✔";
-      submitBtn.style.color = "rgba(20, 16, 11, 0.9)";
-      submitBtn.style.backgroundColor = "rgb(254, 247, 249)";
-    } catch (error) {
-      console.error('Submit email error:', error.message);
-    }
-  });
-</script>
-
 </html>
