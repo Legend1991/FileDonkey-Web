@@ -88,7 +88,7 @@
 
     .keyFeaturesList {
       list-style: none;
-      padding: 1rem 0 6rem 0;
+      padding: 1rem 0 0rem 0;
       margin: 0 0 0rem;
 
       /* A flex row rather than the hanging indent this list used to use. That put the first line
@@ -160,7 +160,7 @@
       border: 1px solid #3d4046;
     }
 
-    #crown {
+    .crown {
       width: 34px;
       height: 34px;
       display: block;
@@ -199,7 +199,7 @@
       /* background-color: red; */
       display: flex;
       justify-content: center;
-      padding: 6rem 1rem 8rem 1rem;
+      padding: 6rem 1rem 7rem 1rem;
     }
 
     .platformIcon {
@@ -315,14 +315,14 @@
       font-weight: 500;
     }
 
-    .keyFeaturesSection {
+    .contentSection {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 0rem 1rem 6rem 1rem;
     }
 
-    .keyFeaturesContent {
+    .contentColumn {
       color: #A9AEB6;
       text-align: left;
       max-width: 45rem;
@@ -337,7 +337,89 @@
       margin-bottom: 3px;
     }
 
-    .keyFeaturesTitle {
+    /* Opens each feature line so the list can be skimmed in a couple of seconds rather than read
+       through. Roboto-Medium rather than a bold weight: the faces here are single-weight
+       @font-face files, so asking for bold would have the browser synthesise one. */
+    .leadIn {
+      color: #E8E9EC;
+      font-family: Roboto-Medium, sans-serif;
+      font-weight: 500;
+    }
+
+    /* The three steps. A row on a wide screen, because the numbers read as a sequence that way,
+       stacking to a column at the 600px breakpoint below. */
+    .stepList {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      padding: 2rem 0 0 0;
+      margin: 0;
+      text-indent: 0;
+    }
+
+    .stepList li {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-indent: 0;
+      line-height: 1.5rem;
+    }
+
+    .stepNumber {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      /* Centred across the step rather than sitting against its left edge. The li is a flex
+         column with align-items:flex-start, so this one item opts out of that. */
+      align-self: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      border: 1px solid #3d4046;
+      background: #26282C;
+      color: #C7CBD1;
+      font-family: Roboto-Medium, sans-serif;
+      font-size: 16px;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    /* One flowing block, opened by a bold phrase, the same shape as a key feature line. The li is
+       a flex column whose align-items is flex-start, so this stretches to the full column width -
+       otherwise it would size to its content and text-align would have nothing to centre within. */
+    .stepText {
+      align-self: stretch;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.5rem;
+    }
+
+    /* The last thing on the page used to be the copyright line, so a reader convinced by the demo
+       had to scroll back up to act. */
+    .closingSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      /* No bottom padding: the repeated buttons block that follows brings its own 6rem top. */
+      padding: 0rem 1rem 0rem 1rem;
+    }
+
+    .closingBody {
+      color: #A9AEB6;
+      /* Matches .contentColumn, so this paragraph measures the same as the section above it. */
+      max-width: 45rem;
+      padding: 1.25rem 0rem 0rem 0rem;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.7rem;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .sectionTitle {
       font-size: 24px;
       font-family: Roboto-Medium, sans-serif;
       line-height: 1.7rem;
@@ -387,7 +469,7 @@
         padding: 4rem 4rem 0rem 4rem;
       }
 
-      .keyFeaturesTitle {
+      .sectionTitle {
         font-size: 22px;
         font-family: Roboto-Medium, sans-serif;
         line-height: 1.7rem;
@@ -400,7 +482,7 @@
         padding: 3rem 3rem 0rem 3rem;
       }
 
-      .keyFeaturesTitle {
+      .sectionTitle {
         font-size: 18px;
         font-family: Roboto-Medium, sans-serif;
         line-height: 1.7rem;
@@ -458,6 +540,17 @@
         li {
           padding-top: 0.3rem;
         }
+      }
+
+      .stepList {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-top: 1.5rem;
+      }
+
+      .closingBody {
+        font-size: 17px;
+        line-height: 1.5rem;
       }
 
       .videoDemo {
@@ -610,7 +703,7 @@
         </div>
       </div>
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <a class="button" href="/preorder">Preorder Full v1 Release<img id="crown" src="crown.svg" alt="" /></a>
+        <a class="button" href="/preorder">Preorder Full v1 Release<img class="crown" src="crown.svg" alt="" /></a>
         <div style="margin: 1rem 3rem; display: flex; align-items: center; justify-content: center;">
           <span style="color: #A9AEB6;">v1.x.x</span>
           <div style="width: 0px; border-right: 1px solid #A9AEB6; height: 80%; margin: 0px 6px 0px 12px;"></div>
@@ -655,31 +748,135 @@
         files open as though they had been on this machine all along.
       </div>
     </div>
-    <div class="keyFeaturesSection">
-      <div class="keyFeaturesContent">
+    <div class="contentSection">
+      <div class="contentColumn">
         <div style="display: flex; align-items: center; justify-content: center;">
-          <span class="keyFeaturesTitle">Key Features</span>
+          <span class="sectionTitle">How It Works</span>
+        </div>
+        <ol class="stepList">
+          <!-- Lead and sentence share one span for the same reason the feature bullets do: an
+               element child of a flex container becomes its own flex item, so a bare <strong>
+               here would be laid out as a row of its own rather than reading as part of the text. -->
+          <li>
+            <span class="stepNumber">1</span>
+            <span class="stepText"><strong class="leadIn">Install it on both machines.</strong> One installer per
+              computer. No account to create, no server to set up, nothing to sign up for.</span>
+          </li>
+          <li>
+            <span class="stepNumber">2</span>
+            <span class="stepText"><strong class="leadIn">They find each other.</strong> Any two machines on the same
+              network pair themselves. Nothing to type, no address to go and look up.</span>
+          </li>
+          <li>
+            <span class="stepNumber">3</span>
+            <span class="stepText"><strong class="leadIn">Open the disk.</strong> The other machine appears in your file
+              manager. Work from it exactly as you would a drive of your own.</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="contentSection">
+      <div class="contentColumn">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <span class="sectionTitle">Key Features</span>
         </div>
         <ul class="keyFeaturesList">
-          <li><img class="featureIcon" src="lock.svg" alt="" />No cloud account, no subscription and no uploads — your
-            files never leave your local network</li>
-          <li><img class="featureIcon" src="sync.svg" alt="" /> Nothing to copy and nothing to sync — open a file
-            straight from the other device and you have the current version</li>
-          <li><img class="featureIcon" src="mouse.svg" alt="" /> Works inside Finder, File Explorer and your Linux file
-            manager — drag, drop, open and save exactly as usual</li>
-          <li><img class="featureIcon" src="folder.svg" alt="" /> You choose the one folder each device shares;
-            everything outside it stays invisible</li>
-          <li><img class="featureIcon" src="flash.svg" alt="" /> Zero configuration — install it, and devices on the
-            same network find each other on their own</li>
-          <li><img class="featureIcon" src="phone.svg" alt="" /> Mac, Windows and Linux today, with Android and iPhone
-            support planned</li>
+          <!-- The text is wrapped in a span deliberately. Every element child of a flex container
+               becomes its own flex item, so a bare <strong> here would be laid out as a second
+               column beside the sentence rather than reading as part of it. -->
+          <li><img class="featureIcon" src="lock.svg" alt="" /><span><strong class="leadIn">No cloud account, no subscription.</strong> Your files never leave your local network — nothing
+              uploaded</span></li>
+          <li><img class="featureIcon" src="sync.svg" alt="" /><span><strong class="leadIn">Nothing to copy or
+                sync.</strong> Open a file straight from the other machine and you have the current version</span></li>
+          <li><img class="featureIcon" src="mouse.svg" alt="" /><span><strong class="leadIn">Lives in your file
+                manager.</strong> Finder, File Explorer and your Linux file manager — drag, drop, open and save as
+              usual</span></li>
+          <li><img class="featureIcon" src="folder.svg" alt="" /><span><strong class="leadIn">You decide what is
+                visible.</strong> Each machine shares one folder you choose; everything outside it stays
+              invisible</span></li>
+          <li><img class="featureIcon" src="flash.svg" alt="" /><span><strong class="leadIn">Zero
+                configuration.</strong> Install it, and machines on the same network find each other on their
+              own</span></li>
+          <li><img class="featureIcon" src="phone.svg" alt="" /><span><strong class="leadIn">Mac, Windows and Linux
+                today.</strong> Android and iPhone support planned</span></li>
         </ul>
+      </div>
+    </div>
+    <div class="contentSection">
+      <div class="contentColumn">
         <div style="display: flex; align-items: center; justify-content: center;">
-          <span class="keyFeaturesTitle">Important files, instantly accessible wherever you need them</span>
+          <span class="sectionTitle">Why not just use a network share?</span>
         </div>
-        <div style="display: flex; align-items: center; justify-content: center; padding: 1rem 0 0 1.85rem">
-          FileDonkey turns the machines you already own into one filesystem, so the file
-          you need is simply there when you need it.
+        <div style="padding: 1.75rem 0rem 0rem 0rem;">
+          Windows file sharing, Samba and AFP all exist, and on a good day they work. The bad days are the
+          problem: a password you set two years ago and have not thought about since, a workgroup name that
+          has to match, a NAS that speaks one dialect to your Mac and another to your PC, and a mount that
+          quietly disappears the next time the router hands out a different address.
+        </div>
+        <div style="padding: 1.25rem 0rem 0rem 0rem;">
+          <strong class="leadIn">FileDonkey</strong> removes that setup rather than documenting it. Machines announce themselves and appear
+          on their own, each one shares only the folder you point it at, and it behaves the same on Mac,
+          Windows and Linux — so reaching a file stops depending on which computer you happen to be sitting at.
+        </div>
+      </div>
+    </div>
+    <div class="closingSection">
+      <span class="sectionTitle">Important files, instantly accessible wherever you need them</span>
+      <div class="closingBody">
+        FileDonkey turns the machines you already own into one filesystem. Install it on two of them and
+        see how long it takes before you stop thinking about where a file lives.
+      </div>
+    </div>
+    <!-- The same block as the one below the hero, repeated so the page ends on the choice rather
+         than on the copyright line. The crown is a class rather than an id precisely because it
+         now appears twice. -->
+    <div class="downloadSection" style="padding-top: 7rem;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <a class="button button-secondary" href="/downloads">Download Free Beta</a>
+        <div style="margin: 1rem 3rem; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">v0.5.0</span>
+          <div style="width: 0px; border-right: 1px solid #A9AEB6; height: 80%; margin: 0px 6px 0px 12px;"></div>
+          <span class="platformIcon" data-os="macOS (Intel and Apple silicon)" tabindex="0" role="img"
+            aria-label="macOS (Intel and Apple silicon)">
+            <img style="margin: 0px 5px 3px 5px" width="18px" src="macos.svg" alt="" />
+          </span>
+          <span class="platformIcon" data-os="Windows (x86_64)" tabindex="0" role="img" aria-label="Windows (x86_64)">
+            <img style="margin: 1px 5px 0px 5px" width="14px" src="windows.svg" alt="" />
+          </span>
+          <span class="platformIcon" data-os="Linux (deb, rpm)" tabindex="0" role="img" aria-label="Linux (deb, rpm)">
+            <img style="margin: 2px 5px 0px 5px" width="17px" src="linux.svg" alt="" />
+          </span>
+        </div>
+        <div
+          style="margin: 0rem 1.5rem; text-align: center; width: 260px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">Free beta stays available until v1.0. Buy a license when you are ready.</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <a class="button" href="/preorder">Preorder Full v1 Release<img class="crown" src="crown.svg" alt="" /></a>
+        <div style="margin: 1rem 3rem; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">v1.x.x</span>
+          <div style="width: 0px; border-right: 1px solid #A9AEB6; height: 80%; margin: 0px 6px 0px 12px;"></div>
+          <span class="platformIcon" data-os="macOS (Intel and Apple silicon)" tabindex="0" role="img"
+            aria-label="macOS (Intel and Apple silicon)">
+            <img style="margin: 0px 5px 3px 5px" width="18px" src="macos.svg" alt="" />
+          </span>
+          <span class="platformIcon" data-os="Windows (x86_64)" tabindex="0" role="img" aria-label="Windows (x86_64)">
+            <img style="margin: 1px 5px 0px 5px" width="14px" src="windows.svg" alt="" />
+          </span>
+          <span class="platformIcon" data-os="Linux (deb, rpm)" tabindex="0" role="img" aria-label="Linux (deb, rpm)">
+            <img style="margin: 2px 5px 0px 5px" width="17px" src="linux.svg" alt="" />
+          </span>
+          <span class="platformIcon" data-os="Android (support planned)" tabindex="0" role="img" aria-label="Android (support planned)">
+            <img style="margin: 1px 5px 0px 5px" width="22px" src="android.svg" alt="" />
+          </span>
+          <span class="platformIcon" data-os="iOS (support planned)" tabindex="0" role="img" aria-label="iOS (support planned)">
+            <img style="margin: 1px 5px 0px 5px" width="18px" src="iOS.svg" alt="" />
+          </span>
+        </div>
+        <div
+          style="margin: 0rem 1.5rem; text-align: center; width: 260px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">Optional for beta testing, offered as a way to support the project early.</span>
         </div>
       </div>
     </div>
