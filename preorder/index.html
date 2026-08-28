@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" sizes="64x64" href="/FileDonkey_Icon.png" type="image/png">
+  <link rel="shortcut icon" href="/FileDonkey_Icon.png" type="image/png">
+  <title>FileDonkey - Preorder</title>
+  <meta name="description"
+    content="Preorders for FileDonkey v1.0 are not open yet. The beta is free in the meantime, and the mailing list will carry the news the day preorders open.">
+
+  <style>
+    /* Absolute font paths, not relative. This page lives one directory down, so url('Roboto-Regular.ttf')
+       would resolve to /preorder/Roboto-Regular.ttf and silently fall back to a system face. */
+    @font-face {
+      font-family: Roboto;
+      src: url('/Roboto-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: Roboto-Medium;
+      src: url('/Roboto-Medium.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: Roboto-Condensed;
+      src: url('/Roboto-Condensed.ttf') format('truetype');
+    }
+
+    html,
+    body {
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .contentSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 1rem 0rem 1rem;
+    }
+
+    .contentColumn {
+      color: #A9AEB6;
+      text-align: left;
+      max-width: 45rem;
+      width: 100%;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.7rem;
+      font-weight: 500;
+    }
+
+    .docTitle {
+      color: #E8E9EC;
+      font-size: 30px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 2.4rem;
+      font-weight: 900;
+      padding: 3rem 0rem 0rem 0rem;
+    }
+
+    p {
+      margin: 0;
+      padding: 1.25rem 0rem 0rem 0rem;
+    }
+
+    .leadIn {
+      color: #E8E9EC;
+      font-family: Roboto-Medium, sans-serif;
+      font-weight: 500;
+    }
+
+    .callout {
+      border: 1px solid #3D4046;
+      border-left: 3px solid #C7CBD1;
+      border-radius: 6px;
+      background: #26282C;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0rem 0rem 0rem;
+    }
+
+    .callout p:first-child {
+      padding-top: 0;
+    }
+
+    .contentColumn a {
+      color: #E8E9EC;
+      text-decoration: underline;
+    }
+
+    .contentColumn a:hover {
+      color: #FFFFFF;
+    }
+
+    /* ---- Carried over from the home page, so the two blocks below read identically there and here ---- */
+
+    button,
+    .button {
+      border-radius: 6px;
+      padding: 12px 12px 12px 12px;
+      border-width: 0;
+      background-color: #C7CBD1;
+      color: #0C0D0F;
+      font-size: 18px;
+      font-family: Roboto-Medium, sans-serif;
+    }
+
+    .button {
+      position: relative;
+      margin: 0rem 3rem;
+      height: 32px;
+      width: 200px;
+      text-align: center;
+      align-content: center;
+    }
+
+    .button-secondary {
+      background-color: #26282c;
+      color: #C7CBD1;
+      border: 1px solid #3d4046;
+    }
+
+    button {
+      height: 56px;
+      width: 105px;
+    }
+
+    button:hover,
+    .button:hover {
+      cursor: pointer;
+      background-color: #E8E9EC;
+    }
+
+    button:active,
+    .button:active {
+      cursor: pointer;
+      background-color: #A9AEB6;
+    }
+
+    .button-secondary:hover {
+      background-color: #2F3238;
+    }
+
+    .button-secondary:active {
+      background-color: #212226;
+    }
+
+    .downloadSection {
+      display: flex;
+      justify-content: center;
+      padding: 3rem 1rem 5rem 1rem;
+    }
+
+    .platformIcon {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .platformIcon::after {
+      content: attr(data-os);
+      position: absolute;
+      top: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #E8E9EC;
+      color: #0C0D0F;
+      font-size: 0.8rem;
+      line-height: 1;
+      white-space: nowrap;
+      padding: 6px 8px;
+      border-radius: 3px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease;
+      pointer-events: none;
+    }
+
+    .platformIcon:hover::after,
+    .platformIcon:focus-visible::after {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    input[type="email"] {
+      /* This page carries a doctype, so height is the content box and the padding and border below
+         would otherwise be added on top of it. */
+      box-sizing: border-box;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      height: 64px;
+      width: 500px;
+      color: #C7CBD1;
+      padding: 6px 13px;
+      border: 1px solid rgb(61, 64, 70);
+      border-radius: 9px;
+      background: #26282C;
+    }
+
+    .newsLetterSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0rem 1rem 6rem 1rem;
+    }
+
+    .newsLetterLabel {
+      color: #E8E9EC;
+      display: flex;
+      flex-direction: row;
+      padding: 0rem 5rem 0rem 5rem;
+      text-align: left;
+      align-items: center;
+      font-size: 18px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 2rem;
+      font-weight: 400;
+    }
+
+    .newsLetterLabel>nobr>a {
+      color: #E8E9EC;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .newsLetterForm {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      align-items: center;
+      padding: 1.75rem 0rem 1.75rem 0rem;
+      max-width: 500px;
+    }
+
+    .newsLetterCount {
+      color: #E8E9EC;
+      display: flex;
+      flex-direction: row;
+      padding: 0rem 5rem 0rem 5rem;
+      text-align: left;
+      align-items: center;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 2rem;
+      font-weight: 400;
+    }
+
+    @property --sublistcount {
+      syntax: "<integer>";
+      initial-value: 577;
+      inherits: false;
+    }
+
+    #sublistCount {
+      transition: --sublistcount 1s;
+      counter-set: sublistcount var(--sublistcount);
+      font-family: Roboto-Medium, sans-serif;
+    }
+
+    #sublistCount::after {
+      content: counter(sublistcount);
+    }
+
+    .footerInner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 1.75rem 1rem;
+      color: #A9AEB6;
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+    }
+
+    .footerLinks {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+
+    .footerLinks a {
+      color: #E8E9EC;
+    }
+
+    .footerLinks a:hover {
+      color: #E8E9EC;
+      text-decoration: underline;
+    }
+
+    .footerSep {
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      color: #A9AEB6;
+    }
+
+    @media (max-width: 760px) {
+      .docTitle {
+        font-size: 26px;
+        line-height: 2.1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contentColumn {
+        font-size: 17px;
+        line-height: 1.6rem;
+      }
+
+      .docTitle {
+        font-size: 23px;
+        line-height: 1.9rem;
+      }
+
+      .callout {
+        padding: 1rem 1.15rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      input[type="email"] {
+        font-size: 16px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
+  <header
+    style="background-color: #191A1D; border-bottom: 1px solid #2B2D31; width: 100%; display: flex; justify-content: center; flex-shrink: 0;">
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 4rem; width: 60rem;">
+      <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
+        <a href="/" style="display: flex; align-items: center;">
+          <img src="/FileDonkey_Icon.png" alt="FileDonkey" style="width: 2.3rem; height: 2.3rem;" />
+          <span style="width: 1rem;"></span>
+          <span style="color: #E8E9EC; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+            FileDonkey
+          </span>
+        </a>
+      </div>
+      <div
+        style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
+        <div style="padding: 0rem 0rem 0rem 1.5rem;">
+          <a href="https://x.com/filedonkeyapp" target="_blank">
+            <img src="/x-follow.svg" alt="FileDonkey on Twitter" style="width: 86px; height: 32px;" width="86"
+              height="32" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex: 1; background-color: #1E1F22;">
+    <div class="contentSection">
+      <div class="contentColumn">
+
+        <span class="docTitle">Thank you for wanting to back this</span>
+
+        <p>
+          There is no checkout on this page yet, and that is our doing rather than anything you did wrong.
+        </p>
+
+        <p>
+          <strong class="leadIn">FileDonkey</strong> is a one-person operation. Taking money properly means a payment provider, invoices, and
+          tax handled correctly in every country a buyer might be sitting in. None of that is worth doing
+          quickly, so preorders stay shut until it is done rather than opening on something half-finished.
+        </p>
+
+        <p>
+          That you got this far counts for more than it might seem. A free download tells us the software
+          works. Someone reaching for their wallet before there is anything to buy tells us it is worth
+          finishing.
+        </p>
+
+        <div class="callout">
+          <p>
+            <strong class="leadIn">When preorders open,</strong> everyone who backs the project early gets
+            v1.0 free on the day it ships and keeps the launch price for good. Join the list below and you
+            will hear the moment it happens — one email about it, not a drip campaign.
+          </p>
+        </div>
+
+        <p>
+          In the meantime the beta is free, and it is the whole application rather than a trimmed-down
+          version of it.
+        </p>
+
+      </div>
+    </div>
+
+    <!-- The Download Free Beta block, identical to the one on the home page. -->
+    <div class="downloadSection">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <a class="button" href="/downloads">Download Free Beta</a>
+        <div style="margin: 1rem 3rem; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">v0.5.0</span>
+          <div style="width: 0px; border-right: 1px solid #A9AEB6; height: 80%; margin: 0px 6px 0px 12px;"></div>
+          <span class="platformIcon" data-os="macOS (Intel and Apple silicon)" tabindex="0" role="img"
+            aria-label="macOS (Intel and Apple silicon)">
+            <img style="margin: 0px 5px 3px 5px" width="18px" src="/macos.svg" alt="" />
+          </span>
+          <span class="platformIcon" data-os="Windows (x86_64)" tabindex="0" role="img" aria-label="Windows (x86_64)">
+            <img style="margin: 1px 5px 0px 5px" width="14px" src="/windows.svg" alt="" />
+          </span>
+          <span class="platformIcon" data-os="Linux (deb, rpm)" tabindex="0" role="img" aria-label="Linux (deb, rpm)">
+            <img style="margin: 2px 5px 0px 5px" width="17px" src="/linux.svg" alt="" />
+          </span>
+        </div>
+        <div
+          style="margin: 0rem 1.5rem; text-align: center; width: 280px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #A9AEB6;">Free through every beta release up to v1.0. No account and no card
+            required.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- The mailing list block, identical to the one on the home page. -->
+    <div class="newsLetterSection">
+      <div class="newsLetterLabel">
+        <nobr><a href="mailto:support@filedonkey.app">Contact us</a> or join our mailing list for updates</nobr>
+      </div>
+      <div class="newsLetterForm">
+        <input type="email" id="email" placeholder="Type your email" name="fname">
+        <div style="position: absolute; right: 4px;">
+          <button id="submit" type="submit">Subscribe</button>
+        </div>
+      </div>
+      <div class="newsLetterCount">
+        <nobr><span id="sublistCount"></span> people already following along</nobr>
+      </div>
+    </div>
+  </main>
+
+  <footer
+    style="background-color: #191A1D; border-top: 1px solid #2B2D31; min-height: 6rem; flex-shrink: 0; display: flex; justify-content: center; align-items: center;">
+    <div class="footerInner">
+      <div class="footerLinks">
+        <a href="/">Home</a>
+        <span class="footerSep">·</span>
+        <a href="/license-commercial">Licensing</a>
+        <span class="footerSep">·</span>
+        <a href="/privacy">Privacy</a>
+        <span class="footerSep">·</span>
+        <a href="mailto:support@filedonkey.app">Contact</a>
+      </div>
+      <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const sublistCountEl = document.querySelector("#sublistCount");
+    const emailInput = document.querySelector("#email");
+    const submitBtn = document.querySelector("#submit");
+
+    emailInput.addEventListener('keydown', (event) => {
+      if (event.key !== "Enter") return;
+      emailInput.blur();
+      submitBtn.click();
+      event.preventDefault();
+    });
+
+    submitBtn.addEventListener("click", async () => {
+      try {
+        const email = emailInput.value.trim();
+        const emailFormat = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        if (emailFormat.test(email) === false) throw new Error('Invalid email');
+        if (!email.length) throw new Error('Email is empty');
+        const res = await fetch("https://api.filedonkey.app/newsletter", {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({ email })
+        });
+        const sublistCount = Number(sublistCountEl.style.getPropertyValue("--sublistcount"));
+        sublistCountEl.style.setProperty("--sublistcount", sublistCount + 1);
+        submitBtn.innerText = "Done ✔";
+        submitBtn.style.color = "rgba(20, 16, 11, 0.9)";
+        submitBtn.style.backgroundColor = "rgb(254, 247, 249)";
+      } catch (error) {
+        console.error('Submit email error:', error.message);
+      }
+    });
+  </script>
+</body>
+
+</html>
