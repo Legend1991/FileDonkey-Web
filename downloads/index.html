@@ -198,6 +198,169 @@
       align-self: center;
     }
 
+    /* ---- What to do with the file that just landed ----
+
+       The section below the hero, its column, its heading and its three steps are the home page's
+       How It Works block, rule for rule, so the two read as one thing. Only the visibility is new:
+       all three sections are hidden until a download button is clicked. */
+
+    /* .contentSection sets a display, which would beat the [hidden] { display: none } in the
+       browser's own stylesheet - so hiding has to be said again here, more specifically. */
+    .nextSteps[hidden] {
+      display: none;
+    }
+
+    .contentSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0rem 1rem 6rem 1rem;
+    }
+
+    .contentColumn {
+      color: #A9AEB6;
+      text-align: left;
+      max-width: 45rem;
+      width: 100%;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.7rem;
+      font-weight: 500;
+      /* The command line is white-space: pre and so has no wrap point of its own. A flex item will
+         not shrink below its content's minimum, so without this that line becomes this column's
+         minimum width and the page runs off the side of a phone. */
+      min-width: 0;
+    }
+
+    .sectionTitle {
+      font-size: 24px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 1.7rem;
+      font-weight: 900;
+      color: #E8E9EC;
+    }
+
+    /* Opens each step, and names the on-screen controls inside one. */
+    .leadIn {
+      color: #E8E9EC;
+      font-family: Roboto-Medium, sans-serif;
+      font-weight: 500;
+    }
+
+    /* A row on a wide screen, because the numbers read as a sequence that way, stacking to a column
+       at the 600px breakpoint below. */
+    .stepList {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      padding: 2.5rem 0 0 0;
+      margin: 0;
+    }
+
+    .stepList li {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.5rem;
+    }
+
+    .stepNumber {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      /* Centred across the step rather than sitting against its left edge. The li is a flex column
+         with align-items:flex-start, so this one item opts out of that. */
+      align-self: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: #C7CBD1;
+      color: #0C0D0F;
+      font-family: Roboto-Medium, sans-serif;
+      font-size: 16px;
+      line-height: 1;
+      margin-bottom: 2.5rem;
+    }
+
+    /* One flowing block, opened by a bold phrase. The li is a flex column whose align-items is
+       flex-start, so this stretches to the full column width - otherwise it would size to its
+       content and text-align would have nothing to centre within. */
+    .stepText {
+      align-self: stretch;
+      font-size: 16px;
+      line-height: 1.5rem;
+    }
+
+    .stepTitle {
+      color: #E8E9EC;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Under the three steps at the full width of the column, rather than inside the step that
+       mentions it: a third of the column would make this a 200px window onto a 500px command.
+       The border and background live on this row rather than on the command itself, so the copy
+       button beside it sits inside the same box. */
+    .commandRow {
+      display: flex;
+      align-items: stretch;
+      width: fit-content;
+      /* Border-box, or the border below would be added outside the 100% and this would hang a
+         couple of pixels past the column on a phone. */
+      box-sizing: border-box;
+      max-width: 100%;
+      margin: 2.5rem auto 0rem auto;
+      border: 1px solid #3D4046;
+      border-radius: 4px;
+      background: #26282C;
+      /* The command's own corners are square; this keeps them inside the rounded ones. */
+      overflow: hidden;
+    }
+
+    .stepCommand {
+      /* A flex item will not shrink below its content, and this line has no wrap point - without
+         this the button would be pushed off the edge on a narrow screen rather than the line
+         scrolling under it. */
+      min-width: 0;
+      padding: 0.6rem 0.75rem;
+      color: #C7CBD1;
+      font-family: ui-monospace, Consolas, "DejaVu Sans Mono", monospace;
+      font-size: 14px;
+      line-height: 1.35rem;
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    /* Not a .button: that class is the page's 200px call-to-action, and this is a control sitting
+       inside a box it must not compete with. */
+    .copyButton {
+      flex: 0 0 auto;
+      /* One rule per side rather than a shorthand plus an override - the shorthand would repaint
+         the left border the row already draws between the two. */
+      border: 0;
+      border-left: 1px solid #3D4046;
+      background: transparent;
+      color: #A9AEB6;
+      font-family: Roboto-Medium, sans-serif;
+      font-size: 14px;
+      /* Wide enough for "Copied", so the row does not resize as the label changes. */
+      min-width: 5.25rem;
+      padding: 0rem 0.85rem;
+      cursor: pointer;
+    }
+
+    .copyButton:hover {
+      background: #2F3238;
+      color: #E8E9EC;
+    }
+
+    .copyButton:active {
+      background: #212226;
+    }
+
     .footerInner {
       display: flex;
       flex-direction: column;
@@ -244,12 +407,20 @@
       .appShot {
         max-width: 22rem;
       }
+
+      .sectionTitle {
+        font-size: 22px;
+      }
     }
 
     @media (max-width: 760px) {
       .docTitle {
         font-size: 26px;
         line-height: 2.1rem;
+      }
+
+      .sectionTitle {
+        font-size: 18px;
       }
     }
 
@@ -275,6 +446,12 @@
       /* One column again once two of them would be too narrow for the longest label. */
       .buttonList {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .stepList {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-top: 1.5rem;
       }
     }
 
@@ -330,27 +507,27 @@
              visitor without JavaScript still gets five working buttons rather than a page that
              depends on the detection having run. -->
         <div class="buttonList">
-          <a class="button button-secondary downloadButton" id="dl-windows"
+          <a class="button button-secondary downloadButton" id="dl-windows" data-platform="windows"
             href="/downloads/FileDonkey_v0.5.0_Beta_win64_setup.exe">
             <span class="osLogo"><img width="16px" src="/windows.svg" alt="" /></span>
             <span>Windows (.exe)</span>
           </a>
-          <a class="button button-secondary downloadButton" id="dl-macos"
+          <a class="button button-secondary downloadButton" id="dl-macos" data-platform="macos"
             href="/downloads/FileDonkey_v0.5.0_Beta_macos_universal.pkg">
             <span class="osLogo"><img width="19px" src="/macos.svg" alt="" /></span>
             <span>macOS (.pkg)</span>
           </a>
-          <a class="button button-secondary downloadButton" id="dl-debian12"
+          <a class="button button-secondary downloadButton" id="dl-debian12" data-platform="linux"
             href="/downloads/FileDonkey_v0.5.0_Beta_debian12_amd64.deb">
             <span class="osLogo"><img width="18px" src="/linux.svg" alt="" /></span>
             <span>Linux Debian 12 (.deb)</span>
           </a>
-          <a class="button button-secondary downloadButton" id="dl-debian13"
+          <a class="button button-secondary downloadButton" id="dl-debian13" data-platform="linux"
             href="/downloads/FileDonkey_v0.5.0_Beta_debian13_amd64.deb">
             <span class="osLogo"><img width="18px" src="/linux.svg" alt="" /></span>
             <span>Linux Debian 13 (.deb)</span>
           </a>
-          <a class="button button-secondary downloadButton" id="dl-fedora"
+          <a class="button button-secondary downloadButton" id="dl-fedora" data-platform="linux"
             href="/downloads/FileDonkey_v0.5.0_Beta_fedora44_x86_64.rpm">
             <span class="osLogo"><img width="18px" src="/linux.svg" alt="" /></span>
             <span>Linux Fedora 44 (.rpm)</span>
@@ -360,10 +537,113 @@
         <div class="downloadNote">
           v0.5.0 Beta · 64-bit builds. The macOS package runs on both Intel and Apple silicon.
         </div>
+
       </div>
 
       <img class="appShot" src="/filedonkey-device-list.png" width="922" height="1102"
         alt="The FileDonkey device list showing a Windows 11, Debian 13, Fedora 44 and macOS 12 machine, each with its transfer totals" />
+    </div>
+
+    <!-- One section per platform, hidden in the markup rather than by script: a visitor whose
+         JavaScript never runs sees no instructions at all, which is better than seeing all three
+         at once for platforms they did not choose. The three Linux buttons share the last section,
+         whose command line is filled in from the build that was actually clicked. -->
+    <div class="contentSection nextSteps" data-platform="windows" hidden>
+      <div class="contentColumn">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <span class="sectionTitle">Next steps on Windows</span>
+        </div>
+        <ol class="stepList">
+          <!-- Lead and sentence share one span, as they do on the home page: an element child of a
+               flex container becomes its own flex item, so a bare <strong> here would be laid out
+               as a row of its own rather than reading as part of the text. -->
+          <li>
+            <span class="stepNumber">1</span>
+            <span class="stepTitle">Open</span>
+            <span class="stepText">Run the file you just
+              downloaded. Windows Defender SmartScreen flags installers it has not seen before —
+              click <strong class="leadIn">More info</strong>, then
+              <strong class="leadIn">Run anyway</strong>.</span>
+          </li>
+          <li>
+            <span class="stepNumber">2</span>
+            <span class="stepTitle">Install</span>
+            <span class="stepText">Follow the setup
+              instructions and install the app on your system.</span>
+          </li>
+          <li>
+            <span class="stepNumber">3</span>
+            <span class="stepTitle">Launch</span>
+            <span class="stepText">FileDonkey launches on its
+              own once the installation is complete.</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="contentSection nextSteps" data-platform="macos" hidden>
+      <div class="contentColumn">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <span class="sectionTitle">Next steps on macOS</span>
+        </div>
+        <ol class="stepList">
+          <li>
+            <span class="stepNumber">1</span>
+            <span class="stepTitle">Open</span>
+            <span class="stepText">Double-click the package you
+              just downloaded. If macOS says it cannot verify the developer, open
+              <strong class="leadIn">System Settings → Privacy &amp; Security</strong> and click
+              <strong class="leadIn">Open Anyway</strong>.</span>
+          </li>
+          <li>
+            <span class="stepNumber">2</span>
+            <span class="stepTitle">Install</span>
+            <span class="stepText">Follow the installer and
+              enter your Mac password when it asks for one.</span>
+          </li>
+          <li>
+            <span class="stepNumber">3</span>
+            <span class="stepTitle">Launch</span>
+            <span class="stepText">Open FileDonkey from
+              Launchpad or your Applications folder.</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="contentSection nextSteps" data-platform="linux" hidden>
+      <div class="contentColumn">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <span class="sectionTitle">Next steps on Linux</span>
+        </div>
+        <ol class="stepList">
+          <li>
+            <span class="stepNumber">1</span>
+            <span class="stepTitle">Open</span>
+            <span class="stepText">Double-click the package to
+              open it in your software installer, or run the command below from a terminal in the
+              directory you downloaded it to.</span>
+          </li>
+          <li>
+            <span class="stepNumber">2</span>
+            <span class="stepTitle">Install</span>
+            <span class="stepText">Confirm the install and
+              enter your password when the package manager asks. It pulls in anything FileDonkey
+              depends on.</span>
+          </li>
+          <li>
+            <span class="stepNumber">3</span>
+            <span class="stepTitle">Launch</span>
+            <span class="stepText">Start FileDonkey from your
+              applications menu.</span>
+          </li>
+        </ol>
+        <div class="commandRow">
+          <code class="stepCommand"
+            id="linuxCommand">sudo apt install ~/Downloads/FileDonkey_v0.5.0_Beta_debian13_amd64.deb</code>
+          <button class="copyButton" id="copyCommand" type="button">Copy</button>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -414,6 +694,82 @@
       const el = document.getElementById(id);
       // Dropping the secondary class leaves the plain .button rule, which is the primary style.
       if (el) el.classList.remove('button-secondary');
+    })();
+
+    // The what-happens-next panel for whichever build was just taken. One listener on the list
+    // rather than five on the buttons, and nothing here calls preventDefault - the click still
+    // fetches the file, and the panel appears beneath the buttons while it does.
+    (function () {
+      const list = document.querySelector('.buttonList');
+      const panels = Array.prototype.slice.call(document.querySelectorAll('.nextSteps'));
+      if (!list || !panels.length) return;
+
+      list.addEventListener('click', function (event) {
+        const button = event.target.closest('.downloadButton');
+        if (!button) return;
+        const platform = button.dataset.platform;
+
+        let shown = null;
+        panels.forEach(function (panel) {
+          panel.hidden = panel.dataset.platform !== platform;
+          if (!panel.hidden) shown = panel;
+        });
+        if (!shown) return;
+
+        // One Linux panel serves all three Linux builds, so the command names the package that was
+        // actually fetched, and the tool that can install it.
+        if (platform === 'linux') {
+          const file = button.getAttribute('href').split('/').pop();
+          const command = shown.querySelector('#linuxCommand');
+          if (command) {
+            command.textContent = 'sudo ' + (/\.rpm$/.test(file) ? 'dnf' : 'apt') + ' install ~/Downloads/' + file;
+          }
+          // The line just changed underneath it, so a "Copied" left over from the previous build
+          // would be claiming something untrue.
+          const copyButton = shown.querySelector('#copyCommand');
+          if (copyButton) copyButton.textContent = 'Copy';
+        }
+
+        // block: 'nearest' scrolls only when the panel opened below the fold - on a tall window it
+        // leaves the page where it is.
+        shown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    })();
+
+    // Copy the install command. The clipboard API needs a secure context - https, or localhost - so
+    // where it is missing or refuses, the line is selected instead: one keystroke away rather than
+    // a button that does nothing.
+    (function () {
+      const command = document.querySelector('#linuxCommand');
+      const button = document.querySelector('#copyCommand');
+      if (!command || !button) return;
+
+      let restore = null;
+      function report(label) {
+        button.textContent = label;
+        clearTimeout(restore);
+        restore = setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+      }
+
+      function selectCommand() {
+        const range = document.createRange();
+        range.selectNodeContents(command);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        report('Selected');
+      }
+
+      button.addEventListener('click', function () {
+        if (!navigator.clipboard) {
+          selectCommand();
+          return;
+        }
+        navigator.clipboard.writeText(command.textContent).then(
+          function () { report('Copied'); },
+          selectCommand
+        );
+      });
     })();
   </script>
 </body>
