@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" sizes="64x64" href="/FileDonkey_Icon.png" type="image/png">
+  <link rel="shortcut icon" href="/FileDonkey_Icon.png" type="image/png">
+  <title>FileDonkey - Download the free beta</title>
+  <meta name="description"
+    content="Download the free FileDonkey beta for Windows, macOS, Debian and Fedora. No account and no card required.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FileDonkey">
+  <meta property="og:url" content="https://filedonkey.app/downloads">
+  <meta property="og:title" content="FileDonkey - Download the free beta">
+  <meta property="og:description"
+    content="Download the free FileDonkey beta for Windows, macOS, Debian and Fedora. No account and no card required.">
+  <meta property="og:image" content="https://filedonkey.app/FileDonkey_Icon.png">
+
+  <style>
+    /* Absolute font paths, not relative. This page lives one directory down, so url('Roboto-Regular.ttf')
+       would resolve to /downloads/Roboto-Regular.ttf and silently fall back to a system face. */
+    @font-face {
+      font-family: Roboto;
+      src: url('/Roboto-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: Roboto-Medium;
+      src: url('/Roboto-Medium.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: Roboto-Condensed;
+      src: url('/Roboto-Condensed.ttf') format('truetype');
+    }
+
+    html,
+    body {
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* The hero: copy and buttons in one column, the app shot beside them. It wraps rather than
+       shrinking, so on a narrow screen the screenshot drops below the copy instead of squeezing
+       both columns to nothing. */
+    .downloadHero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 3rem 4rem;
+      padding: 5rem 1rem 6rem 1rem;
+    }
+
+    /* 33rem rather than the 30 the prose wants: two button columns need 32.4 of it to keep the
+       longest label on one line. The paragraph keeps its own narrower measure below. */
+    .downloadCopy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 33rem;
+    }
+
+    .docTitle {
+      color: #E8E9EC;
+      font-size: 30px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 2.4rem;
+      font-weight: 900;
+    }
+
+    .docBody {
+      color: #A9AEB6;
+      padding: 1.25rem 0rem 0rem 0rem;
+      text-align: left;
+      max-width: 32rem;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.7rem;
+      font-weight: 500;
+    }
+
+    /* The screenshot carries its own shadow and rounded corners in the PNG, so it needs no frame of
+       its own here - only a ceiling on how large it may draw. */
+    .appShot {
+      width: 100%;
+      max-width: 26rem;
+      height: auto;
+      display: block;
+      margin-top: -15px;
+    }
+
+    /* ---- Carried over from the home page, so the buttons read identically there and here ---- */
+
+    .button {
+      border-radius: 6px;
+      padding: 12px 12px 12px 12px;
+      border-width: 0;
+      background-color: #C7CBD1;
+      color: #0C0D0F;
+      font-size: 18px;
+      font-family: Roboto-Medium, sans-serif;
+      position: relative;
+      margin: 0rem 3rem;
+      height: 32px;
+      width: 200px;
+      text-align: center;
+      align-content: center;
+    }
+
+    .button-secondary {
+      background-color: #26282c;
+      color: #C7CBD1;
+      border: 1px solid #3d4046;
+    }
+
+    .button:hover {
+      cursor: pointer;
+      background-color: #E8E9EC;
+    }
+
+    .button:active {
+      cursor: pointer;
+      background-color: #A9AEB6;
+    }
+
+    .button-secondary:hover {
+      background-color: #2F3238;
+    }
+
+    .button-secondary:active {
+      background-color: #212226;
+    }
+
+    /* The download buttons are the home page's .button with room made for a logo beside the label:
+       a flex row rather than centred text, wider, and with no side margin because they stack in a
+       column of their own. Everything else - radius, colours, hover, the secondary variant - is
+       inherited from the rules above. */
+    /* Two columns, so five buttons stand three rows tall rather than five - the fifth sits alone in
+       the last row. minmax(0, 1fr) rather than a bare 1fr: a grid track's default minimum is the
+       widest content in it, so without the 0 the longest label would push the pair wider than the
+       column they sit in instead of the track sizing to the space available. */
+    .buttonList {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      padding: 2.25rem 0rem 0rem 0rem;
+      width: 100%;
+    }
+
+    .downloadButton {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      box-sizing: border-box;
+      margin: 0;
+      width: 100%;
+      height: auto;
+      min-height: 56px;
+      padding: 12px 18px;
+      text-align: left;
+    }
+
+    /* A fixed-width slot for the logo so the five labels start at the same place, whatever the
+       aspect ratio of the file sitting in it. */
+    .osLogo {
+      flex: 0 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* The logos are single-colour files carrying a #A9AEB6 fill, which reads correctly on the dark
+       secondary button. On the primary one the background is that same light grey and the icon
+       would all but disappear - brightness(0) drops it to the near-black the label already uses. */
+    .downloadButton:not(.button-secondary) .osLogo img {
+      filter: brightness(0);
+    }
+
+    .downloadNote {
+      color: #A9AEB6;
+      padding: 1.5rem 0rem 0rem 0rem;
+      max-width: 20rem;
+      font-size: 15px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.5rem;
+      font-weight: 500;
+      text-align: center;
+      align-self: center;
+    }
+
+    .footerInner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 1.75rem 1rem;
+      color: #A9AEB6;
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+    }
+
+    .footerLinks {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+
+    .footerLinks a {
+      color: #E8E9EC;
+    }
+
+    .footerLinks a:hover {
+      color: #E8E9EC;
+      text-decoration: underline;
+    }
+
+    .footerSep {
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      color: #A9AEB6;
+    }
+
+    @media (max-width: 900px) {
+      .downloadHero {
+        padding: 4rem 2rem 5rem 2rem;
+        gap: 3rem;
+      }
+
+      .appShot {
+        max-width: 22rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .docTitle {
+        font-size: 26px;
+        line-height: 2.1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .downloadHero {
+        padding: 3rem 1.5rem 4rem 1.5rem;
+      }
+
+      .docTitle {
+        font-size: 23px;
+        line-height: 1.9rem;
+      }
+
+      .docBody {
+        font-size: 17px;
+        line-height: 1.6rem;
+      }
+
+      .downloadButton {
+        font-size: 17px;
+      }
+
+      /* One column again once two of them would be too narrow for the longest label. */
+      .buttonList {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .buttonList {
+        max-width: none;
+      }
+
+      .downloadNote {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
+  <header
+    style="background-color: #191A1D; border-bottom: 1px solid #2B2D31; width: 100%; display: flex; justify-content: center; flex-shrink: 0;">
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 4rem; width: 60rem;">
+      <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
+        <a href="/" style="display: flex; align-items: center;">
+          <img src="/FileDonkey_Icon.png" alt="FileDonkey" style="width: 2.3rem; height: 2.3rem;" />
+          <span style="width: 1rem;"></span>
+          <span style="color: #E8E9EC; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+            FileDonkey
+          </span>
+        </a>
+      </div>
+      <div
+        style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
+        <div style="padding: 0rem 0rem 0rem 1.5rem;">
+          <a href="https://x.com/filedonkeyapp" target="_blank">
+            <img src="/x-follow.svg" alt="FileDonkey on Twitter" style="width: 86px; height: 32px;" width="86"
+              height="32" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex: 1; background-color: #1E1F22;">
+    <div class="downloadHero">
+      <div class="downloadCopy">
+        <span class="docTitle">Download the free beta</span>
+        <div class="docBody">
+          This is the whole application rather than a trimmed-down trial, and it stays free through
+          every beta release up to v1.0 — no account and no card. Install it on two machines and they
+          will find each other on their own.
+        </div>
+
+        <!-- Every button ships as the secondary variant. The script at the foot of the page promotes
+             the one matching the visitor's system to the primary style by dropping that class, so a
+             visitor without JavaScript still gets five working buttons rather than a page that
+             depends on the detection having run. -->
+        <div class="buttonList">
+          <a class="button button-secondary downloadButton" id="dl-windows"
+            href="/downloads/FileDonkey_v0.5.0_Beta_win64_setup.exe">
+            <span class="osLogo"><img width="16px" src="/windows.svg" alt="" /></span>
+            <span>Windows (.exe)</span>
+          </a>
+          <a class="button button-secondary downloadButton" id="dl-macos"
+            href="/downloads/FileDonkey_v0.5.0_Beta_macos_universal.pkg">
+            <span class="osLogo"><img width="19px" src="/macos.svg" alt="" /></span>
+            <span>macOS (.pkg)</span>
+          </a>
+          <a class="button button-secondary downloadButton" id="dl-debian12"
+            href="/downloads/FileDonkey_v0.5.0_Beta_debian12_amd64.deb">
+            <span class="osLogo"><img width="18px" src="/linux.svg" alt="" /></span>
+            <span>Linux Debian 12 (.deb)</span>
+          </a>
+          <a class="button button-secondary downloadButton" id="dl-debian13"
+            href="/downloads/FileDonkey_v0.5.0_Beta_debian13_amd64.deb">
+            <span class="osLogo"><img width="18px" src="/linux.svg" alt="" /></span>
+            <span>Linux Debian 13 (.deb)</span>
+          </a>
+          <a class="button button-secondary downloadButton" id="dl-fedora"
+            href="/downloads/FileDonkey_v0.5.0_Beta_fedora44_x86_64.rpm">
+            <span class="osLogo"><img width="18px" src="/linux.svg" alt="" /></span>
+            <span>Linux Fedora 44 (.rpm)</span>
+          </a>
+        </div>
+
+        <div class="downloadNote">
+          v0.5.0 Beta · 64-bit builds. The macOS package runs on both Intel and Apple silicon.
+        </div>
+      </div>
+
+      <img class="appShot" src="/filedonkey-device-list.png" width="922" height="1102"
+        alt="The FileDonkey device list showing a Windows 11, Debian 13, Fedora 44 and macOS 12 machine, each with its transfer totals" />
+    </div>
+  </main>
+
+  <footer
+    style="background-color: #191A1D; border-top: 1px solid #2B2D31; min-height: 6rem; flex-shrink: 0; display: flex; justify-content: center; align-items: center;">
+    <div class="footerInner">
+      <div class="footerLinks">
+        <a href="/">Home</a>
+        <span class="footerSep">·</span>
+        <a href="/license-commercial">Licensing</a>
+        <span class="footerSep">·</span>
+        <a href="/privacy">Privacy</a>
+        <span class="footerSep">·</span>
+        <a href="mailto:support@filedonkey.app">Contact</a>
+      </div>
+      <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Which of the five is this visitor's. userAgentData.platform where the browser offers it and
+    // navigator.platform otherwise; the agent string is consulted as a fallback, and for the
+    // distribution hint that neither of the other two carries.
+    (function () {
+      const ua = navigator.userAgent || '';
+      const uaDataPlatform = (navigator.userAgentData && navigator.userAgentData.platform) || '';
+      const probe = (uaDataPlatform || navigator.platform || '') + ' ' + ua;
+
+      let id = null;
+      // Phones and tablets are tested first: an Android agent string says "Linux" and an iPad asking
+      // for the desktop site says "Macintosh", so either would otherwise match a desktop build.
+      if (/Android|iPhone|iPad|iPod/i.test(probe)) {
+        id = null;
+      } else if (/Win/i.test(probe)) {
+        id = 'dl-windows';
+      } else if (/Mac/i.test(probe)) {
+        id = 'dl-macos';
+      } else if (/Linux|X11|CrOS/i.test(probe)) {
+        // No agent string names the Debian release, and only some Linux builds name the distribution
+        // at all. Fedora when it says so, the current Debian otherwise - the other four stay one
+        // click away either way.
+        id = /Fedora|Red Hat|RHEL|CentOS/i.test(probe) ? 'dl-fedora' : 'dl-debian13';
+      }
+
+      // Nothing recognised leaves all five as they are, which is a usable page rather than a wrong
+      // recommendation.
+      if (!id) return;
+      const el = document.getElementById(id);
+      // Dropping the secondary class leaves the plain .button rule, which is the primary style.
+      if (el) el.classList.remove('button-secondary');
+    })();
+  </script>
+</body>
+
+</html>

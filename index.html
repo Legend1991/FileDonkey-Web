@@ -459,9 +459,15 @@
        otherwise it would size to its content and text-align would have nothing to centre within. */
     .stepText {
       align-self: stretch;
-      text-align: center;
       font-size: 16px;
       line-height: 1.5rem;
+    }
+    
+    .stepTitle {
+      color: #E8E9EC;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
     }
 
     /* The last thing on the page used to be the copyright line, so a reader convinced by the demo
@@ -866,17 +872,20 @@
                here would be laid out as a row of its own rather than reading as part of the text. -->
           <li>
             <span class="stepNumber">1</span>
-            <span class="stepText"><strong class="leadIn">Install it on both machines.</strong> One installer per
+            <span class="stepTitle">Install it on both machines.</span>
+            <span class="stepText">One installer per
               computer. No account to create, no server to set up, nothing to sign up for.</span>
           </li>
           <li>
             <span class="stepNumber">2</span>
-            <span class="stepText"><strong class="leadIn">They find each other.</strong> Any two machines on the same
+            <span class="stepTitle">They find each other.</span>
+            <span class="stepText">Any two machines on the same
               network pair themselves. Nothing to type, no address to go and look up.</span>
           </li>
           <li>
             <span class="stepNumber">3</span>
-            <span class="stepText"><strong class="leadIn">Open the disk.</strong> The other machine appears in your file
+            <span class="stepTitle">Open the disk.</span>
+            <span class="stepText">The other machine appears in your file
               manager. Work from it exactly as you would a drive of your own.</span>
           </li>
         </ol>
