@@ -460,7 +460,27 @@
       <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
     </div>
   </footer>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyD1pd4irWhWvfZdFdjp1i_SOVFWrtKpKAg",
+    authDomain: "filedonkey-web.firebaseapp.com",
+    projectId: "filedonkey-web",
+    storageBucket: "filedonkey-web.firebasestorage.app",
+    messagingSenderId: "347061619436",
+    appId: "1:347061619436:web:e0bf26ada3d7926ea873c9",
+    measurementId: "G-MZJKZTGDMW"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
   <script>
     const sublistCountEl = document.querySelector("#sublistCount");
     const emailInput = document.querySelector("#email");
