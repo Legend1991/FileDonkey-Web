@@ -487,6 +487,13 @@
     const emailInput = document.querySelector("#email");
     const submitBtn = document.querySelector("#submit");
 
+    setTimeout(async () => {
+      const res = await fetch("https://api.filedonkey.app/sublistcount");
+      const resJSON = await res.json();
+      if (resJSON.status !== 'OK') return;
+      sublistCountEl.style.setProperty("--sublistcount", resJSON.result.count);
+    });
+
     emailInput.addEventListener('keydown', (event) => {
       if (event.key !== "Enter") return;
       emailInput.blur();
