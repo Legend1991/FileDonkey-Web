@@ -421,6 +421,10 @@
             the invoice and handle any sales tax or VAT for wherever you are. The final price, including tax,
             is confirmed at checkout.
           </p>
+          <p class="checkoutNote">
+            Changed your mind? You can have a full refund at any time before v1.0 ships. By preordering you
+            agree to our <a href="/terms">Terms of Sale</a> and <a href="/refunds">Refund Policy</a>.
+          </p>
         </div>
 
         <div class="callout" id="preorderThanks" hidden>
@@ -489,6 +493,10 @@
         <span class="footerSep">·</span>
         <a href="/license-commercial">Licensing</a>
         <span class="footerSep">·</span>
+        <a href="/terms">Terms</a>
+        <span class="footerSep">·</span>
+        <a href="/refunds">Refunds</a>
+        <span class="footerSep">·</span>
         <a href="/privacy">Privacy</a>
         <span class="footerSep">·</span>
         <a href="mailto:support@filedonkey.app">Contact</a>
@@ -500,8 +508,8 @@
   <script>
     // Paddle > Developer tools > Authentication (client-side token) and Catalog > Products (price ID).
     // Both are meant to be public. A test_ token talks to the sandbox, a live_ token to production.
-    const PADDLE_CLIENT_TOKEN = "test_REPLACE_ME";
-    const PADDLE_PRICE_ID = "pri_REPLACE_ME";
+    const PADDLE_CLIENT_TOKEN = "test_78bf8fb37d9b2e7448d43906bf8";
+    const PADDLE_PRICE_ID = "pri_01m5f1gykmwc74qg3te7yyedrs";
 
     (function () {
       const offerEl = document.querySelector("#preorderOffer");

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" sizes="64x64" href="/FileDonkey_Icon.png" type="image/png">
+  <link rel="shortcut icon" href="/FileDonkey_Icon.png" type="image/png">
+  <title>FileDonkey - Refund Policy</title>
+  <meta name="description"
+    content="When and how you can get a refund for a FileDonkey purchase or preorder: any time before v1.0 ships, and within 14 days after.">
+  <meta name="robots" content="index, follow">
+
+  <style>
+    /* Absolute font paths, not relative. This page lives one directory down, so url('Roboto-Regular.ttf')
+       would resolve to /refunds/Roboto-Regular.ttf and silently fall back to a system face. */
+    @font-face {
+      font-family: Roboto;
+      src: url('/Roboto-Regular.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: Roboto-Medium;
+      src: url('/Roboto-Medium.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: Roboto-Condensed;
+      src: url('/Roboto-Condensed.ttf') format('truetype');
+    }
+
+    html,
+    body {
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .contentSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 4rem 1rem 4rem 1rem;
+    }
+
+    .contentColumn {
+      color: #A9AEB6;
+      text-align: left;
+      max-width: 45rem;
+      width: 100%;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.7rem;
+      font-weight: 500;
+    }
+
+    .docTitle {
+      color: #E8E9EC;
+      font-size: 30px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 2.4rem;
+      font-weight: 900;
+      padding: 4rem 0rem 0rem 0rem;
+    }
+
+    .docMeta {
+      color: #6E737B;
+      font-size: 15px;
+      line-height: 1.5rem;
+      padding: 0.75rem 0rem 0rem 0rem;
+    }
+
+    .docIntro {
+      padding: 1.75rem 0rem 0rem 0rem;
+    }
+
+    .sectionTitle {
+      display: block;
+      font-size: 22px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 1.9rem;
+      font-weight: 900;
+      color: #E8E9EC;
+      padding: 3rem 0rem 0rem 0rem;
+    }
+
+    .subTitle {
+      display: block;
+      font-size: 18px;
+      font-family: Roboto-Medium, sans-serif;
+      line-height: 1.7rem;
+      color: #E8E9EC;
+      padding: 1.75rem 0rem 0rem 0rem;
+    }
+
+    p {
+      margin: 0;
+      padding: 1rem 0rem 0rem 0rem;
+    }
+
+    /* The legal lists. Marker in the gutter, every line of an item flush with the one above it -
+       the same shape the feature list on the home page uses, by the same flex reasoning. */
+    .docList {
+      list-style: none;
+      padding: 0.5rem 0rem 0rem 0rem;
+      margin: 0;
+    }
+
+    .docList li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7em;
+      padding-top: 0.6rem;
+      line-height: 1.6rem;
+    }
+
+    .docList li::before {
+      content: "—";
+      flex: 0 0 auto;
+      color: #6E737B;
+    }
+
+    .leadIn {
+      color: #E8E9EC;
+      font-family: Roboto-Medium, sans-serif;
+      font-weight: 500;
+    }
+
+    /* Marks the values that are still to be supplied, so an unfinished one is obvious on the page
+       rather than shipping as though it were the finished text. */
+    .todo {
+      color: #E8B04B;
+      font-family: Roboto-Medium, sans-serif;
+    }
+
+    .callout {
+      border: 1px solid #3D4046;
+      border-left: 3px solid #C7CBD1;
+      border-radius: 6px;
+      background: #26282C;
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0rem 0rem 0rem;
+    }
+
+    .callout p:first-child {
+      padding-top: 0;
+    }
+
+    .contentColumn a {
+      color: #E8E9EC;
+      text-decoration: underline;
+    }
+
+    .contentColumn a:hover {
+      color: #FFFFFF;
+    }
+
+    .footerInner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 1.75rem 1rem;
+      color: #A9AEB6;
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+    }
+
+    .footerLinks {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+
+    .footerLinks a {
+      color: #E8E9EC;
+    }
+
+    .footerLinks a:hover {
+      color: #E8E9EC;
+      text-decoration: underline;
+    }
+
+    .footerSep {
+      font-family: Roboto, sans-serif;
+      font-size: 0.9rem;
+      color: #A9AEB6;
+    }
+
+    @media (max-width: 760px) {
+      .docTitle {
+        font-size: 26px;
+        line-height: 2.1rem;
+        padding-top: 3rem;
+      }
+
+      .sectionTitle {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contentColumn {
+        font-size: 17px;
+        line-height: 1.6rem;
+      }
+
+      .docTitle {
+        font-size: 23px;
+        line-height: 1.9rem;
+      }
+
+      .sectionTitle {
+        font-size: 19px;
+        padding-top: 2.5rem;
+      }
+
+      .callout {
+        padding: 1rem 1.15rem;
+      }
+    }
+  </style>
+</head>
+
+<body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column; font-family: Roboto, sans-serif;">
+  <header
+    style="background-color: #191A1D; border-bottom: 1px solid #2B2D31; width: 100%; display: flex; justify-content: center; flex-shrink: 0;">
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 4rem; width: 60rem;">
+      <div style="display: flex; align-items: center; padding: 0 1rem; max-width: 45rem;">
+        <a href="/" style="display: flex; align-items: center;">
+          <img src="/FileDonkey_Icon.png" alt="FileDonkey" style="width: 2.3rem; height: 2.3rem;" />
+          <span style="width: 1rem;"></span>
+          <span style="color: #E8E9EC; font-size: 1.25rem; font-weight: 700; font-family: Roboto-Condensed, sans-serif">
+            FileDonkey
+          </span>
+        </a>
+      </div>
+      <div
+        style="padding: 0 1rem; display: flex; align-items: center; justify-content: end; width: 100%; max-width: 45rem;">
+        <div style="padding: 0rem 0rem 0rem 1.5rem;">
+          <a href="https://x.com/filedonkeyapp" target="_blank">
+            <img src="/x-follow.svg" alt="FileDonkey on Twitter" style="width: 86px; height: 32px;" width="86"
+              height="32" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex: 1; background-color: #1E1F22;">
+    <div class="contentSection">
+      <div class="contentColumn">
+        <span class="docTitle">Refund Policy</span>
+        <div class="docMeta">
+          Effective 22 October 2026 &nbsp;·&nbsp; Version 1.0
+        </div>
+
+        <div class="docIntro">
+          This Policy explains when you can get your money back for a FileDonkey purchase. It forms part of
+          our <a href="/terms">Terms of Sale</a>. Purchases are made through our reseller and Merchant of
+          Record, Paddle.com Market Limited ("Paddle"), which pays every refund.
+        </div>
+
+        <div class="callout">
+          <p>
+            <strong class="leadIn">The short version.</strong> Before v1.0 ships, you can have a full refund
+            at any time, for any reason. After it ships, you have 14 days from the day your licence reaches
+            you. If v1.0 is never released, everyone is refunded without having to ask.
+          </p>
+        </div>
+
+        <span class="sectionTitle">1. Before v1.0 is released</span>
+        <p>
+          A preorder can be refunded in full at any time before v1.0 is released. You do not need to give a
+          reason.
+        </p>
+
+        <span class="sectionTitle">2. After v1.0 is released</span>
+        <p>
+          You can ask for a full refund within <strong class="leadIn">14 days</strong> of the day we email
+          your v1.0 licence to you, again without giving a reason. After that, we will refund a purchase
+          where FileDonkey does not work as described and we are unable to put that right, and in any other
+          case where the law requires it.
+        </p>
+
+        <span class="sectionTitle">3. If v1.0 is not released</span>
+        <p>
+          If we stop development before v1.0 is released, we will refund every preorder in full and tell you
+          by email. You will not need to request it.
+        </p>
+
+        <span class="sectionTitle">4. How to ask for a refund</span>
+        <p>
+          Write to <a href="mailto:support@filedonkey.app">support@filedonkey.app</a> from the email address
+          you used at checkout, or include your order number from the Paddle receipt. You can also request a
+          refund from Paddle directly, using the link in your receipt or at
+          <a href="https://paddle.net" target="_blank">paddle.net</a>.
+        </p>
+        <p>
+          Refunds are paid by Paddle to the original payment method, including any tax that was charged.
+          We aim to approve requests within 5 business days; how long the money then takes to reach you
+          depends on your bank or card issuer. A refunded licence stops being valid.
+        </p>
+
+        <span class="sectionTitle">5. Your legal rights</span>
+        <p>
+          This Policy is in addition to your rights under the consumer law of the country where you live,
+          and to any rights you have under Paddle's
+          <a href="https://www.paddle.com/legal/checkout-buyer-terms" target="_blank">Buyer Terms</a>. It
+          does not limit either.
+        </p>
+
+        <span class="sectionTitle">6. Contact</span>
+        <p>
+          Questions about a refund may be sent to
+          <a href="mailto:support@filedonkey.app">support@filedonkey.app</a>.
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+  <footer
+    style="background-color: #191A1D; border-top: 1px solid #2B2D31; min-height: 6rem; flex-shrink: 0; display: flex; justify-content: center; align-items: center;">
+    <div class="footerInner">
+      <div class="footerLinks">
+        <a href="/">Home</a>
+        <span class="footerSep">·</span>
+        <a href="/license-commercial">Licensing</a>
+        <span class="footerSep">·</span>
+        <a href="/terms">Terms</a>
+        <span class="footerSep">·</span>
+        <a href="/refunds">Refunds</a>
+        <span class="footerSep">·</span>
+        <a href="/privacy">Privacy</a>
+        <span class="footerSep">·</span>
+        <a href="mailto:support@filedonkey.app">Contact</a>
+      </div>
+      <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+
+</html>
