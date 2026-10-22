@@ -162,12 +162,21 @@
       padding: 0 24px;
       font-size: 20px;
       border-radius: 8px;
+      background-color: #4EC97A;
+    }
+
+    .contentColumn .checkoutButton:hover {
+      background-color: #6AD690;
+    }
+
+    .contentColumn .checkoutButton:active {
+      background-color: #3FAE67;
     }
 
     .contentColumn .checkoutButton:disabled {
       cursor: default;
       opacity: 0.5;
-      background-color: #C7CBD1;
+      background-color: #4EC97A;
     }
 
     .offerThanks {
@@ -476,8 +485,8 @@
         <span class="docTitle">Support FileDonkey early</span>
 
         <p>
-          <strong class="leadIn">FileDonkey</strong> is a one-person operation, and the beta is free: the
-          whole application, not a trimmed-down version of it. You do not need a licence to use it.
+          That you got this far counts for more than it might seem. A free download tells us the software
+          works. Someone reaching for their wallet before v1.0 exists tells us it is worth finishing.
         </p>
 
         <div class="offerCard" id="preorderOffer">
@@ -489,7 +498,7 @@
             <li><span>The launch price is yours for good</span></li>
             <li><span>Full refund within 14 days of your order</span></li>
           </ul>
-          <button class="checkoutButton" id="checkoutButton" type="button" disabled>Buy licence</button>
+          <button class="checkoutButton" id="checkoutButton" type="button" disabled>Buy License</button>
           <div class="offerThanks">
             A licence is optional during the beta and is a way to support FileDonkey early. Thank you!
           </div>
@@ -501,11 +510,6 @@
         </div>
 
         <p style="padding-top: 2.5rem;">
-          That you got this far counts for more than it might seem. A free download tells us the software
-          works. Someone reaching for their wallet before v1.0 exists tells us it is worth finishing.
-        </p>
-
-        <p>
           Not ready to buy? Download the beta and decide later.
         </p>
 
@@ -515,7 +519,7 @@
     <!-- The Download Free Beta block, identical to the one on the home page. -->
     <div class="downloadSection">
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <a class="button button-secondary" href="/downloads">Download Free Beta</a>
+        <a class="button" href="/downloads">Download Free Beta</a>
         <div style="margin: 1rem 3rem; display: flex; align-items: center; justify-content: center;">
           <span style="color: #A9AEB6;">v0.5.0</span>
           <div style="width: 0px; border-right: 1px solid #A9AEB6; height: 80%; margin: 0px 6px 0px 12px;"></div>
