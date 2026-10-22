@@ -95,16 +95,73 @@
       display: none !important;
     }
 
-    .preorderPrice {
+    /* The offer card: the one thing on this page meant to be acted on, so it is centred, framed more
+       brightly than the prose around it, and carries the page's only primary button. */
+    .offerCard {
+      max-width: 26rem;
+      margin: 2.5rem auto 0rem auto;
+      padding: 2rem 2rem 1.5rem 2rem;
+      border: 1px solid #4A4E55;
+      border-radius: 12px;
+      background: #26282C;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
+
+    .offerLabel {
+      color: #A9AEB6;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Held open before the price arrives from Paddle, so the card does not jump when it does. */
+    .offerPrice {
       color: #E8E9EC;
       font-family: Roboto-Medium, sans-serif;
-      padding-left: 0.5rem;
+      font-size: 44px;
+      line-height: 3.25rem;
+      min-height: 3.25rem;
+      padding-top: 0.5rem;
+    }
+
+    .offerPriceNote {
+      color: #6E737B;
+      font-size: 14px;
+      line-height: 1.3rem;
+    }
+
+    .offerPoints {
+      list-style: none;
+      margin: 0;
+      padding: 1.5rem 0rem 0rem 0rem;
+      text-align: left;
+      display: inline-block;
+    }
+
+    .offerPoints li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6em;
+      padding-top: 0.4rem;
+      line-height: 1.5rem;
+      font-size: 16px;
+    }
+
+    .offerPoints li::before {
+      content: "✓";
+      flex: 0 0 auto;
+      color: #E8E9EC;
     }
 
     .contentColumn .checkoutButton {
-      height: auto;
-      width: auto;
-      padding: 12px 24px;
+      display: block;
+      width: 100%;
+      height: 56px;
+      margin-top: 1.75rem;
+      padding: 0 24px;
+      font-size: 20px;
+      border-radius: 8px;
     }
 
     .contentColumn .checkoutButton:disabled {
@@ -113,7 +170,28 @@
       background-color: #C7CBD1;
     }
 
+    .offerThanks {
+      color: #A9AEB6;
+      font-size: 15px;
+      line-height: 1.4rem;
+      padding-top: 1rem;
+    }
+
     .checkoutNote {
+      color: #6E737B;
+      font-size: 13px;
+      line-height: 1.25rem;
+      padding-top: 1rem;
+    }
+
+    .contentColumn .checkoutNote a {
+      color: #A9AEB6;
+    }
+
+    /* The fallback when Paddle cannot load replaces the fine print, and is the one thing on the card
+       a visitor then needs to read. */
+    .checkoutNote.checkoutError {
+      color: #E8B04B;
       font-size: 15px;
       line-height: 1.4rem;
     }
@@ -402,37 +480,30 @@
           whole application, not a trimmed-down version of it. You do not need a licence to use it.
         </p>
 
-        <p>
-          If you buy one now, it is a licence for v1.0. It is emailed to the address you use at checkout on
-          the day v1.0 ships, at no further cost, and the launch price you pay now is the one you keep for
-          good.
-        </p>
+        <div class="offerCard" id="preorderOffer">
+          <div class="offerLabel">FileDonkey v1.0 licence</div>
+          <div class="offerPrice" id="preorderPrice"></div>
+          <div class="offerPriceNote">One-time payment · launch price</div>
+          <ul class="offerPoints">
+            <li><span>Emailed to you the day v1.0 ships</span></li>
+            <li><span>The launch price is yours for good</span></li>
+            <li><span>Full refund within 14 days of your order</span></li>
+          </ul>
+          <button class="checkoutButton" id="checkoutButton" type="button" disabled>Buy licence</button>
+          <div class="offerThanks">
+            A licence is optional during the beta and is a way to support FileDonkey early. Thank you!
+          </div>
+          <div class="checkoutNote" id="checkoutNote">
+            Sold by Paddle.com, our reseller and Merchant of Record, which handles payment, invoicing and any
+            sales tax or VAT. By buying you agree to our <a href="/terms">Terms of Sale</a> and
+            <a href="/refunds">Refund Policy</a>.
+          </div>
+        </div>
 
-        <p>
+        <p style="padding-top: 2.5rem;">
           That you got this far counts for more than it might seem. A free download tells us the software
           works. Someone reaching for their wallet before v1.0 exists tells us it is worth finishing.
         </p>
-
-        <div class="callout" id="preorderOffer">
-          <p>
-            <strong class="leadIn">FileDonkey v1.0 licence</strong>
-            <span class="preorderPrice" id="preorderPrice"></span>
-          </p>
-          <p>
-            <button class="checkoutButton" id="checkoutButton" type="button" disabled>Buy licence</button>
-          </p>
-          <p>
-            A licence is optional during the beta and is a way to support FileDonkey early. Thank you!
-          </p>
-          <p class="checkoutNote" id="checkoutNote">
-            Checkout is handled by Paddle, our reseller and merchant of record. They take the payment, issue
-            the invoice and handle any sales tax or VAT for wherever you are. The final price, including tax,
-            is confirmed at checkout.
-          </p>
-          <p class="checkoutNote">
-            Changed your mind? You can have a full refund within 14 days of your order. By buying you agree to our <a href="/terms">Terms of Sale</a> and <a href="/refunds">Refund Policy</a>.
-          </p>
-        </div>
 
         <p>
           Not ready to buy? Download the beta and decide later.
@@ -444,7 +515,7 @@
     <!-- The Download Free Beta block, identical to the one on the home page. -->
     <div class="downloadSection">
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <a class="button" href="/downloads">Download Free Beta</a>
+        <a class="button button-secondary" href="/downloads">Download Free Beta</a>
         <div style="margin: 1rem 3rem; display: flex; align-items: center; justify-content: center;">
           <span style="color: #A9AEB6;">v0.5.0</span>
           <div style="width: 0px; border-right: 1px solid #A9AEB6; height: 80%; margin: 0px 6px 0px 12px;"></div>
@@ -518,6 +589,7 @@
       // window.Paddle is missing when paddle.js was blocked (ad blockers do this) or failed to load.
       if (!window.Paddle || PADDLE_CLIENT_TOKEN.includes("REPLACE_ME") || PADDLE_PRICE_ID.includes("REPLACE_ME")) {
         console.error("Paddle checkout unavailable:", window.Paddle ? "token or price ID not set" : "paddle.js did not load");
+        noteEl.classList.add("checkoutError");
         noteEl.innerHTML = 'Checkout could not load. If a content blocker is on, allow <em>cdn.paddle.com</em> and ' +
           'reload, or write to <a href="mailto:support@filedonkey.app">support@filedonkey.app</a>.';
         return;
@@ -541,7 +613,7 @@
       // Localised price for the visitor's country, so the page and the checkout show the same figure.
       Paddle.PricePreview({ items })
         .then((result) => {
-          priceEl.textContent = "· " + result.data.details.lineItems[0].formattedTotals.total;
+          priceEl.textContent = result.data.details.lineItems[0].formattedTotals.total;
         })
         .catch((error) => console.error("Paddle price preview error:", error));
 
