@@ -1028,7 +1028,6 @@
       <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
     </div>
   </footer>
-<!-- TEMP-DISABLED on paddle-preorder branch: Google Analytics. Re-enable before merging to master.
   <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
@@ -1050,22 +1049,18 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
--->
 </body>
 <script>
   const sublistCountEl = document.querySelector("#sublistCount");
   const emailInput = document.querySelector("#email");
   const submitBtn = document.querySelector("#submit");
 
-  // TEMP-DISABLED on paddle-preorder branch: /sublistcount. Re-enable before merging to master.
-  /*
   setTimeout(async () => {
     const res = await fetch("https://api.filedonkey.app/sublistcount");
     const resJSON = await res.json();
     if (resJSON.status !== 'OK') return;
     sublistCountEl.style.setProperty("--sublistcount", resJSON.result.count);
   });
-  */
 
   emailInput.addEventListener('keydown', (event) => {
     if(event.key !== "Enter") return;
