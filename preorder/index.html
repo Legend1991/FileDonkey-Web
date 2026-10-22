@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="/FileDonkey_Icon.png" type="image/png">
   <title>FileDonkey - Preorder</title>
   <meta name="description"
-    content="Preorders for FileDonkey v1.0 are not open yet. The beta is free in the meantime, and the mailing list will carry the news the day preorders open.">
+    content="Preorder FileDonkey v1.0: pay the launch price now and get the full release the day it ships. The beta stays free in the meantime.">
 
   <style>
     /* Absolute font paths, not relative. This page lives one directory down, so url('Roboto-Regular.ttf')
@@ -89,6 +89,33 @@
 
     .callout p:first-child {
       padding-top: 0;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .preorderPrice {
+      color: #E8E9EC;
+      font-family: Roboto-Medium, sans-serif;
+      padding-left: 0.5rem;
+    }
+
+    .contentColumn .checkoutButton {
+      height: auto;
+      width: auto;
+      padding: 12px 24px;
+    }
+
+    .contentColumn .checkoutButton:disabled {
+      cursor: default;
+      opacity: 0.5;
+      background-color: #C7CBD1;
+    }
+
+    .checkoutNote {
+      font-size: 15px;
+      line-height: 1.4rem;
     }
 
     .contentColumn a {
@@ -371,31 +398,40 @@
         <span class="docTitle">Thank you for wanting to back this</span>
 
         <p>
-          There is no checkout on this page yet, and that is our doing rather than anything you did wrong.
-        </p>
-
-        <p>
-          <strong class="leadIn">FileDonkey</strong> is a one-person operation. Taking money properly means a payment provider, invoices, and
-          tax handled correctly in every country a buyer might be sitting in. None of that is worth doing
-          quickly, so preorders stay shut until it is done rather than opening on something half-finished.
+          <strong class="leadIn">FileDonkey</strong> is a one-person operation. A preorder pays for v1.0
+          today: you get the full release on the day it ships at no further cost, and the launch price you
+          pay now is the one you keep for good.
         </p>
 
         <p>
           That you got this far counts for more than it might seem. A free download tells us the software
-          works. Someone reaching for their wallet before there is anything to buy tells us it is worth
-          finishing.
+          works. Someone reaching for their wallet before v1.0 exists tells us it is worth finishing.
         </p>
 
-        <div class="callout">
+        <div class="callout" id="preorderOffer">
           <p>
-            <strong class="leadIn">When preorders open,</strong> everyone who backs the project early gets
-            v1.0 free on the day it ships and keeps the launch price for good. Join the list below and you
-            will hear the moment it happens — one email about it, not a drip campaign.
+            <strong class="leadIn">FileDonkey v1.0 preorder</strong>
+            <span class="preorderPrice" id="preorderPrice"></span>
+          </p>
+          <p>
+            <button class="checkoutButton" id="checkoutButton" type="button" disabled>Preorder v1.0</button>
+          </p>
+          <p class="checkoutNote" id="checkoutNote">
+            Checkout is handled by Paddle, our reseller and merchant of record. They take the payment, issue
+            the invoice and handle any sales tax or VAT for wherever you are. The final price, including tax,
+            is confirmed at checkout.
+          </p>
+        </div>
+
+        <div class="callout" id="preorderThanks" hidden>
+          <p>
+            <strong class="leadIn">Thank you — your preorder is in.</strong> Paddle has emailed you a
+            receipt. v1.0 will go to that same address on the day it ships.
           </p>
         </div>
 
         <p>
-          In the meantime the beta is free, and it is the whole application rather than a trimmed-down
+          Not ready to pay? The beta is free, and it is the whole application rather than a trimmed-down
           version of it.
         </p>
 
@@ -460,6 +496,52 @@
       <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
     </div>
   </footer>
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script>
+    // Paddle > Developer tools > Authentication (client-side token) and Catalog > Products (price ID).
+    // Both are meant to be public. A test_ token talks to the sandbox, a live_ token to production.
+    const PADDLE_CLIENT_TOKEN = "test_REPLACE_ME";
+    const PADDLE_PRICE_ID = "pri_REPLACE_ME";
+
+    (function () {
+      const offerEl = document.querySelector("#preorderOffer");
+      const thanksEl = document.querySelector("#preorderThanks");
+      const priceEl = document.querySelector("#preorderPrice");
+      const checkoutBtn = document.querySelector("#checkoutButton");
+      const noteEl = document.querySelector("#checkoutNote");
+
+      // window.Paddle is missing when paddle.js was blocked (ad blockers do this) or failed to load.
+      if (!window.Paddle || PADDLE_CLIENT_TOKEN.includes("REPLACE_ME") || PADDLE_PRICE_ID.includes("REPLACE_ME")) {
+        console.error("Paddle checkout unavailable:", window.Paddle ? "token or price ID not set" : "paddle.js did not load");
+        noteEl.innerHTML = 'Checkout could not load. If a content blocker is on, allow <em>cdn.paddle.com</em> and ' +
+          'reload, or write to <a href="mailto:support@filedonkey.app">support@filedonkey.app</a>.';
+        return;
+      }
+
+      if (PADDLE_CLIENT_TOKEN.startsWith("test_")) Paddle.Environment.set("sandbox");
+      Paddle.Initialize({
+        token: PADDLE_CLIENT_TOKEN,
+        checkout: { settings: { displayMode: "overlay", theme: "dark" } },
+        eventCallback: (event) => {
+          if (event.name !== "checkout.completed") return;
+          offerEl.hidden = true;
+          thanksEl.hidden = false;
+        }
+      });
+
+      const items = [{ priceId: PADDLE_PRICE_ID, quantity: 1 }];
+
+      // Localised price for the visitor's country, so the page and the checkout show the same figure.
+      Paddle.PricePreview({ items })
+        .then((result) => {
+          priceEl.textContent = "· " + result.data.details.lineItems[0].formattedTotals.total;
+        })
+        .catch((error) => console.error("Paddle price preview error:", error));
+
+      checkoutBtn.disabled = false;
+      checkoutBtn.addEventListener("click", () => Paddle.Checkout.open({ items }));
+    })();
+  </script>
 <!-- TEMP-DISABLED on paddle-preorder branch: Google Analytics. Re-enable before merging to master.
   <script type="module">
   // Import the functions you need from the SDKs you need
