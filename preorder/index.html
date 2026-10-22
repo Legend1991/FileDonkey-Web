@@ -179,6 +179,13 @@
       background-color: #4EC97A;
     }
 
+    .checkoutSoon {
+      color: #E8B04B;
+      font-size: 15px;
+      line-height: 1.4rem;
+      padding-top: 1rem;
+    }
+
     .offerThanks {
       color: #A9AEB6;
       font-size: 15px;
@@ -491,7 +498,7 @@
 
         <div class="offerCard" id="preorderOffer">
           <div class="offerLabel">FileDonkey v1.0 license</div>
-          <div class="offerPrice" id="preorderPrice"></div>
+          <div class="offerPrice" id="preorderPrice">$40.00</div>
           <div class="offerPriceNote">One-time payment · launch price</div>
           <ul class="offerPoints">
             <li><span>Emailed to you the day v1.0 ships</span></li>
@@ -499,12 +506,16 @@
             <li><span>Full refund within 14 days of your order</span></li>
           </ul>
           <button class="checkoutButton" id="checkoutButton" type="button" disabled>Buy License</button>
+          <div class="checkoutSoon" id="checkoutSoon" hidden>
+            Checkout opens as soon as Paddle, our payment provider, finishes verifying FileDonkey. Join the
+            mailing list below to hear the moment it does.
+          </div>
           <div class="offerThanks">
             A license is optional during the beta and is a way to support FileDonkey early. Thank you!
           </div>
           <div class="checkoutNote" id="checkoutNote">
             Sold by Paddle.com, our reseller and Merchant of Record, which handles payment, invoicing and any
-            sales tax or VAT. By buying you agree to our <a href="/terms">Terms of Sale</a> and
+            sales tax or VAT. By buying you agree to our <a href="/terms">Terms of Service</a> and
             <a href="/refunds">Refund Policy</a>.
           </div>
         </div>
@@ -582,13 +593,17 @@
   <script>
     // Paddle > Developer tools > Authentication (client-side token) and Catalog > Products (price ID).
     // Both are meant to be public. A test_ token talks to the sandbox, a live_ token to production.
-    const PADDLE_CLIENT_TOKEN = "test_78bf8fb37d9b2e7448d43906bf8";
-    const PADDLE_PRICE_ID = "pri_01m5f1gykmwc74qg3te7yyedrs";
+    const PADDLE_CLIENT_TOKEN = "live_dd5190291a9a80c21b27fde977e";
+    const PADDLE_PRICE_ID = "pri_01m5hwr447f6yhhfhvas49eq2r";
+    // false until Paddle has verified the account. Before that the live checkout only answers
+    // "Something went wrong", so the button stays shut and the page says checkout opens soon.
+    const CHECKOUT_OPEN = false;
 
     (function () {
       const priceEl = document.querySelector("#preorderPrice");
       const checkoutBtn = document.querySelector("#checkoutButton");
       const noteEl = document.querySelector("#checkoutNote");
+      const soonEl = document.querySelector("#checkoutSoon");
 
       // window.Paddle is missing when paddle.js was blocked (ad blockers do this) or failed to load.
       if (!window.Paddle || PADDLE_CLIENT_TOKEN.includes("REPLACE_ME") || PADDLE_PRICE_ID.includes("REPLACE_ME")) {
@@ -620,6 +635,11 @@
           priceEl.textContent = result.data.details.lineItems[0].formattedTotals.total;
         })
         .catch((error) => console.error("Paddle price preview error:", error));
+
+      if (!CHECKOUT_OPEN) {
+        soonEl.hidden = false;
+        return;
+      }
 
       checkoutBtn.disabled = false;
       checkoutBtn.addEventListener("click", () => Paddle.Checkout.open({ items }));
