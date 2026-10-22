@@ -69,6 +69,30 @@
       max-width: 33rem;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
+    /* Shown only when Paddle redirects here after a purchase on the preorder page. */
+    .purchaseThanks {
+      color: #A9AEB6;
+      font-size: 18px;
+      font-family: Roboto, sans-serif;
+      line-height: 1.7rem;
+      border: 1px solid #3D4046;
+      border-left: 3px solid #C7CBD1;
+      border-radius: 6px;
+      background: #26282C;
+      padding: 1.25rem 1.5rem;
+      margin: 0rem 0rem 2.5rem 0rem;
+    }
+
+    .purchaseThanks strong {
+      color: #E8E9EC;
+      font-family: Roboto-Medium, sans-serif;
+      font-weight: 500;
+    }
+
     .docTitle {
       color: #E8E9EC;
       font-size: 30px;
@@ -495,6 +519,11 @@
   <main style="flex: 1; background-color: #1E1F22;">
     <div class="downloadHero">
       <div class="downloadCopy">
+        <div class="purchaseThanks" id="purchaseThanks" role="status" hidden>
+          <strong>Thank you for supporting FileDonkey!</strong> Paddle has emailed you a receipt, and your
+          v1.0 licence will go to that same address on the day it ships. Until then, the beta below is
+          yours to use.
+        </div>
         <span class="docTitle">Download the free beta</span>
         <div class="docBody">
           This is the whole application rather than a trimmed-down trial, and it stays free through
@@ -691,6 +720,17 @@
 -->
 
   <script>
+    // Paddle lands the buyer here with ?purchase=complete. The parameter is dropped from the address
+    // straight away, so a reload or a shared link does not thank someone who has bought nothing.
+    (function () {
+      const params = new URLSearchParams(location.search);
+      if (params.get('purchase') !== 'complete') return;
+      document.getElementById('purchaseThanks').hidden = false;
+      params.delete('purchase');
+      const query = params.toString();
+      history.replaceState(null, '', location.pathname + (query ? '?' + query : '') + location.hash);
+    })();
+
     // Which of the five is this visitor's. userAgentData.platform where the browser offers it and
     // navigator.platform otherwise; the agent string is consulted as a fallback, and for the
     // distribution hint that neither of the other two carries.

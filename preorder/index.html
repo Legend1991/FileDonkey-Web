@@ -422,7 +422,7 @@
             <button class="checkoutButton" id="checkoutButton" type="button" disabled>Buy licence</button>
           </p>
           <p>
-            Licences are optional during the beta and are a way to support FileDonkey early. Thank you!
+            A licence is optional during the beta and is a way to support FileDonkey early. Thank you!
           </p>
           <p class="checkoutNote" id="checkoutNote">
             Checkout is handled by Paddle, our reseller and merchant of record. They take the payment, issue
@@ -431,13 +431,6 @@
           </p>
           <p class="checkoutNote">
             Changed your mind? You can have a full refund within 14 days of your order. By buying you agree to our <a href="/terms">Terms of Sale</a> and <a href="/refunds">Refund Policy</a>.
-          </p>
-        </div>
-
-        <div class="callout" id="preorderThanks" hidden>
-          <p>
-            <strong class="leadIn">Thank you for supporting FileDonkey.</strong> Paddle has emailed you a
-            receipt, and your v1.0 licence will go to that same address on the day it ships.
           </p>
         </div>
 
@@ -518,8 +511,6 @@
     const PADDLE_PRICE_ID = "pri_01m5f1gykmwc74qg3te7yyedrs";
 
     (function () {
-      const offerEl = document.querySelector("#preorderOffer");
-      const thanksEl = document.querySelector("#preorderThanks");
       const priceEl = document.querySelector("#preorderPrice");
       const checkoutBtn = document.querySelector("#checkoutButton");
       const noteEl = document.querySelector("#checkoutNote");
@@ -535,11 +526,13 @@
       if (PADDLE_CLIENT_TOKEN.startsWith("test_")) Paddle.Environment.set("sandbox");
       Paddle.Initialize({
         token: PADDLE_CLIENT_TOKEN,
-        checkout: { settings: { displayMode: "overlay", theme: "dark" } },
-        eventCallback: (event) => {
-          if (event.name !== "checkout.completed") return;
-          offerEl.hidden = true;
-          thanksEl.hidden = false;
+        checkout: {
+          settings: {
+            displayMode: "overlay",
+            theme: "dark",
+            // Paddle sends the buyer here once payment succeeds; the downloads page shows the thank-you.
+            successUrl: location.origin + "/downloads/?purchase=complete"
+          }
         }
       });
 
