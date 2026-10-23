@@ -115,7 +115,6 @@
       text-transform: uppercase;
     }
 
-    /* Held open so the card does not jump if the price is filled in by script. */
     .offerPrice {
       color: #E8E9EC;
       font-family: Roboto-Medium, sans-serif;
@@ -202,14 +201,6 @@
 
     .contentColumn .checkoutNote a {
       color: #A9AEB6;
-    }
-
-    /* The fallback when the checkout script cannot load replaces the fine print, and is the one thing
-       on the card a visitor then needs to read. */
-    .checkoutNote.checkoutError {
-      color: #E8B04B;
-      font-size: 15px;
-      line-height: 1.4rem;
     }
 
     .contentColumn a {
@@ -501,7 +492,8 @@
           <div class="offerPrice" id="preorderPrice">$40.00</div>
           <div class="offerPriceNote">One-time payment · launch price</div>
           <ul class="offerPoints">
-            <li><span>Emailed to you the day v1.0 ships</span></li>
+            <li><span>License key emailed right after purchase</span></li>
+            <li><span>Unlocks v1.0 when it ships; the beta stays free</span></li>
             <li><span>The launch price is yours for good</span></li>
             <li><span>Full refund within 14 days of your order</span></li>
           </ul>
@@ -513,8 +505,10 @@
             A license is optional during the beta and is a way to support FileDonkey early. Thank you!
           </div>
           <div class="checkoutNote" id="checkoutNote">
-            By buying you agree to our <a href="/terms">Terms of Service</a> and
-            <a href="/refunds">Refund Policy</a>.
+            Sold by Creem, our reseller and Merchant of Record, which processes the payment and handles
+            invoicing and any sales tax or VAT, shown at checkout. By buying you agree to our
+            <a href="/terms">Terms of Service</a>, <a href="/refunds">Refund Policy</a> and Creem's
+            <a href="https://www.creem.io/buyer-terms" target="_blank">Buyer Terms</a>.
           </div>
         </div>
 
@@ -587,6 +581,28 @@
       <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
     </div>
   </footer>
+  <script>
+    // Creem > Products > the license product > Share. Test mode and live mode give different links,
+    // so swap it when the store goes live.
+    const CREEM_PAYMENT_LINK = "https://creem.io/payment/prod_REPLACE_ME";
+    // false until Creem has approved the store. Until then the button stays shut and the card says
+    // checkout is not open yet.
+    const CHECKOUT_OPEN = false;
+
+    (function () {
+      const checkoutBtn = document.querySelector("#checkoutButton");
+      const soonEl = document.querySelector("#checkoutSoon");
+      if (!CHECKOUT_OPEN || CREEM_PAYMENT_LINK.includes("REPLACE_ME")) return;
+
+      soonEl.hidden = true;
+      checkoutBtn.disabled = false;
+      // Creem's checkout is a hosted page rather than an overlay, so the buyer leaves for it and comes
+      // back through the success URL set on the product (/downloads/?purchase=complete).
+      checkoutBtn.addEventListener("click", () => {
+        location.href = CREEM_PAYMENT_LINK + "?theme=dark";
+      });
+    })();
+  </script>
   <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
