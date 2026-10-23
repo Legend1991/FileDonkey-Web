@@ -73,7 +73,7 @@
       display: none !important;
     }
 
-    /* Shown only when Paddle redirects here after a purchase on the preorder page. */
+    /* Shown only when Creem redirects here after a purchase on the preorder page. */
     .purchaseThanks {
       color: #A9AEB6;
       font-size: 18px;
@@ -520,9 +520,9 @@
     <div class="downloadHero">
       <div class="downloadCopy">
         <div class="purchaseThanks" id="purchaseThanks" role="status" hidden>
-          <strong>Thank you for supporting FileDonkey!</strong> Paddle has emailed you a receipt, and your
-          v1.0 license will go to that same address on the day it ships. Until then, the beta below is
-          yours to use.
+          <strong>Thank you for supporting FileDonkey!</strong> Your receipt, which confirms your license,
+          is on its way to your email. Your license key for v1.0 will follow by the time v1.0 ships; until
+          then, the beta below is yours to use.
         </div>
         <span class="docTitle">Download the free beta</span>
         <div class="docBody">
@@ -718,15 +718,16 @@
 </script>
 
   <script>
-    // Paddle lands the buyer here with ?purchase=complete. The parameter is dropped from the address
-    // straight away, so a reload or a shared link does not thank someone who has bought nothing.
+    // Creem lands the buyer here on the product's success URL, /downloads/?purchase=complete, and
+    // appends its own order parameters (checkout_id, order_id, signature...). checkout_id alone also
+    // counts, in case the success URL is set without our parameter. The whole query is dropped from
+    // the address straight away, so a reload or a shared link does not thank someone who has bought
+    // nothing, and the order details do not linger in history.
     (function () {
       const params = new URLSearchParams(location.search);
-      if (params.get('purchase') !== 'complete') return;
+      if (params.get('purchase') !== 'complete' && !params.has('checkout_id')) return;
       document.getElementById('purchaseThanks').hidden = false;
-      params.delete('purchase');
-      const query = params.toString();
-      history.replaceState(null, '', location.pathname + (query ? '?' + query : '') + location.hash);
+      history.replaceState(null, '', location.pathname + location.hash);
     })();
 
     // Which of the five is this visitor's. userAgentData.platform where the browser offers it and
