@@ -115,7 +115,7 @@
       text-transform: uppercase;
     }
 
-    /* Held open before the price arrives from Paddle, so the card does not jump when it does. */
+    /* Held open so the card does not jump if the price is filled in by script. */
     .offerPrice {
       color: #E8E9EC;
       font-family: Roboto-Medium, sans-serif;
@@ -204,8 +204,8 @@
       color: #A9AEB6;
     }
 
-    /* The fallback when Paddle cannot load replaces the fine print, and is the one thing on the card
-       a visitor then needs to read. */
+    /* The fallback when the checkout script cannot load replaces the fine print, and is the one thing
+       on the card a visitor then needs to read. */
     .checkoutNote.checkoutError {
       color: #E8B04B;
       font-size: 15px;
@@ -506,16 +506,14 @@
             <li><span>Full refund within 14 days of your order</span></li>
           </ul>
           <button class="checkoutButton" id="checkoutButton" type="button" disabled>Buy License</button>
-          <div class="checkoutSoon" id="checkoutSoon" hidden>
-            Checkout opens as soon as Paddle, our payment provider, finishes verifying FileDonkey. Join the
-            mailing list below to hear the moment it does.
+          <div class="checkoutSoon" id="checkoutSoon">
+            Checkout is not open yet. Join the mailing list below to hear the moment it is.
           </div>
           <div class="offerThanks">
             A license is optional during the beta and is a way to support FileDonkey early. Thank you!
           </div>
           <div class="checkoutNote" id="checkoutNote">
-            Sold by Paddle.com, our reseller and Merchant of Record, which handles payment, invoicing and any
-            sales tax or VAT. By buying you agree to our <a href="/terms">Terms of Service</a> and
+            By buying you agree to our <a href="/terms">Terms of Service</a> and
             <a href="/refunds">Refund Policy</a>.
           </div>
         </div>
@@ -589,62 +587,6 @@
       <div>Copyright © 2026 Ihor Horemykin. All rights reserved.</div>
     </div>
   </footer>
-  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-  <script>
-    // Paddle > Developer tools > Authentication (client-side token) and Catalog > Products (price ID).
-    // Both are meant to be public. A test_ token talks to the sandbox, a live_ token to production.
-    const PADDLE_CLIENT_TOKEN = "live_dd5190291a9a80c21b27fde977e";
-    const PADDLE_PRICE_ID = "pri_01m5hwr447f6yhhfhvas49eq2r";
-    // false until Paddle has verified the account. Before that the live checkout only answers
-    // "Something went wrong", so the button stays shut and the page says checkout opens soon.
-    const CHECKOUT_OPEN = false;
-
-    (function () {
-      const priceEl = document.querySelector("#preorderPrice");
-      const checkoutBtn = document.querySelector("#checkoutButton");
-      const noteEl = document.querySelector("#checkoutNote");
-      const soonEl = document.querySelector("#checkoutSoon");
-
-      // window.Paddle is missing when paddle.js was blocked (ad blockers do this) or failed to load.
-      if (!window.Paddle || PADDLE_CLIENT_TOKEN.includes("REPLACE_ME") || PADDLE_PRICE_ID.includes("REPLACE_ME")) {
-        console.error("Paddle checkout unavailable:", window.Paddle ? "token or price ID not set" : "paddle.js did not load");
-        noteEl.classList.add("checkoutError");
-        noteEl.innerHTML = 'Checkout could not load. If a content blocker is on, allow <em>cdn.paddle.com</em> and ' +
-          'reload, or write to <a href="mailto:support@filedonkey.app">support@filedonkey.app</a>.';
-        return;
-      }
-
-      if (PADDLE_CLIENT_TOKEN.startsWith("test_")) Paddle.Environment.set("sandbox");
-      Paddle.Initialize({
-        token: PADDLE_CLIENT_TOKEN,
-        checkout: {
-          settings: {
-            displayMode: "overlay",
-            theme: "dark",
-            // Paddle sends the buyer here once payment succeeds; the downloads page shows the thank-you.
-            successUrl: location.origin + "/downloads/?purchase=complete"
-          }
-        }
-      });
-
-      const items = [{ priceId: PADDLE_PRICE_ID, quantity: 1 }];
-
-      // Localised price for the visitor's country, so the page and the checkout show the same figure.
-      Paddle.PricePreview({ items })
-        .then((result) => {
-          priceEl.textContent = result.data.details.lineItems[0].formattedTotals.total;
-        })
-        .catch((error) => console.error("Paddle price preview error:", error));
-
-      if (!CHECKOUT_OPEN) {
-        soonEl.hidden = false;
-        return;
-      }
-
-      checkoutBtn.disabled = false;
-      checkoutBtn.addEventListener("click", () => Paddle.Checkout.open({ items }));
-    })();
-  </script>
   <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
